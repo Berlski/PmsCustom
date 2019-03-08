@@ -5,11 +5,9 @@ import android.util.Log;
 import static android.util.Log.getStackTraceString;
 
 /**
- * copywrite 2015-2020 金地物业
- * 不能修改和删除上面的版权声明
  * 此代码属于数据与信息中心部门编写，在未经允许的情况下不得传播复制
  * Log日志输出工具类（Util）
- * Created by Berlski on 2018/10/18.
+ * Created by Berlski on 2019/3/8.
  */
 public class LogUtil {
     /**

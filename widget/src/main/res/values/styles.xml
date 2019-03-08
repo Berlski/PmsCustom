@@ -1,0 +1,15 @@
+<resources>
+
+    <declare-styleable name="InputInfoSwitchView">
+        <attr name="iisv_name" format="string" /><!--字典名称-->
+        <attr name="iisv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="iisv_default_select" format="integer" /><!--默认选中项-->
+
+        <attr name="iisv_item_one" format="string" /><!--选项一-->
+        <attr name="iisv_item_two" format="string" /><!--选项二-->
+        <attr name="iisv_item_three" format="string" /><!--选项三-->
+        <attr name="iisv_item_four" format="string" /><!--选项四-->
+        <attr name="iisv_item_five" format="string" /><!--选项五-->
+    </declare-styleable>
+
+</resources>

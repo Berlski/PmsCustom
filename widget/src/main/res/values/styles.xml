@@ -33,4 +33,11 @@
             <flag name="TAIWAN_COMPATRIOT_CARD" value="0x0024" /><!--台湾同胞证-->
         </attr>
     </declare-styleable>
+
+    <!--阴影按钮-->
+    <declare-styleable name="ShadowButton">
+        <attr name="gb_text" format="string" />
+        <attr name="gb_textColor" format="color" />
+        <attr name="gb_textSize" format="dimension" />
+    </declare-styleable>
 </resources>

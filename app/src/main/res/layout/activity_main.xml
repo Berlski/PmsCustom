@@ -7,27 +7,26 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.berlski.custom.widget.InputInfoSwitchView
         android:layout_width="match_parent"
         android:layout_height="46dp"
         app:iisv_is_required="true"
-        app:iisv_item_one="@string/app_name"
-        app:iisv_item_two="@string/app_name"
-        app:iisv_name="@string/app_name" />
+        app:iisv_item_one="@string/option_one"
+        app:iisv_item_two="@string/option_two"
+        app:iisv_name="@string/item_name" />
 
     <com.berlski.custom.widget.InfoEntryView
         android:layout_width="match_parent"
         android:layout_height="46dp"
+        android:layout_marginTop="@dimen/dp1"
         app:iev_is_required="true"
         app:iev_name="@string/item_name" />
+
+    <com.berlski.custom.widget.ShadowButton
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--阴影-->
+    <item
+        android:height="@dimen/dp20"
+        android:gravity="bottom">
+        <shape android:shape="rectangle">
+            <solid android:color="#01afafaf" />
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="0.5dp"
+        android:gravity="bottom"
+        android:left="0.5dp"
+        android:right="0.5dp"
+        android:top="0.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#01afafaf" />
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="1dp"
+        android:gravity="bottom"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#02afafaf" />
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="1.5dp"
+        android:gravity="bottom"
+        android:left="1.5dp"
+        android:right="1.5dp"
+        android:top="1.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#03afafaf" />
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="2dp"
+        android:gravity="bottom"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#04afafaf" />
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="2.5dp"
+        android:gravity="bottom"
+        android:left="2.5dp"
+        android:right="2.5dp"
+        android:top="2.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#05afafaf" />
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="3dp"
+        android:gravity="bottom"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#06afafaf" />
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="3.5dp"
+        android:gravity="bottom"
+        android:left="3.5dp"
+        android:right="3.5dp"
+        android:top="3.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#07afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="4dp"
+        android:gravity="bottom"
+        android:left="4dp"
+        android:right="4dp"
+        android:top="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#08afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="4.5dp"
+        android:gravity="bottom"
+        android:left="4.5dp"
+        android:right="4.5dp"
+        android:top="4.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#09afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="5dp"
+        android:gravity="bottom"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#10afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="5.5dp"
+        android:gravity="bottom"
+        android:left="5.5dp"
+        android:right="5.5dp"
+        android:top="5.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#11afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="6dp"
+        android:gravity="bottom"
+        android:left="6dp"
+        android:right="6dp"
+        android:top="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#12afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="6.5dp"
+        android:gravity="bottom"
+        android:left="6.5dp"
+        android:right="6.5dp"
+        android:top="6.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#13afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="7dp"
+        android:gravity="bottom"
+        android:left="7dp"
+        android:right="7dp"
+        android:top="7dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#14afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="7.5dp"
+        android:gravity="bottom"
+        android:left="7.5dp"
+        android:right="7.5dp"
+        android:top="7.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#15afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="8dp"
+        android:gravity="bottom"
+        android:left="8dp"
+        android:right="8dp"
+        android:top="8dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#16afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="8.5dp"
+        android:gravity="bottom"
+        android:left="8.5dp"
+        android:right="8.5dp"
+        android:top="8.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#17afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="9dp"
+        android:gravity="bottom"
+        android:left="9dp"
+        android:right="9dp"
+        android:top="9dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#18afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:height="@dimen/dp20"
+        android:bottom="9.5dp"
+        android:gravity="bottom"
+        android:left="9.5dp"
+        android:right="9.5dp"
+        android:top="9.5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#19afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="10dp"
+        android:top="0dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#afafaf" />
+
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+</layer-list>

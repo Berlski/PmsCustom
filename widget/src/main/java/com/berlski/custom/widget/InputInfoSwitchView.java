@@ -125,7 +125,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
         mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(itemNames.size(), getCount(R.dimen.dp1), false));
 
         //设置继承BaseQuickAdapter的数据适配器的条目点击监听
-        mAdapter.setOnItemClickListener(this);
+        //mAdapter.setOnItemClickListener(this);
     }
 
     /**

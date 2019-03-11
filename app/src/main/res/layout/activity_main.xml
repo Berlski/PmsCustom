@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
@@ -23,4 +24,10 @@
         app:iisv_item_two="@string/app_name"
         app:iisv_name="@string/app_name" />
 
-</android.support.constraint.ConstraintLayout>
+    <com.berlski.custom.widget.InfoEntryView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        app:iev_is_required="true"
+        app:iev_name="@string/item_name" />
+
+</LinearLayout>

@@ -12,4 +12,25 @@
         <attr name="iisv_item_five" format="string" /><!--选项五-->
     </declare-styleable>
 
+    <declare-styleable name="InfoEntryView">
+        <attr name="iev_name" format="string" /><!--条目名称-->
+        <attr name="iev_is_required" format="boolean" /><!--是否必选-->
+        <attr name="iev_hint" format="string" /><!--提示文字-->
+        <attr name="iev_length" format="integer" /><!--文字文字长度-->
+
+        <attr name="iev_type">
+            <flag name="TEXT" value="0x0001" /><!--文本文字-->
+            <flag name="NAME" value="0x0002" /><!--姓名-->
+            <flag name="EMAIL" value="0x0003" /><!--电子邮箱-->
+            <flag name="PHONE_NO" value="0x0004" /><!--手机号-->
+            <flag name="CREDENTIAL_NO" value="0x0005" /><!--证件号-->
+        </attr>
+
+        <attr name="iev_credential_type">
+            <flag name="ID_CARD" value="0x0021" /><!--身份证-->
+            <flag name="PASSPORT" value="0x0022" /><!--护照-->
+            <flag name="HONGKONG_AND_MACAO_PASS" value="0x0023" /><!--港澳通行证-->
+            <flag name="TAIWAN_COMPATRIOT_CARD" value="0x0024" /><!--台湾同胞证-->
+        </attr>
+    </declare-styleable>
 </resources>

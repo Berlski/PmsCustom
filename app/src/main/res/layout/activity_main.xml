@@ -58,4 +58,12 @@
         android:layout_height="46dp"
         app:sv_is_required="true"
         app:sv_name="@string/item_name" />
+
+    <com.berlski.tool.custom.widget.SelectDictionaryView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="@dimen/dp1"
+        app:sv_is_required="true"
+        app:sv_name="@string/item_name"
+        app:sv_type="ACCOUNT_TYPE" />
 </LinearLayout>

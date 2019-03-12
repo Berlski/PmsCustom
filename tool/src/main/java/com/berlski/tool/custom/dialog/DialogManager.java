@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.berlski.tool.custom.manager.MyActivityManager;
+
 public class DialogManager {
 
     private static Application mApplication;

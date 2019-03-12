@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.berlski.tool.custom.R;
+import com.berlski.tool.custom.manager.MyActivityManager;
 import com.wang.avi.AVLoadingIndicatorView;
 
 /**

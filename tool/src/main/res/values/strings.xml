@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">widget</string>
+
+    <string name="item_name">条目名称</string>
+    <string name="option_one" >选项一</string>
+    <string name="option_two" >选项二</string>
+    <string name="option_three" >选项三</string>
+    <string name="option_four" >选项四</string>
+    <string name="option_five" >选项五</string>
+
+    <string name="please_input">请填写</string>
+    <string name="please_choose">请选择</string>
+
+    <string name="yes">确定</string>
+    <string name="no">取消</string>
+
+    <string name="MSG_NET_ERROR">亲，当前网络环境欠佳，请稍后重试!</string>
+</resources>

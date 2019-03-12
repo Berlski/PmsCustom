@@ -7,8 +7,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/switchViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp" />
 
-    <com.berlski.custom.widget.InputInfoSwitchView
+    <com.berlski.tool.custom.widget.InputInfoSwitchView
+        android:id="@+id/inputInfoSwitchView"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         app:iisv_is_required="true"
@@ -16,17 +23,39 @@
         app:iisv_item_two="@string/option_two"
         app:iisv_name="@string/item_name" />
 
-    <com.berlski.custom.widget.InfoEntryView
+    <TextView
+        android:id="@+id/infoEntryViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/dp10" />
+
+    <com.berlski.tool.custom.widget.InfoEntryView
+        android:id="@+id/infoEntryView"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginTop="@dimen/dp1"
         app:iev_is_required="true"
         app:iev_name="@string/item_name" />
 
-    <com.berlski.custom.widget.ShadowButton
-        android:layout_marginTop="@dimen/dp10"
+    <com.berlski.tool.custom.widget.ShadowButton
+        android:id="@+id/shadowButton"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10" />
 
+    <TextView
+        android:id="@+id/selectBeanViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/dp10" />
+
+    <com.berlski.tool.custom.widget.SelectBeanView
+        android:id="@+id/select_bean_view"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        app:sv_is_required="true"
+        app:sv_name="@string/item_name" />
 </LinearLayout>

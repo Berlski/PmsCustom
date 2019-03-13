@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 
+import com.berlski.tool.custom.manager.DialogManager;
 import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.manager.MyActivityManager;
 
@@ -26,7 +27,7 @@ public class AppUtil {
 
         AppUtil.appInitInterface = appInitInterface;
 
-        appInitInterface.setApplication().registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+        appInitInterface.getApplication().registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
 
@@ -91,7 +92,7 @@ public class AppUtil {
      * @return
      */
     public static Application getApplication() {
-        return AppUtil.appInitInterface.setApplication();
+        return AppUtil.appInitInterface.getApplication();
     }
 
     /**
@@ -105,7 +106,7 @@ public class AppUtil {
     }
 
     public static String getIpPath() {
-        return AppUtil.appInitInterface.setIpPath();
+        return AppUtil.appInitInterface.getIpPath();
     }
 
     /**
@@ -118,7 +119,7 @@ public class AppUtil {
     }
 
     public static HttpManager.HttpResponseInterface getHttpResponseInterface() {
-        return AppUtil.appInitInterface.setHttpResponseInterface();
+        return AppUtil.appInitInterface.getHttpResponseInterface();
     }
 
     /**
@@ -126,15 +127,15 @@ public class AppUtil {
      */
     public interface AppInitInterface {
 
-        Application setApplication();
+        Application getApplication();
 
         /**
          * 接口回调时，表示请求需要拼接公用参数
          */
         boolean isDeBug();
 
-        String setIpPath();
+        String getIpPath();
 
-        HttpManager.HttpResponseInterface setHttpResponseInterface();
+        HttpManager.HttpResponseInterface getHttpResponseInterface();
     }
 }

@@ -236,7 +236,7 @@ public class HttpManager {
      */
     private void toPostRequest(final Context mContext, int time, final NetUrlEnum url, JSONObject params, final boolean isShow, final AbHttpResponseListenerInterface inter) {
         //将parmasJSON添加到abRequestParams中，并添加三个公共参数：token gcid userid
-        params = putDataJSON(params);
+        //params = putDataJSON(params);
         String data = params.toString();
 
         //2,创建Request

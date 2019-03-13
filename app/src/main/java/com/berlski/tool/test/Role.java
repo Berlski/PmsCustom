@@ -6,9 +6,17 @@ import java.io.Serializable;
  * Created by Berlski on 2017/11/27.
  */
 
-public class Role implements Serializable{
+public class Role implements Serializable {
     private String name;
     private String id;
+
+    public Role() {
+    }
+
+    public Role(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -34,7 +34,7 @@ import com.berlski.tool.custom.R;
 public class InfoEntryView extends LinearLayout implements View.OnFocusChangeListener, TextWatcher, View.OnTouchListener {
 
     private TypedArray ta;
-    private EditText et_vie_input;
+    private EditText mContentView;
 
     private static final int TEXT = 0x0001;//文本文字
     private static final int NAME = 0x0002;//姓名
@@ -61,7 +61,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
      * 默认选择文本文字
      */
     private int type = TEXT;
-    private TextView nameText;
+    private TextView mNameView;
 
 
     public InfoEntryView(Context context) {
@@ -78,9 +78,9 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
         // 加载布局
         LayoutInflater.from(context).inflate(R.layout.view_info_entry, this);
 
-        nameText = findViewById(R.id.tv_vie_name);
+        mNameView = findViewById(R.id.tv_vie_name);
         ImageView requiredMarker = findViewById(R.id.iv_vie_required_marker);
-        et_vie_input = findViewById(R.id.et_vie_input);
+        mContentView = findViewById(R.id.et_vie_content);
 
         //对属性进行解析
         // 由attrs 获得 TypeArray
@@ -91,7 +91,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
         if (StringUtil.isEmpty(hint)) {
             hint = getContext().getString(R.string.please_input);
         }
-        et_vie_input.setHint(hint);
+        mContentView.setHint(hint);
 
         //设定必选标识
         boolean requiredBlean = ta.getBoolean(R.styleable.InfoEntryView_iev_is_required, false);
@@ -104,7 +104,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
 
         //设定选项名称
         String name = ta.getString(R.styleable.InfoEntryView_iev_name);
-        nameText.setText(name);
+        mNameView.setText(name);
 
         //获取输入类型
         type = ta.getInteger(R.styleable.InfoEntryView_iev_type, 0x0001);
@@ -121,12 +121,12 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
 
             case EMAIL:
                 maxLength = 30;
-                et_vie_input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                mContentView.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 break;
 
             case PHONE_NO:
                 //限定输入类型为电话格式
-                et_vie_input.setInputType(InputType.TYPE_CLASS_PHONE);
+                mContentView.setInputType(InputType.TYPE_CLASS_PHONE);
                 //限定输入字数为11
                 maxLength = 11;
                 break;
@@ -177,7 +177,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
      * @return
      */
     public String getText() {
-        return et_vie_input.getText().toString().trim();
+        return mContentView.getText().toString().trim();
     }
 
     /**
@@ -185,7 +185,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
      */
     private void setClearDrawable() {
         //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
-        mClearDrawable = et_vie_input.getCompoundDrawables()[2];
+        mClearDrawable = mContentView.getCompoundDrawables()[2];
         if (mClearDrawable == null) {
 //          throw new NullPointerException("You can add drawableRight attribute in XML");
             mClearDrawable = getResources().getDrawable(R.drawable.ic_cancel_black);
@@ -195,11 +195,11 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
         //默认设置隐藏图标
         setClearIconVisible(false);
         //设置焦点改变的监听
-        et_vie_input.setOnFocusChangeListener(this);
+        mContentView.setOnFocusChangeListener(this);
         //设置输入框里面内容发生改变的监听
-        et_vie_input.addTextChangedListener(this);
+        mContentView.addTextChangedListener(this);
 
-        et_vie_input.setOnTouchListener(this);
+        mContentView.setOnTouchListener(this);
     }
 
     /**
@@ -209,7 +209,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
      */
     public void setText(String content) {
         //this.content = content;
-        et_vie_input.setText(content);
+        mContentView.setText(content);
     }
 
     /**
@@ -220,12 +220,12 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            if (et_vie_input.getCompoundDrawables()[2] != null) {
+            if (mContentView.getCompoundDrawables()[2] != null) {
 
-                boolean touchable = event.getX() > (et_vie_input.getWidth() - et_vie_input.getTotalPaddingRight()) && (event.getX() < ((et_vie_input.getWidth() - et_vie_input.getPaddingRight())));
+                boolean touchable = event.getX() > (mContentView.getWidth() - mContentView.getTotalPaddingRight()) && (event.getX() < ((mContentView.getWidth() - mContentView.getPaddingRight())));
 
                 if (touchable) {
-                    et_vie_input.setText("");
+                    mContentView.setText("");
                 }
             }
         }
@@ -255,7 +255,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
      */
     protected void setClearIconVisible(boolean visible) {
         Drawable right = visible ? mClearDrawable : null;
-        et_vie_input.setCompoundDrawables(et_vie_input.getCompoundDrawables()[0], et_vie_input.getCompoundDrawables()[1], right, et_vie_input.getCompoundDrawables()[3]);
+        mContentView.setCompoundDrawables(mContentView.getCompoundDrawables()[0], mContentView.getCompoundDrawables()[1], right, mContentView.getCompoundDrawables()[3]);
     }
 
 
@@ -279,11 +279,11 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
         //如果 输入的类容包含有Emoji
         if (StringUtil.isEmojiCharacter(input)) {
             //那么就去掉
-            et_vie_input.setText(StringUtil.removeEmoji(s));
-            AnimUtil.setShakeAnim(et_vie_input, 5);
+            mContentView.setText(StringUtil.removeEmoji(s));
+            AnimUtil.setShakeAnim(mContentView, 5);
 
             //光标移动到修改的地方(使光标位置不变) TODO 这里可能会有更好的解决方案
-            et_vie_input.setSelection(start);
+            mContentView.setSelection(start);
 
             ToastUtil.showToast("不支持表情输入!");
         }
@@ -297,15 +297,15 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
                 String middle = input.subSequence(0, input.length() - (s.length() - maxLength)).toString();
                 String hinder = s.subSequence(start + after, s.length()).toString();
 
-                et_vie_input.setText(front + middle + hinder);
+                mContentView.setText(front + middle + hinder);
             } catch (Exception e) {
 
             }
 
-            AnimUtil.setShakeAnim(et_vie_input, 5);
+            AnimUtil.setShakeAnim(mContentView, 5);
 
             //光标移动到修改的地方(使光标位置不变) TODO 这里可能会有更好的解决方案
-            et_vie_input.setSelection(start);
+            mContentView.setSelection(start);
         }
 
         // 只允许字母、数字和汉字
@@ -377,7 +377,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
                 this.documentType = DocumentType.ID_CARD;
                 maxLength = 18;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance("0123456789xX"));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance("0123456789xX"));
                 break;
 
             //护照
@@ -385,7 +385,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
                 this.documentType = DocumentType.PASSPORT;
                 maxLength = 100;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance(inputKey));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance(inputKey));
                 break;
 
             //港澳通行证
@@ -393,7 +393,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
                 this.documentType = DocumentType.HONGKONG_AND_MACAO_PASS;
                 maxLength = 100;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance(inputKey));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance(inputKey));
                 break;
 
             //台湾同胞证
@@ -401,11 +401,11 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
                 this.documentType = DocumentType.TAIWAN_COMPATRIOT_CARD;
                 maxLength = 100;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance(inputKey));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance(inputKey));
                 break;
         }
 
-        nameText.setText(this.documentType.getTypeName());
+        mNameView.setText(this.documentType.getTypeName());
     }
 
     /**
@@ -416,7 +416,7 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
     public void setDocumentType(DocumentType documentType) {
         this.documentType = documentType;
 
-        nameText.setText(documentType.getTypeName());
+        mNameView.setText(documentType.getTypeName());
 
         switch (documentType) {
 
@@ -424,28 +424,28 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
             case ID_CARD:
                 maxLength = 18;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance("0123456789xX"));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance("0123456789xX"));
                 break;
 
             //护照
             case PASSPORT:
                 maxLength = 100;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance(inputKey));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance(inputKey));
                 break;
 
             //港澳通行证
             case HONGKONG_AND_MACAO_PASS:
                 maxLength = 100;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance(inputKey));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance(inputKey));
                 break;
 
             //台湾同胞证
             case TAIWAN_COMPATRIOT_CARD:
                 maxLength = 100;
 
-                et_vie_input.setKeyListener(DigitsKeyListener.getInstance(inputKey));
+                mContentView.setKeyListener(DigitsKeyListener.getInstance(inputKey));
                 break;
         }
     }

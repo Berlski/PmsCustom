@@ -10,77 +10,55 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.util.GridSpacingItemDecoration;
 import com.berlski.tool.custom.util.StringUtil;
-import com.berlski.tool.custom.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 此代码属于数据与信息中心部门编写，在未经允许的情况下不得传播复制
- * 信息编辑页，多选一自定义view（view）
- * Created by Berlski on 2019/3/8.
- */
-public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapter.OnItemClickListener {
+public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemClickListener {
 
     private List<String> itemNames = new ArrayList<>();
 
-    private SwitchButtonInter inter;
+    private SwitchView.SwitchButtonInter inter;
     private RecyclerView mRecyclerView;
     private String maxText = "";
-    private TextAdapter mAdapter;
+    private SwitchView.TextAdapter mAdapter;
 
-    public InputInfoSwitchView(Context context) {
+    public SwitchView(Context context) {
         super(context);
     }
 
-    public InputInfoSwitchView(Context context, @Nullable AttributeSet attrs) {
+    public SwitchView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public InputInfoSwitchView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SwitchView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         // 加载布局
-        LayoutInflater.from(context).inflate(R.layout.view_input_info_switch, this);
+        LayoutInflater.from(context).inflate(R.layout.view_switch, this);
 
-        TextView nameText = findViewById(R.id.tv_iis_name);
-        ImageView requiredMarker = findViewById(R.id.iv_iis_required_marker);
-        mRecyclerView = findViewById(R.id.rv_iis_recycler_view);
+        mRecyclerView = findViewById(R.id.rv_vs_recycler_view);
 
         //对属性进行解析
         // 由attrs 获得 TypeArray
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.InputInfoSwitchView);
-
-        //设定必选标识
-        boolean requiredBlean = ta.getBoolean(R.styleable.InputInfoSwitchView_iisv_is_required, false);
-        if (requiredBlean) {
-            requiredMarker.setVisibility(VISIBLE);
-
-        } else {
-            requiredMarker.setVisibility(GONE);
-        }
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SwitchView);
 
         //默认选中项
-        int defaultSelect = ta.getInteger(R.styleable.InputInfoSwitchView_iisv_default_select, 0);
+        int defaultSelect = ta.getInteger(R.styleable.SwitchView_sv_default_select, 0);
 
-        //设定选项名称
-        String name = ta.getString(R.styleable.InputInfoSwitchView_iisv_name);
-        nameText.setText(name);
-
-
-        String item_one = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_one);
-        String item_two = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_two);
-        String item_three = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_three);
-        String item_four = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_four);
-        String item_five = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_five);
+        String item_one = ta.getString(R.styleable.SwitchView_sv_option_one);
+        String item_two = ta.getString(R.styleable.SwitchView_sv_option_two);
+        String item_three = ta.getString(R.styleable.SwitchView_sv_option_three);
+        String item_four = ta.getString(R.styleable.SwitchView_sv_option_four);
+        String item_five = ta.getString(R.styleable.SwitchView_sv_option_five);
 
         if (StringUtil.isNotEmpty(item_one)) {
             itemNames.add(item_one);
@@ -117,7 +95,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
         mRecyclerView.setLayoutManager(mgr);
 
         //给列表设定数据适配器
-        mAdapter = new TextAdapter(itemNames);
+        mAdapter = new SwitchView.TextAdapter(itemNames);
         mAdapter.setSelectedPosition(defaultSelect);
 
         mRecyclerView.setAdapter(mAdapter);
@@ -144,7 +122,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
      *
      * @param inter
      */
-    public void setSwitchListener(SwitchButtonInter inter) {
+    public void setSwitchListener(SwitchView.SwitchButtonInter inter) {
         this.inter = inter;
     }
 
@@ -155,7 +133,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
      * @param list
      * @param inter
      */
-    public void setSwitchListener(List<String> list, SwitchButtonInter inter) {
+    public void setSwitchListener(List<String> list, SwitchView.SwitchButtonInter inter) {
         this.itemNames = list;
         this.inter = inter;
 
@@ -169,7 +147,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
      * @param defaultSelect
      * @param inter
      */
-    public void setSwitchListener(List<String> list, int defaultSelect, SwitchButtonInter inter) {
+    public void setSwitchListener(List<String> list, int defaultSelect, SwitchView.SwitchButtonInter inter) {
         this.itemNames = list;
         this.inter = inter;
 
@@ -189,7 +167,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-        TextAdapter textAdapter = (TextAdapter) adapter;
+        SwitchView.TextAdapter textAdapter = (SwitchView.TextAdapter) adapter;
 
         textAdapter.setSelectedPosition(position);
         textAdapter.notifyDataSetChanged();

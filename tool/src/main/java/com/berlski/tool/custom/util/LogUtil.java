@@ -13,7 +13,7 @@ public class LogUtil {
     /**
      * IS_DE_BUG :是用来控制，是否打印日志
      */
-    private static final boolean IS_DE_BUG = true;
+    private static final boolean IS_DE_BUG = AppUtil.isDeBug();
 
     /**
      * tag 标识符

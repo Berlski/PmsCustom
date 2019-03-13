@@ -26,7 +26,7 @@ public class BaseApplication extends Application {
 
         AppUtil.init(new AppUtil.AppInitInterface() {
             @Override
-            public Application setApplication() {
+            public Application getApplication() {
                 return BaseApplication.this;
             }
 
@@ -36,12 +36,12 @@ public class BaseApplication extends Application {
             }
 
             @Override
-            public String setIpPath() {
-                return "http://test.pms.com";
+            public String getIpPath() {
+                return "http://test.pms.mianhuagongyu.com";
             }
 
             @Override
-            public HttpManager.HttpResponseInterface setHttpResponseInterface() {
+            public HttpManager.HttpResponseInterface getHttpResponseInterface() {
                 return new HttpManager.HttpResponseInterface() {
 
                     @Override
@@ -49,7 +49,11 @@ public class BaseApplication extends Application {
                         Map<String, Object> map = new HashMap<>();
 
                         Map<String, Object> params = new HashMap<>();
+                        params.put("gcid", "0100099");
 
+                        map.put("token", "901b9bc1-165d-4de0-8c49-7da98b893c90");
+
+                        map.put("userid", "b0585adccc16473082b63915901842af");
 
                         map.put("params", params);
 
@@ -58,12 +62,12 @@ public class BaseApplication extends Application {
 
                     @Override
                     public String addHeaderName() {
-                        return "id";
+                        return "gcid";
                     }
 
                     @Override
                     public String addHeaderValue() {
-                        return "";
+                        return "0100099";
                     }
 
                     @Override

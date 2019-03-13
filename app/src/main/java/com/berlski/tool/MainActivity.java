@@ -5,14 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.berlski.tool.custom.enums.DictionaryEnum;
+import com.berlski.tool.custom.enums.NetUrlEnum;
 import com.berlski.tool.custom.util.ToastUtil;
 import com.berlski.tool.custom.widget.InfoEntryView;
 import com.berlski.tool.custom.widget.InputInfoSwitchView;
 import com.berlski.tool.custom.widget.SelectBeanView;
 import com.berlski.tool.custom.widget.ShadowButton;
+import com.berlski.tool.test.Dictionary;
+import com.berlski.tool.test.Role;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +34,51 @@ public class MainActivity extends AppCompatActivity {
         setShadowButton();
 
         setSelectBeanView();
+
+        //setSelectDictionaryView();
+    }
+
+    private void setSelectDictionaryView() {
+        SelectBeanView selectBeanView = findViewById(R.id.selectDictionaryView);
+        final TextView selectBeanViewText = findViewById(R.id.selectDictionaryViewText);
+
+        selectBeanView.setRequestDataSelect(new SelectBeanView.RequestDataSelectInter<Dictionary>() {
+
+            @Override
+            public void onSelect(Dictionary bean, String key, String id, int index) {
+                selectBeanViewText.setText(key);
+            }
+
+            @Override
+            public void toRequestCompletedSetSelect(List<Dictionary> list, SelectBeanView view) {
+
+            }
+
+            @Override
+            public NetUrlEnum setNetUrlEnum() {
+                return NetUrlEnum.NET_URL_ENUM;
+            }
+
+            @Override
+            public Map<String, Object> setParams(HashMap<String, Object> params) {
+
+                //Map<String, Object> params = new HashMap<>();
+
+                params.put("gcid", "0100099");
+                params.put("token", "901b9bc1-165d-4de0-8c49-7da98b893c90");
+                params.put("userid", "b0585adccc16473082b63915901842af");
+
+                params.put("mark", DictionaryEnum.ACCOUNT_TYPE.getMark());                     //
+                params.put("params", params);
+
+                return null;
+            }
+
+            @Override
+            public SelectBeanView.SelectBean setSelectBean(Dictionary bean) {
+                return new SelectBeanView.SelectBean(bean.getKey(), bean.getId());
+            }
+        });
     }
 
     private void setSelectBeanView() {
@@ -35,28 +86,30 @@ public class MainActivity extends AppCompatActivity {
         final TextView selectBeanViewText = findViewById(R.id.selectBeanViewText);
 
 
-        List<String> stringList = new ArrayList<>();
+        List<Role> stringList = new ArrayList<>();
 
-        stringList.add(getString(R.string.option_one));
-        stringList.add(getString(R.string.option_two));
-        stringList.add(getString(R.string.option_three));
-        stringList.add(getString(R.string.option_four));
-        stringList.add(getString(R.string.option_five));
+        stringList.add(new Role(getString(R.string.option_one), "1"));
+        stringList.add(new Role(getString(R.string.option_two), "2"));
+        stringList.add(new Role(getString(R.string.option_three), "3"));
+        stringList.add(new Role(getString(R.string.option_four), "4"));
+        stringList.add(new Role(getString(R.string.option_five), "5"));
 
-        selectBeanView.setListAndInter(stringList, new SelectBeanView.SelectInter<String>() {
+        selectBeanView.setListAndInter(stringList, new SelectBeanView.SelectInter<Role>() {
             @Override
-            public void onSelect(String bean, String key, String id, int index) {
+            public void onSelect(Role bean, String key, String id, int index) {
                 selectBeanViewText.setText(key);
+
+                setSelectDictionaryView();
             }
 
             @Override
-            public void toSetDefaultSelect(List list, SelectBeanView view) {
+            public void toRequestCompletedSetSelect(List list, SelectBeanView view) {
 
             }
 
             @Override
-            public SelectBeanView.SelectBean setSelect(String bean) {
-                return new SelectBeanView.SelectBean(bean, "1");
+            public SelectBeanView.SelectBean setSelectBean(Role bean) {
+                return new SelectBeanView.SelectBean(bean.getName(), bean.getId());
             }
         });
     }

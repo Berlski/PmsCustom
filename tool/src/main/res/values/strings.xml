@@ -8,6 +8,9 @@
     <string name="option_four" >选项四</string>
     <string name="option_five" >选项五</string>
 
+    <string name="single_select">单选</string>
+    <string name="multiple_select">多选</string>
+
     <string name="please_input">请填写</string>
     <string name="please_choose">请选择</string>
 

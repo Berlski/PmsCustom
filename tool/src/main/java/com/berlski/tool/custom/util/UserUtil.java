@@ -15,13 +15,17 @@ public class UserUtil<T> {
     private T mUser;
 
     public static UserUtil builder(UserDateInter inter) {
-
-        if (mUserUtil != null) {
-            return mUserUtil;
+        if (mUserUtil == null) {
+            synchronized (UserUtil.class) {
+                if (mUserUtil == null) {
+                    mUserUtil = new UserUtil(inter);
+                }
+            }
         }
 
-        return new UserUtil(inter);
+        return mUserUtil;
     }
+
 
     private UserUtil(UserDateInter inter) {
         this.inter = inter;

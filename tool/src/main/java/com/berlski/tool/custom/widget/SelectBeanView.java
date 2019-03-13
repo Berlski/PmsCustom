@@ -2,8 +2,11 @@ package com.berlski.tool.custom.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +18,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.dialog.ActionSheetDialog;
+import com.berlski.tool.custom.dialog.MultipleSelectDialog;
 import com.berlski.tool.custom.enums.NetUrlEnum;
 import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.util.StringUtil;
@@ -23,6 +27,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,72 +38,96 @@ import java.util.TreeMap;
  */
 public class SelectBeanView<T> extends LinearLayout implements View.OnClickListener {
 
-    private String dictionaryKey;
-    private String dictionaryId;
+    private String mKey;
+    private String mId;
 
-    private AVLoadingIndicatorView loadView;
-    private SelectInter inter;
-    private RequestDataSelectInter requestInter;
-    private List<T> list;
-    private TextView tv_vds_select;
-    private int defaultSelect;
+    private AVLoadingIndicatorView mLoadView;
+    private TextView mContentView;
+    private TextView mNameView;
+    private SelectInter mInter;
+    private RequestDataSelectInter mRequestInter;
+    private List<T> mList;
+    private int mDefaultSelect;
+    private boolean isMultipleSelect;
+    private boolean isRequired;
+    private String mNameText;
+
+    private TreeMap<String, SelectBean> mSelectMap = new TreeMap<>();
 
     public SelectBeanView(Context context) {
         super(context);
     }
 
     public SelectBeanView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+
+        initView(context, attrs);
     }
 
     public SelectBeanView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
+        initView(context, attrs);
+    }
+
+    private void initView(Context context, @Nullable AttributeSet attrs) {
+
         // 加载布局
-        LayoutInflater.from(context).inflate(R.layout.view_dictionary_select, this);
+        LayoutInflater.from(context).inflate(R.layout.view_bean_select, this);
 
-        TextView nameText = findViewById(R.id.tv_vds_name);
+        mNameView = findViewById(R.id.tv_vds_name);
         ImageView requiredMarker = findViewById(R.id.iv_vds_required_marker);
-        tv_vds_select = findViewById(R.id.tv_vds_select);
+        mContentView = findViewById(R.id.tv_vds_content);
 
-        loadView = findViewById(R.id.avi_vds_load);
-        loadView.setVisibility(GONE);
+        mLoadView = findViewById(R.id.avi_vds_load);
+        mLoadView.setVisibility(GONE);
 
         //对属性进行解析
         // 由attrs 获得 TypeArray
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SelectDictionaryView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SelectBeanView);
 
         //设定提示
-        String hint = ta.getString(R.styleable.SelectDictionaryView_sv_hint);
+        String hint = ta.getString(R.styleable.SelectBeanView_sbv_hint);
         if (StringUtil.isEmpty(hint)) {
             hint = getContext().getString(R.string.please_choose);
         }
-        tv_vds_select.setHint(hint);
+        mContentView.setHint(hint);
 
         //设定必选标识
-        boolean requiredBlean = ta.getBoolean(R.styleable.SelectDictionaryView_sv_is_required, false);
-        if (requiredBlean) {
+        isRequired = ta.getBoolean(R.styleable.SelectBeanView_sbv_is_required, false);
+        if (isRequired) {
             requiredMarker.setVisibility(VISIBLE);
 
         } else {
             requiredMarker.setVisibility(GONE);
         }
 
+        //是否多选
+        isMultipleSelect = ta.getBoolean(R.styleable.SelectBeanView_sbv_is_multiple_select, false);
+
         //设定选项名称
-        String name = ta.getString(R.styleable.SelectDictionaryView_sv_name);
-        nameText.setText(name);
+        mNameText = ta.getString(R.styleable.SelectBeanView_sbv_name);
+        mNameView.setText(mNameText);
+
+        //设定最大宽度，保证其他view不被挤出屏幕
+        setContentTextMaxWidth();
 
         //设定view点击事件
         this.setOnClickListener(this);
     }
 
+    /**
+     * 设定整个条目的点击响应
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
-        if (inter != null && list != null) {
-            showStateDialog(list);
+        if (mInter != null && mList != null) {
+            showSelectDialog(mList);
 
-        } else if (requestInter != null && list != null) {
-            showStateDialog(list);
+        } else if (mRequestInter != null && mList != null) {
+            showSelectDialog(mList);
         }
     }
 
@@ -108,67 +137,150 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
      * @param defaultSelect
      */
     public void setDefaultSelect(int defaultSelect) {
-        this.defaultSelect = defaultSelect;
+        this.mDefaultSelect = defaultSelect;
 
-        if (inter != null && list != null && defaultSelect > -1 && defaultSelect < list.size()) {
+        if (mInter != null && mList != null && defaultSelect > -1 && defaultSelect < mList.size()) {
 
-            SelectBean bean = inter.setSelect(list.get(defaultSelect));
+            SelectBean bean = mInter.setSelectBean(mList.get(defaultSelect));
 
-            dictionaryKey = bean.getKey();
-            dictionaryId = bean.getId();
-            tv_vds_select.setText(dictionaryKey);
+            mKey = bean.getKey();
+            mId = bean.getId();
+            mContentView.setText(mKey);
 
-            inter.onSelect(list.get(defaultSelect), dictionaryKey, dictionaryId, defaultSelect);
+            mInter.onSelect(mList.get(defaultSelect), mKey, mId, defaultSelect);
 
-        } else if (requestInter != null && list != null && defaultSelect > -1 && defaultSelect < list.size()) {
+        } else if (mRequestInter != null && mList != null && defaultSelect > -1 && defaultSelect < mList.size()) {
 
-            SelectBean bean = requestInter.setSelect(list.get(defaultSelect));
+            SelectBean bean = mRequestInter.setSelectBean(mList.get(defaultSelect));
 
-            dictionaryKey = bean.getKey();
-            dictionaryId = bean.getId();
-            tv_vds_select.setText(dictionaryKey);
+            mKey = bean.getKey();
+            mId = bean.getId();
+            mContentView.setText(mKey);
 
-            requestInter.onSelect(list.get(defaultSelect), dictionaryKey, dictionaryId, defaultSelect);
+            mRequestInter.onSelect(mList.get(defaultSelect), mKey, mId, defaultSelect);
         }
     }
 
     /**
-     * 直接传入数据list，没有默认选中
+     * 设定最大宽度，保证其他view不被挤出屏幕
+     */
+    private void setContentTextMaxWidth() {
+        int maxWidth = getPhoneWidth();        //屏幕宽度
+
+        maxWidth -= getCount(R.dimen.dp15);   //条目标题距左的宽度
+
+        maxWidth -= getTextWidth();    //条目标题宽度
+
+        maxWidth -= isRequired ? getCount(R.dimen.dp30) : 0;      //“是否必选标记”的宽度
+
+        maxWidth -= mLoadView.getVisibility() == View.VISIBLE ? getCount(R.dimen.dp25) : 0;   //加载view 的宽度
+
+        maxWidth -= getCount(R.dimen.dp30);   //右角标 的宽度
+
+        mContentView.setMaxWidth(maxWidth);
+    }
+
+    /**
+     * 获得屏幕的宽
+     *
+     * @return
+     */
+    private int getPhoneWidth() {
+        //Android 获得屏幕的宽和高
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+
+        return dm.widthPixels;
+    }
+
+    /**
+     * 根据dimen值计算返回对应屏幕的px值，
+     *
+     * @param id R.dimen.id
+     * @return
+     */
+    private int getCount(int id) {
+        return getResources().getDimensionPixelSize(id);
+    }
+
+    /**
+     * 计算文字宽度
+     *
+     * @return
+     */
+    private int getTextWidth() {
+        Rect bounds = new Rect();
+        TextPaint paint;
+        paint = mNameView.getPaint();
+        paint.getTextBounds(mNameText, 0, mNameText.length(), bounds);
+        return bounds.width();
+    }
+
+    /**
+     * 直接传入数据list、操作监听接口，没有默认选中
      *
      * @param list  数据列表
      * @param inter 回调接口
      */
     public void setListAndInter(List<T> list, SelectInter inter) {
-        this.list = list;
-        this.inter = inter;
+        this.mList = list;
+        this.mInter = inter;
+
+        if (inter != null) {
+            inter.toRequestCompletedSetSelect(mList, SelectBeanView.this);
+        }
     }
 
     /**
-     * 直接传入数据数组，没有默认选中
+     * 直接传入数据数组、操作监听接口，没有默认选中
      *
      * @param array 数据数组
      * @param inter 回调接口
      */
     public void setListAndInter(T[] array, SelectInter inter) {
-        list = new ArrayList<>();
+        mList = new ArrayList<>();
 
         for (T t : array) {
-            list.add(t);
+            mList.add(t);
         }
 
-        this.inter = inter;
+        this.mInter = inter;
+
+        if (inter != null) {
+            inter.toRequestCompletedSetSelect(mList, SelectBeanView.this);
+        }
     }
 
     /**
-     * 直接传入数据list，有默认选中
+     * 直接传入数据list、默认选中项、操作监听接口
      *
      * @param list          数据列表
      * @param defaultSelect 默认选中项
      * @param inter         回调接口
      */
     public void setListAndInter(@Nullable List<T> list, int defaultSelect, SelectInter inter) {
-        this.list = list;
-        this.inter = inter;
+        this.mList = list;
+        this.mInter = inter;
+
+        if (inter != null) {
+            setDefaultSelect(defaultSelect);
+        }
+    }
+
+    /**
+     * 直接传入数据数组、默认选中项、操作监听接口
+     *
+     * @param array 数据数组
+     * @param defaultSelect 默认选中项
+     * @param inter         回调接口
+     */
+    public void setListAndInter(@Nullable T[] array, int defaultSelect, SelectInter inter) {
+        mList = new ArrayList<>();
+
+        for (T t : array) {
+            mList.add(t);
+        }
+
+        this.mInter = inter;
 
         if (inter != null) {
             setDefaultSelect(defaultSelect);
@@ -181,11 +293,11 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
      * @param inter 回调接口
      */
     public void setRequestDataSelect(final RequestDataSelectInter inter) {
-        this.requestInter = inter;
+        this.mRequestInter = inter;
         showLoad();
 
         //新建有序map
-        TreeMap map = new TreeMap<String, Object>();
+        HashMap map = new HashMap<String, Object>();
 
         //将map传回外部
         inter.setParams(map);
@@ -208,7 +320,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
 
                 JSONObject json = JSON.parseObject(s);
                 JSONObject result = JSON.parseObject(json.getString("result"));
-                String listStr = result.getString("list");
+                String listStr = result.getString("mList");
 
                 List<T> list = jsonToList(listStr, getInterClass());
                 setList(list);
@@ -216,7 +328,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
                 hideLoad();
 
                 if (inter != null) {
-                    inter.toSetDefaultSelect(list, SelectBeanView.this);
+                    inter.toRequestCompletedSetSelect(list, SelectBeanView.this);
                 }
             }
 
@@ -233,7 +345,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
      * @return
      */
     private Class<T> getInterClass() {
-        Type[] types = requestInter.getClass().getGenericInterfaces();
+        Type[] types = mRequestInter.getClass().getGenericInterfaces();
         ParameterizedType parameterized = (ParameterizedType) types[0];
         final Class<T> tClass = (Class<T>) parameterized.getActualTypeArguments()[0];
         return tClass;
@@ -249,11 +361,25 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
     }
 
     /**
-     * 列表弹窗
+     * 展示列表弹窗，根据Boolean值判断是否展示多选弹窗
+     * @param list
+     */
+    private void showSelectDialog(List<T> list) {
+        //是否多选，如果多选，就显示多选，默认单选
+        if (isMultipleSelect) {
+            showMultipleSelectDialog(list);
+
+        } else {
+            showSingleSelectDialog(list);
+        }
+    }
+
+    /**
+     * 单选列表弹窗
      *
      * @param list
      */
-    public void showStateDialog(List<T> list) {
+    public void showSingleSelectDialog(List<T> list) {
         ActionSheetDialog dialog = new ActionSheetDialog(getContext());
         dialog.builder()
                 .setCancelable(true)
@@ -263,11 +389,11 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
 
             SelectBean bean = null;
 
-            if (inter != null) {
-                bean = inter.setSelect(t);
+            if (mInter != null) {
+                bean = mInter.setSelectBean(t);
 
-            } else if (requestInter != null) {
-                bean = requestInter.setSelect(t);
+            } else if (mRequestInter != null) {
+                bean = mRequestInter.setSelectBean(t);
             }
 
             final SelectBean finalBean = bean;
@@ -275,16 +401,16 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
                     new ActionSheetDialog.OnSheetItemClickListener() {
                         @Override
                         public void onClick(int which) {
-                            dictionaryKey = finalBean.getKey();
-                            dictionaryId = finalBean.getId();
+                            mKey = finalBean.getKey();
+                            mId = finalBean.getId();
 
-                            tv_vds_select.setText(dictionaryKey);
+                            mContentView.setText(mKey);
 
-                            if (inter != null) {
-                                inter.onSelect(t, finalBean.getKey(), finalBean.getId(), which - 1);
+                            if (mInter != null) {
+                                mInter.onSelect(t, finalBean.getKey(), finalBean.getId(), which - 1);
 
-                            } else if (requestInter != null) {
-                                requestInter.onSelect(t, finalBean.getKey(), finalBean.getId(), which - 1);
+                            } else if (mRequestInter != null) {
+                                mRequestInter.onSelect(t, finalBean.getKey(), finalBean.getId(), which - 1);
                             }
                         }
                     });
@@ -293,56 +419,163 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
         dialog.show();
     }
 
+    /**
+     * 多选列表弹窗
+     *
+     * @param list
+     */
+    public void showMultipleSelectDialog(List<T> list) {
+
+        MultipleSelectDialog dialog = new MultipleSelectDialog(getContext());
+        dialog.builder()
+                .setCancelable(true)
+                .setCanceledOnTouchOutside(true)
+                .setOnSureClickListener(new MultipleSelectDialog.OnSureClickListener() {
+                    @Override
+                    public void onClick() {
+
+                        String dictionaryIds = "";
+
+                        for (SelectBean bean : mSelectMap.values()) {
+                            if (StringUtil.isEmpty(dictionaryIds)) {
+                                dictionaryIds = bean.getId();
+                            } else {
+                                dictionaryIds += "," + bean.getId();
+                            }
+                        }
+
+                        mId = dictionaryIds;
+                    }
+                });
+
+        for (final T t : list) {
+
+            SelectBean bean = null;
+
+            if (mInter != null) {
+                bean = mInter.setSelectBean(t);
+
+            } else if (mRequestInter != null) {
+                bean = mRequestInter.setSelectBean(t);
+            }
+
+            boolean isCheck = mSelectMap.get(bean.getId()) != null ? mSelectMap.get(bean.getId()).isCheck() : false;
+
+            final SelectBean finalBean = bean;
+            dialog.addSheetItem(bean.getKey(), isCheck, MultipleSelectDialog.SheetItemColor.Green_up,
+                    new MultipleSelectDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which, boolean isCheck) {
+
+                            if (!isCheck && mSelectMap.get(finalBean.getId()) != null) {
+                                mSelectMap.remove(finalBean.getId());
+
+                            } else {
+                                finalBean.setCheck(isCheck);
+                                mSelectMap.put(finalBean.getId(), finalBean);
+                            }
+
+                            String dictionaryNames = "";
+
+                            for (SelectBean selectBean : mSelectMap.values()) {
+                                if (StringUtil.isEmpty(dictionaryNames)) {
+                                    dictionaryNames = selectBean.getKey();
+                                } else {
+                                    dictionaryNames += "、" + selectBean.getKey();
+                                }
+                            }
+
+                            mContentView.setText(dictionaryNames);
+                        }
+                    });
+        }
+
+        dialog.show();
+    }
+
     public List<T> getList() {
-        return list;
+        return mList;
     }
 
-    public void setList(List<T> list) {
-        this.list = list;
+    public void setList(List<T> mList) {
+        this.mList = mList;
     }
 
-    public void showLoad() {
-        loadView.setVisibility(VISIBLE);
-        loadView.show();
+    private void showLoad() {
+        mLoadView.setVisibility(VISIBLE);
+        mLoadView.show();
     }
 
-    public void hideLoad() {
-        loadView.hide();
-        loadView.setVisibility(GONE);
+    private void hideLoad() {
+        mLoadView.hide();
+        mLoadView.setVisibility(GONE);
+    }
+
+    /**
+     * 获取选中内容是否为空的boolean值
+     *
+     * @return
+     */
+    public boolean isNotEmpty() {
+        return StringUtil.isNotEmpty(mId);
+    }
+
+    /**
+     * 获取选中内容是否为空的boolean值
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return StringUtil.isEmpty(mId);
     }
 
     public String getBeanKey() {
-        return dictionaryKey;
+        return mKey;
     }
 
     public String getBeanId() {
-        return dictionaryId;
+        return mId;
     }
 
+    /**
+     * 传入list时使用的接口，限定输入、输出的数据
+     *
+     * @param <T>
+     */
     public interface SelectInter<T> {
         void onSelect(T bean, String key, String id, int index);
 
-        void toSetDefaultSelect(List<T> list, SelectBeanView view);
+        void toRequestCompletedSetSelect(List<T> list, SelectBeanView view);
 
-        SelectBean setSelect(T bean);
+        SelectBean setSelectBean(T bean);
     }
 
+    /**
+     * 请求数据时使用的接口，限定输入、输出的数据
+     *
+     * @param <T>
+     */
     public interface RequestDataSelectInter<T> {
         void onSelect(T bean, String key, String id, int index);
 
-        void toSetDefaultSelect(List<T> list, SelectBeanView view);
+        void toRequestCompletedSetSelect(List<T> list, SelectBeanView view);
 
         NetUrlEnum setNetUrlEnum();
 
-        Map<String, Object> setParams(TreeMap<String, Object> params);
+        Map<String, Object> setParams(HashMap<String, Object> params);
 
-        SelectBean setSelect(T bean);
+        SelectBean setSelectBean(T bean);
     }
 
+
+    /**
+     * 内部使用的数据对象
+     */
     public static class SelectBean {
 
         private String key;
         private String id;
+        private boolean isCheck;        //"",
 
         public SelectBean(String key, String id) {
             this.key = key;
@@ -363,6 +596,14 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
 
         public void setId(String id) {
             this.id = id;
+        }
+
+        public boolean isCheck() {
+            return isCheck;
+        }
+
+        public void setCheck(boolean check) {
+            isCheck = check;
         }
     }
 }

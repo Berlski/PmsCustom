@@ -5,11 +5,21 @@
         <attr name="iisv_is_required" format="boolean" /><!--是否必选-->
         <attr name="iisv_default_select" format="integer" /><!--默认选中项-->
 
-        <attr name="iisv_item_one" format="string" /><!--选项一-->
-        <attr name="iisv_item_two" format="string" /><!--选项二-->
-        <attr name="iisv_item_three" format="string" /><!--选项三-->
-        <attr name="iisv_item_four" format="string" /><!--选项四-->
-        <attr name="iisv_item_five" format="string" /><!--选项五-->
+        <attr name="iisv_option_one" format="string" /><!--选项一-->
+        <attr name="iisv_option_two" format="string" /><!--选项二-->
+        <attr name="iisv_option_three" format="string" /><!--选项三-->
+        <attr name="iisv_option_four" format="string" /><!--选项四-->
+        <attr name="iisv_option_five" format="string" /><!--选项五-->
+    </declare-styleable>
+
+    <declare-styleable name="SwitchView">
+        <attr name="sv_default_select" format="integer" /><!--默认选中项-->
+
+        <attr name="sv_option_one" format="string" /><!--选项一-->
+        <attr name="sv_option_two" format="string" /><!--选项二-->
+        <attr name="sv_option_three" format="string" /><!--选项三-->
+        <attr name="sv_option_four" format="string" /><!--选项四-->
+        <attr name="sv_option_five" format="string" /><!--选项五-->
     </declare-styleable>
 
     <declare-styleable name="InfoEntryView">
@@ -41,85 +51,10 @@
         <attr name="gb_textSize" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="SelectDictionaryView">
-        <attr name="sv_name" format="string" /><!--字典名称-->
-        <attr name="sv_is_required" format="boolean" /><!--是否必选-->
-        <attr name="sv_hint" format="string" /><!--提示文字-->
-        <attr name="sv_default_select" format="integer" /><!--默认选中项-->
-        <attr name="sv_is_multiple_select" format="boolean" /><!--是否多选-->
-        <attr name="sv_type">
-
-            <flag name="TRANSACTION_MODE" value="0x0001" />
-            <!--6ae4d789-4d0b-476d-ab0b-7411614f269d--><!--成交方式-->
-
-            <flag name="PAYMENT_METHOD" value="0x0002" />
-            <!--31841886-28ec-45dc-aaec-67c40f7a73fe--><!--付款方式-->
-
-            <flag name="OTHER_CHARGES" value="0x0003" />
-            <!--93e9ae54-12b6-47ad-9419-11514d8c1712--><!--其他费用-->
-
-            <flag name="HOUSE_CONFIGURE" value="0x0004" />
-            <!--8c37aabd-7185-4467-967b-5b3cab887505--><!--房源配置-->
-
-            <flag name="RESOURC_TYPE" value="0x0005" />
-            <!--3d339000-5b37-4689-9bb0-a34f8d463b70--><!--资源类型-->
-
-            <flag name="SHORTEST_LEASE" value="0x0006" />
-            <!--0ae4baac-a453-4130-97f0-e9a3bb2a8eec--><!--最短租期-->
-
-            <flag name="RENTING_TYPE" value="0x0007" />
-            <!--f3556b81-2f90-4e3b-8138-75070410fc9f--><!--出租类型-->
-
-            <flag name="CUSTOMER_SOURCE" value="0x0008" />
-            <!--44d8d93e-73f2-475e-a854-ec0a0cf513ad--><!--客户来源-->
-
-            <flag name="DEGREE_OF_DECORATION" value="0x0009" />
-            <!--504884c6-5bef-4693-b1dc-e096f7a9b1e0--><!--装修程度-->
-
-            <flag name="LEASE_TERM_TYPE" value="0x0010" />
-            <!--df5ac7e8-e0d8-4345-83cd-ed30317cca3f--><!--租期类型-->
-
-            <flag name="TRANSACTION_MODE_" value="0x0011" />
-            <!--18a66e3a-82f8-460d-b7f2-eaf671f48b13--><!--成交方式-->
-
-            <flag name="DEGREE_OF_ATTENTION" value="0x0012" />
-            <!--97efd4f6-c163-4b6d-8bf1-7b4887f45930--><!--重视程度-->
-
-            <flag name="HOUSE_ORIENTATION" value="0x0013" />
-            <!--5045ea9c-c341-446a-ab7b-a635e57f778d--><!--房屋朝向-->
-
-            <flag name="PROPERTY_OF_THE_HOUSE" value="0x0014" />
-            <!--dd740964-9d7c-4c98-adc6-54436742e3e0--><!--房屋性质-->
-
-            <flag name="HOUSE_CHARACTERISTICS" value="0x0015" />
-            <!--04b91d6b-44ca-43ee-870a-e078ac2c6771--><!--房屋特色-->
-
-            <flag name="GOODS_TYPE" value="0x0016" />
-            <!--a93440ec-dd8a-481c-81e5-adddbefaaeb0--><!--物品类型-->
-
-            <flag name="GOODS_BRAND" value="0x0017" />
-            <!--b3e3d6cc-59cf-4d16-9f07-9114f5053842--><!--物品品牌-->
-
-            <flag name="PAYMENT_TYPE" value="0x0018" />
-            <!--eec5e676-c364-4dd1-a0a1-716ccfdb00f8--><!--支付类型-->
-
-            <flag name="DAYS_OF_ADVANCE_PAYMENT" value="0x0019" />
-            <!--4f405d10-8a62-11e7-bb31-be2e44b06b34--><!--提前付款天数-->
-
-            <flag name="FOLLOW_TYPE" value="0x0020" />
-            <!--4970ee2f-1895-4312-bcda-58e198806bd2--><!--跟进方式-->
-
-            <flag name="MAINTENANCE_TYPE" value="0x0021" />
-            <!--0dc1fd1a-2991-4f43-8497-a144b644b3f0--><!--维修类型-->
-
-            <flag name="ACCOUNT_TYPE" value="0x0022" />
-            <!--550fc90b-d491-4a79-9040-dead2e915eb9--><!--账户类型-->
-
-            <flag name="PERSONAL_HOBBY" value="0x0023" />
-            <!--039ebf4015054fd8befef29883418333--><!--个人爱好-->
-
-            <flag name="OCCUPATION_TYPE" value="0x0024" />
-            <!--44c2b9a627e44422810df13ef58a9d24--><!--职业类型-->
-        </attr>
+    <declare-styleable name="SelectBeanView">
+        <attr name="sbv_name" format="string" /><!--字典名称-->
+        <attr name="sbv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="sbv_hint" format="string" /><!--提示文字-->
+        <attr name="sbv_is_multiple_select" format="boolean" /><!--是否多选-->
     </declare-styleable>
 </resources>

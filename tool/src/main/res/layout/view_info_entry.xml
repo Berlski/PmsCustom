@@ -28,7 +28,7 @@
             android:src="@drawable/ic_stars" />
 
         <EditText
-            android:id="@+id/et_vie_input"
+            android:id="@+id/et_vie_content"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

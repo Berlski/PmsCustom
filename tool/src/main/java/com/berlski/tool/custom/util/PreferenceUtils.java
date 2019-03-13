@@ -26,7 +26,6 @@ public class PreferenceUtils {
     private static final String USER_NAME = "login_userName";
     private static final String USER_GCID = "login_gcid";
     private static final String USER_PASSWORD = "login_password";
-    public static final String USER_DATA = "login_user_data";
 
     /**
      * 获得sharePreference内存对象
@@ -106,8 +105,6 @@ public class PreferenceUtils {
     public static void setPassword(String password) {
         setString(USER_PASSWORD, password);
     }
-
-
 
     /**
      * 获取boolean类型的值

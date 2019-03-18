@@ -51,10 +51,19 @@
         <attr name="gb_textSize" format="dimension" />
     </declare-styleable>
 
+    <!--选择list对象的组合自定义view-->
     <declare-styleable name="SelectBeanView">
         <attr name="sbv_name" format="string" /><!--字典名称-->
         <attr name="sbv_is_required" format="boolean" /><!--是否必选-->
         <attr name="sbv_hint" format="string" /><!--提示文字-->
         <attr name="sbv_is_multiple_select" format="boolean" /><!--是否多选-->
+    </declare-styleable>
+
+    <!--筛选蓝，下拉菜单开关-->
+    <declare-styleable name="MenuButton">
+        <attr name="mtvText" format="string" />
+        <attr name="mtvTextColor" format="color" />
+        <attr name="mtvTextSize" format="dimension" />
+        <attr name="mtvMinTextSize" format="dimension" />
     </declare-styleable>
 </resources>

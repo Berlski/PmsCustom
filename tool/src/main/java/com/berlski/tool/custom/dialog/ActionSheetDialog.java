@@ -2,7 +2,6 @@ package com.berlski.tool.custom.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +15,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
+import com.berlski.tool.custom.enums.SheetItemColor;
+import com.berlski.tool.custom.util.ColorUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -162,10 +163,9 @@ public class ActionSheetDialog {
 
             // 字体颜色
             if (color == null) {
-                textView.setTextColor(Color.parseColor(SheetItemColor.Blue
-                        .getName()));
+                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
             } else {
-                textView.setTextColor(Color.parseColor(color.getName()));
+                textView.setTextColor(ColorUtil.getColor(color.getRes()));
             }
 
             // 高度
@@ -210,21 +210,4 @@ public class ActionSheetDialog {
         }
     }
 
-    public enum SheetItemColor {
-        Blue("#037BFF"), Red("#FD4A2E"), Black("#000000"), Green("#31C27C");
-
-        private String name;
-
-        SheetItemColor(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
 }

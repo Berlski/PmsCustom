@@ -84,4 +84,12 @@
         app:sbv_is_required="true"
         app:sbv_name="@string/multiple_select" />
 
+    <com.berlski.tool.custom.widget.MenuButton
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:mtvMinTextSize="10sp"
+        app:mtvText="@string/multiple_select"
+        app:mtvTextColor="@color/light_gray"
+        app:mtvTextSize="13sp" />
+
 </LinearLayout>

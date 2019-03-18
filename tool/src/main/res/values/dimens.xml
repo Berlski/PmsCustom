@@ -9,4 +9,11 @@
     <dimen name="dp30">30dp</dimen>
     <dimen name="dp40">40dp</dimen>
     <dimen name="dp50">50dp</dimen>
+
+
+
+
+
+    <dimen name="sp8">8sp</dimen>
+    <dimen name="sp15">15sp</dimen>
 </resources>

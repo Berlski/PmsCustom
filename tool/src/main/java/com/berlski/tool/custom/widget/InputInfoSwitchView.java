@@ -3,7 +3,9 @@ package com.berlski.tool.custom.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
@@ -14,9 +16,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.berlski.tool.custom.R;
+import com.berlski.tool.custom.util.ColorUtil;
 import com.berlski.tool.custom.util.GridSpacingItemDecoration;
 import com.berlski.tool.custom.util.StringUtil;
-import com.berlski.tool.custom.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -63,6 +66,14 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
         boolean requiredBlean = ta.getBoolean(R.styleable.InputInfoSwitchView_iisv_is_required, false);
         if (requiredBlean) {
             requiredMarker.setVisibility(VISIBLE);
+
+            Drawable drawable = requiredMarker.getDrawable();
+
+            //1:通过图片资源文件生成Drawable实例
+            //2:先调用DrawableCompat的wrap方法
+            drawable = DrawableCompat.wrap(drawable);
+            //3:再调用DrawableCompat的setTint方法，为Drawable实例进行着色
+            DrawableCompat.setTint(drawable, ColorUtil.getColor(R.color.color_styles));
 
         } else {
             requiredMarker.setVisibility(GONE);
@@ -233,9 +244,9 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
 
                 textView.setBackgroundResource(0);
 
-                textView.setTextColor(Color.parseColor("#FFFFFF"));
+                textView.setTextColor(Color.WHITE);
             } else {
-                textView.setTextColor(Color.parseColor("#31C27C"));
+                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
 
                 if (holder.getAdapterPosition() == 0) {
                     textView.setBackgroundResource(R.drawable.background_switch_button_left);

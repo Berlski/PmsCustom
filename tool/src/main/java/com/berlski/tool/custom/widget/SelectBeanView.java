@@ -20,6 +20,7 @@ import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.dialog.ActionSheetDialog;
 import com.berlski.tool.custom.dialog.MultipleSelectDialog;
 import com.berlski.tool.custom.enums.NetUrlEnum;
+import com.berlski.tool.custom.enums.SheetItemColor;
 import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.util.StringUtil;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -397,7 +398,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
             }
 
             final SelectBean finalBean = bean;
-            dialog.addSheetItem(bean.getKey(), ActionSheetDialog.SheetItemColor.Green,
+            dialog.addSheetItem(bean.getKey(), SheetItemColor.ColorStyle,
                     new ActionSheetDialog.OnSheetItemClickListener() {
                         @Override
                         public void onClick(int which) {
@@ -462,7 +463,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
             boolean isCheck = mSelectMap.get(bean.getId()) != null ? mSelectMap.get(bean.getId()).isCheck() : false;
 
             final SelectBean finalBean = bean;
-            dialog.addSheetItem(bean.getKey(), isCheck, MultipleSelectDialog.SheetItemColor.Green_up,
+            dialog.addSheetItem(bean.getKey(), isCheck, SheetItemColor.ColorStyle,
                     new MultipleSelectDialog.OnSheetItemClickListener() {
                         @Override
                         public void onClick(int which, boolean isCheck) {

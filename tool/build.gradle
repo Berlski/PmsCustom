@@ -55,4 +55,7 @@ dependencies {
     implementation 'com.lzy.net:okgo:3.0.4'
     //gson解析
     implementation 'com.google.code.gson:gson:2.6.2'
+
+    //自适应textView
+    implementation 'me.grantland:autofittextview:0.2.+'
 }

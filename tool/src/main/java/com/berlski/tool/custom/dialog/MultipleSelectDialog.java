@@ -20,6 +20,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
+import com.berlski.tool.custom.enums.SheetItemColor;
+import com.berlski.tool.custom.util.ColorUtil;
 import com.berlski.tool.custom.util.UiUtil;
 
 import java.util.ArrayList;
@@ -198,10 +200,9 @@ public class MultipleSelectDialog {
 
             // 字体颜色
             if (color == null) {
-                textView.setTextColor(Color.parseColor(SheetItemColor.Blue
-                        .getName()));
+                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
             } else {
-                textView.setTextColor(Color.parseColor(color.getName()));
+                textView.setTextColor(ColorUtil.getColor(color.getRes()));
             }
 
 
@@ -312,29 +313,11 @@ public class MultipleSelectDialog {
         OnSheetItemClickListener itemClickListener;
         SheetItemColor color;
 
-        public SheetItem(String name,boolean isCheck, SheetItemColor color, OnSheetItemClickListener itemClickListener) {
+        public SheetItem(String name, boolean isCheck, SheetItemColor color, OnSheetItemClickListener itemClickListener) {
             this.name = name;
             this.isCheck = isCheck;
             this.color = color;
             this.itemClickListener = itemClickListener;
-        }
-    }
-
-    public enum SheetItemColor {
-        Blue("#037BFF"), Red("#FD4A2E"), Black("#000000"), Green_up("#31C27C");
-
-        private String name;
-
-        SheetItemColor(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
         }
     }
 }

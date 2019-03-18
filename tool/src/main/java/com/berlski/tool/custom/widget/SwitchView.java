@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
+import com.berlski.tool.custom.util.ColorUtil;
 import com.berlski.tool.custom.util.GridSpacingItemDecoration;
 import com.berlski.tool.custom.util.StringUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -213,7 +214,7 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
 
                 textView.setTextColor(Color.parseColor("#FFFFFF"));
             } else {
-                textView.setTextColor(Color.parseColor("#31C27C"));
+                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
 
                 if (holder.getAdapterPosition() == 0) {
                     textView.setBackgroundResource(R.drawable.background_switch_button_left);

@@ -17,4 +17,11 @@
     <color name="text_hint_color">#999999</color>
 
     <color name="actionsheet_gray">#8F8F8F</color>
+
+
+    <color name="blue_text">#037BFF</color>
+    <color name="red_text">#FD4A2E</color>
+    <color name="green_text">#31C27C</color>
+
+
 </resources>

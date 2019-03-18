@@ -66,4 +66,5 @@
         <attr name="mtvTextSize" format="dimension" />
         <attr name="mtvMinTextSize" format="dimension" />
     </declare-styleable>
+
 </resources>

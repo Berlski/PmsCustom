@@ -173,7 +173,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     public int dip2px(Context context, float dpValue) {
-        return UiUtil.dip2px(dpValue);
+        return UiUtil.dip2px(context,dpValue);
     }
 
     public void showToast(String toast) {

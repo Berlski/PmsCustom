@@ -2,26 +2,22 @@ package com.berlski.tool.custom.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
-import com.berlski.tool.custom.util.ColorUtil;
+import com.berlski.tool.custom.adapter.SwitchViewAdapter;
+import com.berlski.tool.custom.inter.SwitchButtonInter;
 import com.berlski.tool.custom.util.GridSpacingItemDecoration;
 import com.berlski.tool.custom.util.StringUtil;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.berlski.tool.custom.util.UiUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +27,14 @@ import java.util.List;
  * 信息编辑页，多选一自定义view（view）
  * Created by Berlski on 2019/3/8.
  */
-public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapter.OnItemClickListener {
+public class InputInfoSwitchView extends LinearLayout {
 
     private List<String> itemNames = new ArrayList<>();
 
     private SwitchButtonInter inter;
     private RecyclerView mRecyclerView;
     private String maxText = "";
-    private TextAdapter mAdapter;
+    private SwitchViewAdapter mAdapter;
 
     public InputInfoSwitchView(Context context) {
         super(context);
@@ -67,13 +63,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
         if (requiredBlean) {
             requiredMarker.setVisibility(VISIBLE);
 
-            Drawable drawable = requiredMarker.getDrawable();
-
-            //1:通过图片资源文件生成Drawable实例
-            //2:先调用DrawableCompat的wrap方法
-            drawable = DrawableCompat.wrap(drawable);
-            //3:再调用DrawableCompat的setTint方法，为Drawable实例进行着色
-            DrawableCompat.setTint(drawable, ColorUtil.getColor(R.color.color_styles));
+            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
 
         } else {
             requiredMarker.setVisibility(GONE);
@@ -128,7 +118,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
         mRecyclerView.setLayoutManager(mgr);
 
         //给列表设定数据适配器
-        mAdapter = new TextAdapter(itemNames);
+        mAdapter = new SwitchViewAdapter(getContext(), itemNames, inter);
         mAdapter.setSelectedPosition(defaultSelect);
 
         mRecyclerView.setAdapter(mAdapter);
@@ -137,7 +127,7 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
         mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(itemNames.size(), getCount(R.dimen.dp1), false));
 
         //设置继承BaseQuickAdapter的数据适配器的条目点击监听
-        mAdapter.setOnItemClickListener(this);
+        //mAdapter.setOnItemClickListener(this);
     }
 
     /**
@@ -197,72 +187,6 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
         return mAdapter.getSelectedPosition();
     }
 
-    @Override
-    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
-        TextAdapter textAdapter = (TextAdapter) adapter;
-
-        textAdapter.setSelectedPosition(position);
-        textAdapter.notifyDataSetChanged();
-
-        if (inter != null) {
-            inter.switchIndex(position);
-        }
-    }
-
-
-    /**
-     * 公客私客适配器
-     * Created by Administrator on 2017/1/21.
-     */
-    public class TextAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
-        //默认选中项
-        private int selectedPosition = 0;
-
-        public int getSelectedPosition() {
-            return selectedPosition;
-        }
-
-        public void setSelectedPosition(int selectedPosition) {
-            this.selectedPosition = selectedPosition;
-        }
-
-        public TextAdapter(@Nullable List<String> data) {
-            super(R.layout.item_input_info_switch, data);
-        }
-
-        /**
-         * @param holder viewHolder
-         * @param item   数据实体类
-         */
-        @Override
-        protected void convert(final BaseViewHolder holder, final String item) {
-
-            TextView textView = holder.getView(R.id.tv_iis_text);
-
-            if (selectedPosition == holder.getAdapterPosition()) {
-
-                textView.setBackgroundResource(0);
-
-                textView.setTextColor(Color.WHITE);
-            } else {
-                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
-
-                if (holder.getAdapterPosition() == 0) {
-                    textView.setBackgroundResource(R.drawable.background_switch_button_left);
-
-                } else if (holder.getAdapterPosition() == getData().size() - 1) {
-                    textView.setBackgroundResource(R.drawable.background_switch_button_right);
-                } else {
-                    textView.setBackgroundColor(Color.WHITE);
-                }
-            }
-
-            textView.setText(item.trim());
-            textView.setWidth(getTextWidth(13) + getCount(R.dimen.dp20));
-        }
-    }
-
     /**
      * 根据文本的
      *
@@ -295,9 +219,5 @@ public class InputInfoSwitchView extends LinearLayout implements BaseQuickAdapte
      */
     private int getCount(int id) {
         return getResources().getDimensionPixelSize(id);
-    }
-
-    public interface SwitchButtonInter {
-        void switchIndex(int index);
     }
 }

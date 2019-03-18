@@ -3,8 +3,6 @@ package com.berlski.tool.custom.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -26,6 +24,7 @@ public class MenuButton extends RelativeLayout {
     private int textColor;
     private AutofitTextView textView;
     private ImageView imageView;
+    private Context mContext;
 
     public MenuButton(Context context) {
         super(context);
@@ -45,6 +44,8 @@ public class MenuButton extends RelativeLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        this.mContext = context;
+
         //对属性进行解析
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MenuButton);// 由attrs 获得 TypeArray
 
@@ -73,18 +74,6 @@ public class MenuButton extends RelativeLayout {
 
         close();
         textView.setText(text);
-
-
-        Drawable myTasksDrawable;
-        myTasksDrawable = imageView.getDrawable();
-        //myTasksDrawable.setTint();
-
-        //1:通过图片资源文件生成Drawable实例
-        //Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher).mutate();
-        //2:先调用DrawableCompat的wrap方法
-        myTasksDrawable = DrawableCompat.wrap(myTasksDrawable);
-        //3:再调用DrawableCompat的setTint方法，为Drawable实例进行着色
-        DrawableCompat.setTint(myTasksDrawable, Color.RED);
     }
 
     public void setText(String text) {
@@ -96,9 +85,11 @@ public class MenuButton extends RelativeLayout {
     }
 
     public void open() {
-        textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
+        textView.setTextColor(ColorUtil.getColor(mContext, R.color.color_styles));
 
         imageView.setImageResource(R.drawable.menu_down);
+
+        UiUtil.drawableSetStyleColor(getContext(), imageView.getDrawable());
 
         //设置Drawable
         /*Drawable right = getResources().getDrawable(R.drawable.menu_down);
@@ -123,14 +114,14 @@ public class MenuButton extends RelativeLayout {
      * @param id R.dimen.id
      * @return
      */
-    private static int getCount(int id) {
-        return UiUtil.getCount(id);
+    private int getCount(int id) {
+        return UiUtil.getCount(getContext(), id);
     }
 
     /**
      * dp-->px转换
      */
-    private static int dip2px(float dpValue) {
-        return UiUtil.dip2px(dpValue);
+    private int dip2px(float dpValue) {
+        return UiUtil.dip2px(getContext(), dpValue);
     }
 }

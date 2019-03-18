@@ -18,6 +18,7 @@
         android:id="@+id/inputInfoSwitchView"
         android:layout_width="match_parent"
         android:layout_height="46dp"
+        app:iisv_default_select="1"
         app:iisv_is_required="true"
         app:iisv_name="@string/item_name"
         app:iisv_option_one="@string/option_one"
@@ -26,7 +27,7 @@
     <com.berlski.tool.custom.widget.SwitchView
         android:id="@+id/switchView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp10"
         app:sv_option_one="@string/option_one"

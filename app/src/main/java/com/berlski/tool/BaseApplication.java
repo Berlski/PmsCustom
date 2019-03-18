@@ -24,11 +24,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        AppUtil.init(new AppUtil.AppInitInterface() {
-            @Override
-            public Application getApplication() {
-                return BaseApplication.this;
-            }
+        AppUtil.init(this,new AppUtil.AppInitInterface() {
 
             @Override
             public boolean isDeBug() {

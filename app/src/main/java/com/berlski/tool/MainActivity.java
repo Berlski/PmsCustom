@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.berlski.tool.custom.enums.DictionaryEnum;
 import com.berlski.tool.custom.enums.NetUrlEnum;
+import com.berlski.tool.custom.inter.SwitchButtonInter;
 import com.berlski.tool.custom.util.ToastUtil;
 import com.berlski.tool.custom.widget.InfoEntryView;
 import com.berlski.tool.custom.widget.InputInfoSwitchView;
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         InputInfoSwitchView inputInfoSwitchView = findViewById(R.id.inputInfoSwitchView);
         final TextView inputInfoSwitchViewText = findViewById(R.id.switchViewText);
 
-        inputInfoSwitchView.setSwitchListener(new InputInfoSwitchView.SwitchButtonInter() {
+        inputInfoSwitchView.setSwitchListener(new SwitchButtonInter() {
             @Override
             public void switchIndex(int index) {
 

@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 
-import com.berlski.tool.custom.manager.DialogManager;
 import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.manager.MyActivityManager;
 
@@ -20,14 +19,18 @@ public class AppUtil {
 
     private static AppInitInterface appInitInterface;
 
+    private static Application mApplication;
+
     /**
      * 初始化Application
      */
-    public static void init(AppInitInterface appInitInterface) {
+    public static void init(Application mApplication, AppInitInterface appInitInterface) {
+
+        AppUtil.mApplication = mApplication;
 
         AppUtil.appInitInterface = appInitInterface;
 
-        appInitInterface.getApplication().registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+        mApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
 
@@ -92,7 +95,7 @@ public class AppUtil {
      * @return
      */
     public static Application getApplication() {
-        return AppUtil.appInitInterface.getApplication();
+        return AppUtil.mApplication;
     }
 
     /**
@@ -126,8 +129,6 @@ public class AppUtil {
      * 接口限定初始化需要的数据，
      */
     public interface AppInitInterface {
-
-        Application getApplication();
 
         /**
          * 接口回调时，表示请求需要拼接公用参数

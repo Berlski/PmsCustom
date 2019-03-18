@@ -22,6 +22,7 @@ import com.berlski.tool.custom.util.StringUtil;
 import com.berlski.tool.custom.util.ToastUtil;
 import com.berlski.tool.custom.enums.DocumentType;
 import com.berlski.tool.custom.R;
+import com.berlski.tool.custom.util.UiUtil;
 
 /**
  * 信息编辑页-输入框，自定义view
@@ -97,6 +98,8 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
         boolean requiredBlean = ta.getBoolean(R.styleable.InfoEntryView_iev_is_required, false);
         if (requiredBlean) {
             requiredMarker.setVisibility(VISIBLE);
+
+            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
 
         } else {
             requiredMarker.setVisibility(GONE);

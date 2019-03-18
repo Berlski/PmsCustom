@@ -123,9 +123,9 @@ public class ToastUtil {
      *
      * @param message
      */
-    public static void longToastBottom(String message) {
+    public static void longToastBottom(Context context, String message) {
         Toast toast = Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.BOTTOM, 0, UiUtil.getCount(R.dimen.dp50));
+        toast.setGravity(Gravity.BOTTOM, 0, UiUtil.getCount(context, R.dimen.dp50));
         TextView textView = new TextView(getContext());
         textView.setPadding(180, 60, 180, 60);
         textView.setText(message);

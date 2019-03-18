@@ -2,35 +2,29 @@ package com.berlski.tool.custom.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
-import com.berlski.tool.custom.util.ColorUtil;
+import com.berlski.tool.custom.adapter.SwitchViewAdapter;
+import com.berlski.tool.custom.inter.SwitchButtonInter;
 import com.berlski.tool.custom.util.GridSpacingItemDecoration;
 import com.berlski.tool.custom.util.StringUtil;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemClickListener {
+public class SwitchView extends RecyclerView {
 
     private List<String> itemNames = new ArrayList<>();
 
-    private SwitchView.SwitchButtonInter inter;
+    private SwitchButtonInter inter;
     private RecyclerView mRecyclerView;
     private String maxText = "";
-    private SwitchView.TextAdapter mAdapter;
+    private SwitchViewAdapter mAdapter;
 
     public SwitchView(Context context) {
         super(context);
@@ -44,9 +38,12 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
         super(context, attrs, defStyleAttr);
 
         // 加载布局
-        LayoutInflater.from(context).inflate(R.layout.view_switch, this);
+        //LayoutInflater.from(context).inflate(R.layout.view_switch, this);
 
-        mRecyclerView = findViewById(R.id.rv_vs_recycler_view);
+        setBackground(context.getResources().getDrawable(R.drawable.background_switch_button));
+
+        setPadding(getCount(R.dimen.dp1), getCount(R.dimen.dp1), getCount(R.dimen.dp1), getCount(R.dimen.dp1));
+
 
         //对属性进行解析
         // 由attrs 获得 TypeArray
@@ -93,19 +90,16 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
         GridLayoutManager mgr = new GridLayoutManager(context, itemNames.size());
 
         //设置布局管理器
-        mRecyclerView.setLayoutManager(mgr);
+        setLayoutManager(mgr);
 
         //给列表设定数据适配器
-        mAdapter = new SwitchView.TextAdapter(itemNames);
+        mAdapter = new SwitchViewAdapter(getContext(), itemNames, inter);
         mAdapter.setSelectedPosition(defaultSelect);
 
-        mRecyclerView.setAdapter(mAdapter);
+        setAdapter(mAdapter);
 
         //设定grid间隙
-        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(itemNames.size(), getCount(R.dimen.dp1), false));
-
-        //设置继承BaseQuickAdapter的数据适配器的条目点击监听
-        mAdapter.setOnItemClickListener(this);
+        addItemDecoration(new GridSpacingItemDecoration(itemNames.size(), getCount(R.dimen.dp1), false));
     }
 
     /**
@@ -123,7 +117,7 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
      *
      * @param inter
      */
-    public void setSwitchListener(SwitchView.SwitchButtonInter inter) {
+    public void setSwitchListener(SwitchButtonInter inter) {
         this.inter = inter;
     }
 
@@ -134,7 +128,7 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
      * @param list
      * @param inter
      */
-    public void setSwitchListener(List<String> list, SwitchView.SwitchButtonInter inter) {
+    public void setSwitchListener(List<String> list, SwitchButtonInter inter) {
         this.itemNames = list;
         this.inter = inter;
 
@@ -148,7 +142,7 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
      * @param defaultSelect
      * @param inter
      */
-    public void setSwitchListener(List<String> list, int defaultSelect, SwitchView.SwitchButtonInter inter) {
+    public void setSwitchListener(List<String> list, int defaultSelect, SwitchButtonInter inter) {
         this.itemNames = list;
         this.inter = inter;
 
@@ -163,72 +157,6 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
      */
     public int getSelected() {
         return mAdapter.getSelectedPosition();
-    }
-
-    @Override
-    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
-        SwitchView.TextAdapter textAdapter = (SwitchView.TextAdapter) adapter;
-
-        textAdapter.setSelectedPosition(position);
-        textAdapter.notifyDataSetChanged();
-
-        if (inter != null) {
-            inter.switchIndex(position);
-        }
-    }
-
-
-    /**
-     * 公客私客适配器
-     * Created by Administrator on 2017/1/21.
-     */
-    public class TextAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
-        //默认选中项
-        private int selectedPosition = 0;
-
-        public int getSelectedPosition() {
-            return selectedPosition;
-        }
-
-        public void setSelectedPosition(int selectedPosition) {
-            this.selectedPosition = selectedPosition;
-        }
-
-        public TextAdapter(@Nullable List<String> data) {
-            super(R.layout.item_input_info_switch, data);
-        }
-
-        /**
-         * @param holder viewHolder
-         * @param item   数据实体类
-         */
-        @Override
-        protected void convert(final BaseViewHolder holder, final String item) {
-
-            TextView textView = holder.getView(R.id.tv_iis_text);
-
-            if (selectedPosition == holder.getAdapterPosition()) {
-
-                textView.setBackgroundResource(0);
-
-                textView.setTextColor(Color.parseColor("#FFFFFF"));
-            } else {
-                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
-
-                if (holder.getAdapterPosition() == 0) {
-                    textView.setBackgroundResource(R.drawable.background_switch_button_left);
-
-                } else if (holder.getAdapterPosition() == getData().size() - 1) {
-                    textView.setBackgroundResource(R.drawable.background_switch_button_right);
-                } else {
-                    textView.setBackgroundColor(Color.WHITE);
-                }
-            }
-
-            textView.setText(item.trim());
-            textView.setWidth(getTextWidth(13) + getCount(R.dimen.dp20));
-        }
     }
 
     /**
@@ -265,7 +193,4 @@ public class SwitchView extends LinearLayout implements BaseQuickAdapter.OnItemC
         return getResources().getDimensionPixelSize(id);
     }
 
-    public interface SwitchButtonInter {
-        void switchIndex(int index);
-    }
 }

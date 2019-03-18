@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="46dp"
+    android:layout_height="match_parent"
     android:background="@color/white">
 
     <LinearLayout
@@ -35,10 +35,11 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_iis_recycler_view"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="15dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/background_switch_button"
-            android:orientation="horizontal"
             android:padding="1dp" />
 
     </LinearLayout>

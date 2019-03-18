@@ -163,9 +163,9 @@ public class ActionSheetDialog {
 
             // 字体颜色
             if (color == null) {
-                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
+                textView.setTextColor(ColorUtil.getColor(context,R.color.color_styles));
             } else {
-                textView.setTextColor(ColorUtil.getColor(color.getRes()));
+                textView.setTextColor(ColorUtil.getColor(context,color.getRes()));
             }
 
             // 高度

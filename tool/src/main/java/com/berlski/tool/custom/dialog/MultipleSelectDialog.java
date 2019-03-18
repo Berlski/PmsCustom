@@ -3,7 +3,6 @@ package com.berlski.tool.custom.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Display;
 import android.view.Gravity;
@@ -119,11 +118,11 @@ public class MultipleSelectDialog {
      * @param listener
      * @return
      */
-    public MultipleSelectDialog addSheetItem(String strItem,boolean isCheck, SheetItemColor color, OnSheetItemClickListener listener) {
+    public MultipleSelectDialog addSheetItem(String strItem, boolean isCheck, SheetItemColor color, OnSheetItemClickListener listener) {
         if (sheetItemList == null) {
             sheetItemList = new ArrayList<SheetItem>();
         }
-        sheetItemList.add(new SheetItem(strItem,isCheck, color, listener));
+        sheetItemList.add(new SheetItem(strItem, isCheck, color, listener));
         return this;
     }
 
@@ -168,7 +167,7 @@ public class MultipleSelectDialog {
             //textView.setGravity(Gravity.CENTER);
 
             final ImageView imageView = new ImageView(context);
-            imageView.setLayoutParams(new LayoutParams(UiUtil.getCount(R.dimen.dp30), UiUtil.getCount(R.dimen.dp30)));
+            imageView.setLayoutParams(new LayoutParams(UiUtil.getCount(context, R.dimen.dp30), UiUtil.getCount(context, R.dimen.dp30)));
             imageView.setImageResource(R.drawable.ic_check_black);
 
             //setCheckDrawable(textView);
@@ -200,9 +199,9 @@ public class MultipleSelectDialog {
 
             // 字体颜色
             if (color == null) {
-                textView.setTextColor(ColorUtil.getColor(R.color.color_styles));
+                textView.setTextColor(ColorUtil.getColor(context, R.color.color_styles));
             } else {
-                textView.setTextColor(ColorUtil.getColor(color.getRes()));
+                textView.setTextColor(ColorUtil.getColor(context, color.getRes()));
             }
 
 
@@ -241,10 +240,10 @@ public class MultipleSelectDialog {
 
             relativeLayout.addView(imageView);//RelativeLayout添加子View
 
-            if (sheetItem.isCheck){
+            if (sheetItem.isCheck) {
                 imageView.setVisibility(View.VISIBLE);
                 imageView.setTag(true);
-            }else {
+            } else {
                 imageView.setVisibility(View.GONE);
                 imageView.setTag(false);
             }

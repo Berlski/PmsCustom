@@ -23,6 +23,7 @@ import com.berlski.tool.custom.enums.NetUrlEnum;
 import com.berlski.tool.custom.enums.SheetItemColor;
 import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.util.StringUtil;
+import com.berlski.tool.custom.util.UiUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.lang.reflect.ParameterizedType;
@@ -98,6 +99,8 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
         isRequired = ta.getBoolean(R.styleable.SelectBeanView_sbv_is_required, false);
         if (isRequired) {
             requiredMarker.setVisibility(VISIBLE);
+
+            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
 
         } else {
             requiredMarker.setVisibility(GONE);

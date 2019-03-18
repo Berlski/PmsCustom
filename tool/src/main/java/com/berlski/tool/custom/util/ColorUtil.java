@@ -7,8 +7,6 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 
-import com.berlski.tool.custom.R;
-
 import java.util.regex.Pattern;
 
 /**
@@ -16,16 +14,6 @@ import java.util.regex.Pattern;
  */
 
 public class ColorUtil extends Color {
-
-    /**
-     * 获取颜色值
-     *
-     * @param colorRes
-     * @return
-     */
-    public static int getColor(@ColorRes int colorRes) {
-        return ContextCompat.getColor(AppUtil.getContext(), colorRes);
-    }
 
     /**
      * 获取颜色值
@@ -82,64 +70,21 @@ public class ColorUtil extends Color {
     @ColorInt
     public static final int RED = 0xFFFF0000;
     @ColorInt
-    public static final int GREEN = 0xFF49d65c;
+    public static final int GREEN = 0xFF00FF00;
     @ColorInt
     public static final int BLUE = 0xFF0000FF;
     @ColorInt
     public static final int YELLOW = 0xFFFFFF00;
     @ColorInt
+    public static final int ORANGE = 0xFFFFA500;
+    @ColorInt
     public static final int CYAN = 0xFF00FFFF;
     @ColorInt
     public static final int MAGENTA = 0xFFFF00FF;
     @ColorInt
+    public static final int PURPLE = 0xFF9900ff;
+    @ColorInt
     public static final int TRANSPARENT = 0;
-
-
-    @ColorInt
-    public static int black() {
-        return AppUtil.getResources().getColor(R.color.black);
-    }
-
-    @ColorInt
-    public static int white() {
-        return AppUtil.getResources().getColor(R.color.white);
-    }
-
-    @ColorInt
-    public static int orange() {
-        return AppUtil.getResources().getColor(R.color.orange);
-    }
-
-    @ColorInt
-    public static int yellow() {
-        return AppUtil.getResources().getColor(R.color.yellow);
-    }
-
-    @ColorInt
-    public static int cyan() {
-        return AppUtil.getResources().getColor(R.color.cyan);
-    }
-
-    @ColorInt
-    public static int purple() {
-        return AppUtil.getResources().getColor(R.color.purple);
-    }
-
-    @ColorInt
-    public static int getGreen() {
-        return AppUtil.getResources().getColor(R.color.color_styles);
-    }
-
-    @ColorInt
-    public static int getRed() {
-        return AppUtil.getResources().getColor(R.color.red);
-    }
-
-    @ColorInt
-    public static int getBlue() {
-        return AppUtil.getResources().getColor(R.color.blue);
-    }
-
 
     /**
      * 设置颜色透明度

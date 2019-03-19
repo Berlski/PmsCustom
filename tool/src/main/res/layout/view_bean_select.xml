@@ -18,7 +18,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="15dp"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="@dimen/item_name_size" />
 
         <ImageView
             android:id="@+id/iv_vds_required_marker"
@@ -52,7 +52,7 @@
             android:singleLine="true"
             android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
-            android:textSize="14dp" />
+            android:textSize="@dimen/content_text_size" />
 
         <ImageView
             android:layout_width="30dp"

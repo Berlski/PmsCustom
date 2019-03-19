@@ -87,7 +87,7 @@ public class MenuButton extends RelativeLayout {
     public void open() {
         textView.setTextColor(ColorUtil.getColor(mContext, R.color.color_styles));
 
-        imageView.setImageResource(R.drawable.menu_down);
+        imageView.setImageResource(R.drawable.ic_arrow_drop_up);
 
         UiUtil.drawableSetStyleColor(getContext(), imageView.getDrawable());
 
@@ -100,7 +100,9 @@ public class MenuButton extends RelativeLayout {
     public void close() {
         textView.setTextColor(textColor);
 
-        imageView.setImageResource(R.drawable.menu_up);
+        imageView.setImageResource(R.drawable.menu_down);
+
+        UiUtil.drawableSetColor(imageView.getDrawable(), textColor);
 
         //设置Drawable
         /*Drawable right = getResources().getDrawable(R.drawable.menu_up);

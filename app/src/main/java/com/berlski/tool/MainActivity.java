@@ -11,6 +11,7 @@ import com.berlski.tool.custom.inter.SwitchButtonInter;
 import com.berlski.tool.custom.util.ToastUtil;
 import com.berlski.tool.custom.widget.InfoEntryView;
 import com.berlski.tool.custom.widget.InputInfoSwitchView;
+import com.berlski.tool.custom.widget.MenuButton;
 import com.berlski.tool.custom.widget.SelectBeanView;
 import com.berlski.tool.custom.widget.ShadowButton;
 import com.berlski.tool.test.Dictionary;
@@ -37,6 +38,30 @@ public class MainActivity extends AppCompatActivity {
         setSelectBeanView();
 
         //setSelectDictionaryView();
+
+        setMenuButton();
+    }
+
+    private void setMenuButton() {
+        final MenuButton mMenuButton = findViewById(R.id.menuButton);
+        mMenuButton.setTag(true);
+
+        mMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isOpen = (boolean) mMenuButton.getTag();
+
+                if (isOpen){
+                    mMenuButton.setText("开启");
+                    mMenuButton.open();
+                }else {
+                    mMenuButton.setText("关闭");
+                    mMenuButton.close();
+                }
+
+                mMenuButton.setTag(!isOpen);
+            }
+        });
     }
 
     private void setSelectDictionaryView() {

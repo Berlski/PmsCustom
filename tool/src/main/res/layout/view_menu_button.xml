@@ -12,9 +12,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:maxLines="1"
-        android:text="状态"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="@dimen/item_name_size"
         autofit:minTextSize="7sp" />
 
     <ImageView

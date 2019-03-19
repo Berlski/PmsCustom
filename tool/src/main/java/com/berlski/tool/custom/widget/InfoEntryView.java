@@ -17,11 +17,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.berlski.tool.custom.R;
+import com.berlski.tool.custom.enums.DocumentType;
 import com.berlski.tool.custom.util.AnimUtil;
 import com.berlski.tool.custom.util.StringUtil;
 import com.berlski.tool.custom.util.ToastUtil;
-import com.berlski.tool.custom.enums.DocumentType;
-import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.util.UiUtil;
 
 /**
@@ -108,6 +108,15 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
         //设定选项名称
         String name = ta.getString(R.styleable.InfoEntryView_iev_name);
         mNameView.setText(name);
+
+        //设定后缀文本
+        String postfix = ta.getString(R.styleable.InfoEntryView_iev_postfix);
+        if (StringUtil.isNotEmpty(postfix)) {
+            TextView mPostfixView = findViewById(R.id.tv_vie_postfix);
+            mPostfixView.setVisibility(VISIBLE);
+            mPostfixView.setText(postfix);
+        }
+
 
         //获取输入类型
         type = ta.getInteger(R.styleable.InfoEntryView_iev_type, 0x0001);

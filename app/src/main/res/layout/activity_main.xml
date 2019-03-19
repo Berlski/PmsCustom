@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,90 +7,106 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/switchViewText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="10dp" />
-
-    <com.berlski.tool.custom.widget.InputInfoSwitchView
-        android:id="@+id/inputInfoSwitchView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        app:iisv_default_select="1"
-        app:iisv_is_required="true"
-        app:iisv_name="@string/item_name"
-        app:iisv_option_one="@string/option_one"
-        app:iisv_option_two="@string/option_two" />
-
-    <com.berlski.tool.custom.widget.SwitchView
-        android:id="@+id/switchView"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp10"
-        app:sv_option_one="@string/option_one"
-        app:sv_option_two="@string/option_two" />
-
-    <TextView
-        android:id="@+id/infoEntryViewText"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="@dimen/dp10" />
+        android:orientation="vertical">
 
-    <com.berlski.tool.custom.widget.InfoEntryView
-        android:id="@+id/infoEntryView"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_marginTop="@dimen/dp1"
-        app:iev_is_required="true"
-        app:iev_name="@string/item_name" />
+        <TextView
+            android:id="@+id/switchViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp" />
 
-    <com.berlski.tool.custom.widget.ShadowButton
-        android:id="@+id/shadowButton"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp10" />
+        <com.berlski.tool.custom.widget.InputInfoSwitchView
+            android:id="@+id/inputInfoSwitchView"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            app:iisv_default_select="1"
+            app:iisv_is_required="true"
+            app:iisv_name="@string/item_name"
+            app:iisv_option_one="@string/option_one"
+            app:iisv_option_two="@string/option_two" />
 
-    <TextView
-        android:id="@+id/selectBeanViewText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="@dimen/dp10" />
+        <com.berlski.tool.custom.widget.SwitchView
+            android:id="@+id/switchView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            app:sv_option_one="@string/option_one"
+            app:sv_option_two="@string/option_two" />
 
-    <com.berlski.tool.custom.widget.SelectBeanView
-        android:id="@+id/select_bean_view"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        app:sbv_is_required="true"
-        app:sbv_name="@string/single_select" />
+        <TextView
+            android:id="@+id/infoEntryViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/dp10" />
 
-    <TextView
-        android:id="@+id/selectDictionaryViewText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="@dimen/dp10" />
+        <com.berlski.tool.custom.widget.InfoEntryView
+            android:id="@+id/infoEntryView"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="@dimen/dp1"
+            app:iev_is_required="true"
+            app:iev_name="@string/item_name" />
 
-    <com.berlski.tool.custom.widget.SelectBeanView
-        android:id="@+id/selectDictionaryView"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_marginTop="@dimen/dp1"
-        app:sbv_is_multiple_select="true"
-        app:sbv_is_required="true"
-        app:sbv_name="@string/multiple_select" />
+        <com.berlski.tool.custom.widget.ShadowButton
+            android:id="@+id/shadowButton"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp10" />
 
-    <com.berlski.tool.custom.widget.MenuButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        app:mtvMinTextSize="10sp"
-        app:mtvText="@string/multiple_select"
-        app:mtvTextColor="@color/light_gray"
-        app:mtvTextSize="13sp" />
+        <TextView
+            android:id="@+id/selectBeanViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/dp10" />
 
-</LinearLayout>
+        <com.berlski.tool.custom.widget.SelectBeanView
+            android:id="@+id/select_bean_view"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            app:sbv_is_required="true"
+            app:sbv_name="@string/item_name" />
+
+        <TextView
+            android:id="@+id/selectDictionaryViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/dp10" />
+
+        <com.berlski.tool.custom.widget.SelectBeanView
+            android:id="@+id/selectDictionaryView"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="@dimen/dp1"
+            app:sbv_is_multiple_select="true"
+            app:sbv_is_required="true"
+            app:sbv_name="@string/item_name" />
+
+        <com.berlski.tool.custom.widget.MenuButton
+            android:id="@+id/menuButton"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            app:mtvMinTextSize="10sp"
+            app:mtvText="@string/multiple_select"
+            app:mtvTextColor="@color/black"
+            app:mtvTextSize="13sp" />
+
+
+        <com.berlski.tool.custom.widget.SpeechInputView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:siv_hint="@string/please_input"
+            app:siv_is_required="true"
+            app:siv_is_voice="true"
+            app:siv_name="@string/item_name" />
+    </LinearLayout>
+</ScrollView>

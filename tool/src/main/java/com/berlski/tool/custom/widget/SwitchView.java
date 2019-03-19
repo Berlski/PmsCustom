@@ -7,6 +7,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.adapter.SwitchViewAdapter;
@@ -17,7 +19,7 @@ import com.berlski.tool.custom.util.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwitchView extends RecyclerView {
+public class SwitchView extends LinearLayout {
 
     private List<String> itemNames = new ArrayList<>();
 
@@ -38,11 +40,9 @@ public class SwitchView extends RecyclerView {
         super(context, attrs, defStyleAttr);
 
         // 加载布局
-        //LayoutInflater.from(context).inflate(R.layout.view_switch, this);
+        LayoutInflater.from(context).inflate(R.layout.view_switch, this);
 
-        setBackground(context.getResources().getDrawable(R.drawable.background_switch_button));
-
-        setPadding(getCount(R.dimen.dp1), getCount(R.dimen.dp1), getCount(R.dimen.dp1), getCount(R.dimen.dp1));
+        mRecyclerView = findViewById(R.id.rv_vs_recycler_view);
 
 
         //对属性进行解析
@@ -90,16 +90,19 @@ public class SwitchView extends RecyclerView {
         GridLayoutManager mgr = new GridLayoutManager(context, itemNames.size());
 
         //设置布局管理器
-        setLayoutManager(mgr);
+        mRecyclerView.setLayoutManager(mgr);
 
         //给列表设定数据适配器
         mAdapter = new SwitchViewAdapter(getContext(), itemNames, inter);
         mAdapter.setSelectedPosition(defaultSelect);
 
-        setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
 
         //设定grid间隙
-        addItemDecoration(new GridSpacingItemDecoration(itemNames.size(), getCount(R.dimen.dp1), false));
+        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(itemNames.size(), getCount(R.dimen.dp1), false));
+
+        //设置继承BaseQuickAdapter的数据适配器的条目点击监听
+        //mAdapter.setOnItemClickListener(this);
     }
 
     /**

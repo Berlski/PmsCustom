@@ -11,9 +11,12 @@
     <dimen name="dp50">50dp</dimen>
 
 
-
-
-
     <dimen name="sp8">8sp</dimen>
+    <dimen name="sp14">14sp</dimen>
     <dimen name="sp15">15sp</dimen>
+
+
+    <dimen name="item_name_size">14sp</dimen>
+    <dimen name="content_text_size">14sp</dimen>
+    <dimen name="title_text_size">14sp</dimen>
 </resources>

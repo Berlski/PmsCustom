@@ -2,6 +2,7 @@ package com.berlski.tool.custom.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorRes;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
 import com.berlski.tool.custom.R;
@@ -34,5 +35,24 @@ public class UiUtil {
         drawable = DrawableCompat.wrap(drawable);
         //3:再调用DrawableCompat的setTint方法，为Drawable实例进行着色
         DrawableCompat.setTint(drawable, ColorUtil.getColor(context, R.color.color_styles));
+    }
+
+
+    public static void drawableSetColor(Context context, Drawable drawable, @ColorRes int color) {
+
+        //1:通过图片资源文件生成Drawable实例
+        //2:先调用DrawableCompat的wrap方法
+        drawable = DrawableCompat.wrap(drawable);
+        //3:再调用DrawableCompat的setTint方法，为Drawable实例进行着色
+        DrawableCompat.setTint(drawable, ColorUtil.getColor(context, color));
+    }
+
+    public static void drawableSetColor(Drawable drawable, int color) {
+
+        //1:通过图片资源文件生成Drawable实例
+        //2:先调用DrawableCompat的wrap方法
+        drawable = DrawableCompat.wrap(drawable);
+        //3:再调用DrawableCompat的setTint方法，为Drawable实例进行着色
+        DrawableCompat.setTint(drawable, color);
     }
 }

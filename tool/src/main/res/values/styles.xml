@@ -27,6 +27,7 @@
         <attr name="iev_is_required" format="boolean" /><!--是否必选-->
         <attr name="iev_hint" format="string" /><!--提示文字-->
         <attr name="iev_length" format="integer" /><!--文字文字长度-->
+        <attr name="iev_postfix" format="string" /><!--后缀，如：单位-->
 
         <attr name="iev_type">
             <flag name="TEXT" value="0x0001" /><!--文本文字-->
@@ -67,4 +68,12 @@
         <attr name="mtvMinTextSize" format="dimension" />
     </declare-styleable>
 
+
+    <!--选择list对象的组合自定义view-->
+    <declare-styleable name="SpeechInputView">
+        <attr name="siv_name" format="string" /><!--名称-->
+        <attr name="siv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="siv_is_voice" format="boolean" /><!--是否语音-->
+        <attr name="siv_hint" format="string" /><!--提示文字-->
+    </declare-styleable>
 </resources>

@@ -7,14 +7,17 @@ import android.widget.TextView;
 
 import com.berlski.tool.custom.enums.DictionaryEnum;
 import com.berlski.tool.custom.enums.NetUrlEnum;
+import com.berlski.tool.custom.inter.NumberRangeInter;
 import com.berlski.tool.custom.inter.SwitchButtonInter;
 import com.berlski.tool.custom.util.ToastUtil;
-import com.berlski.tool.custom.widget.InfoEntryView;
-import com.berlski.tool.custom.widget.InputInfoSwitchView;
+import com.berlski.tool.custom.widget.InfoEntryItemView;
+import com.berlski.tool.custom.widget.SwitchOptionItemView;
 import com.berlski.tool.custom.widget.MenuButton;
-import com.berlski.tool.custom.widget.SelectBeanView;
+import com.berlski.tool.custom.widget.SelectBeanItemView;
 import com.berlski.tool.custom.widget.ShadowButton;
+import com.berlski.tool.custom.widget.SpeechInputItemView;
 import com.berlski.tool.test.Dictionary;
+import com.berlski.tool.test.PriceSelectDialog;
 import com.berlski.tool.test.Role;
 
 import java.util.ArrayList;
@@ -40,6 +43,32 @@ public class MainActivity extends AppCompatActivity {
         //setSelectDictionaryView();
 
         setMenuButton();
+
+        setSpeechInputView();
+    }
+
+    private void setSpeechInputView() {
+        final SpeechInputItemView mSpeechInputView = findViewById(R.id.speechInputView);
+
+        mSpeechInputView.setVoiceToStringListener(new SpeechInputItemView.VoiceToStringInter() {
+            @Override
+            public void voiceToString(final SpeechInputItemView v) {
+
+                //v.setText(v.getText() + "加加 -- ");
+
+                PriceSelectDialog.builder(MainActivity.this).onCreateDialog(500, 5000, 500, 5000, new NumberRangeInter() {
+                    @Override
+                    public void onSelect(String minPrice, String maxPrice) {
+                        v.setText(minPrice + " -- " + maxPrice);
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
+            }
+        });
     }
 
     private void setMenuButton() {
@@ -65,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setSelectDictionaryView() {
-        SelectBeanView selectBeanView = findViewById(R.id.selectDictionaryView);
+        SelectBeanItemView selectBeanView = findViewById(R.id.selectDictionaryView);
         final TextView selectBeanViewText = findViewById(R.id.selectDictionaryViewText);
 
-        selectBeanView.setRequestDataSelect(new SelectBeanView.RequestDataSelectInter<Dictionary>() {
+        selectBeanView.setRequestDataSelect(new SelectBeanItemView.RequestDataSelectInter<Dictionary>() {
 
             @Override
             public void onSelect(Dictionary bean, String key, String id, int index) {
@@ -76,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void toRequestCompletedSetSelect(List<Dictionary> list, SelectBeanView view) {
+            public void toRequestCompletedSetSelect(List<Dictionary> list, SelectBeanItemView view) {
 
             }
 
@@ -101,14 +130,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public SelectBeanView.SelectBean setSelectBean(Dictionary bean) {
-                return new SelectBeanView.SelectBean(bean.getKey(), bean.getId());
+            public SelectBeanItemView.SelectBean setSelectBean(Dictionary bean) {
+                return new SelectBeanItemView.SelectBean(bean.getKey(), bean.getId());
             }
         });
     }
 
     private void setSelectBeanView() {
-        SelectBeanView selectBeanView = findViewById(R.id.select_bean_view);
+        SelectBeanItemView selectBeanView = findViewById(R.id.select_bean_view);
         final TextView selectBeanViewText = findViewById(R.id.selectBeanViewText);
 
 
@@ -120,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         stringList.add(new Role(getString(R.string.option_four), "4"));
         stringList.add(new Role(getString(R.string.option_five), "5"));
 
-        selectBeanView.setListAndInter(stringList, new SelectBeanView.SelectInter<Role>() {
+        selectBeanView.setListAndInter(stringList, new SelectBeanItemView.SelectInter<Role>() {
             @Override
             public void onSelect(Role bean, String key, String id, int index) {
                 selectBeanViewText.setText(key);
@@ -129,13 +158,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void toRequestCompletedSetSelect(List list, SelectBeanView view) {
+            public void toRequestCompletedSetSelect(List list, SelectBeanItemView view) {
 
             }
 
             @Override
-            public SelectBeanView.SelectBean setSelectBean(Role bean) {
-                return new SelectBeanView.SelectBean(bean.getName(), bean.getId());
+            public SelectBeanItemView.SelectBean setSelectBean(Role bean) {
+                return new SelectBeanItemView.SelectBean(bean.getName(), bean.getId());
             }
         });
     }
@@ -157,10 +186,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setInfoEntryView() {
-        InfoEntryView infoEntryView = findViewById(R.id.infoEntryView);
+        InfoEntryItemView infoEntryItemView = findViewById(R.id.infoEntryView);
         final TextView infoEntryViewText = findViewById(R.id.infoEntryViewText);
 
-        infoEntryView.setAfterChangedListener(new InfoEntryView.AfterChangedListener() {
+        infoEntryItemView.setAfterChangedListener(new InfoEntryItemView.AfterChangedListener() {
             @Override
             public void onAfter(String s) {
                 infoEntryViewText.setText(s);
@@ -169,10 +198,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setInputInfoSwitchView() {
-        InputInfoSwitchView inputInfoSwitchView = findViewById(R.id.inputInfoSwitchView);
+        SwitchOptionItemView switchOptionItemView = findViewById(R.id.inputInfoSwitchView);
         final TextView inputInfoSwitchViewText = findViewById(R.id.switchViewText);
 
-        inputInfoSwitchView.setSwitchListener(new SwitchButtonInter() {
+        switchOptionItemView.setSwitchListener(new SwitchButtonInter() {
             @Override
             public void switchIndex(int index) {
 

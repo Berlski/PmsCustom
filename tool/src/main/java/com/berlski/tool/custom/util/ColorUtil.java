@@ -1,6 +1,7 @@
 package com.berlski.tool.custom.util;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;

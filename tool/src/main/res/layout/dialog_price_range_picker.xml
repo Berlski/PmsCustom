@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCancle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/no"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/button_text_size" />
+
+        <TextView
+            android:id="@+id/min_price_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/content_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Horizontal_bar"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/content_text_size" />
+
+        <TextView
+            android:id="@+id/max_price_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/content_text_size" />
+
+        <TextView
+            android:id="@+id/tvSure"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/yes"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/button_text_size" />
+    </LinearLayout>
+
+    <com.berlski.tool.custom.widget.NumberRangeSliderView
+        android:id="@+id/price_slider"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:nrsv_insideRangeLineColor="@color/color_styles"
+        app:nrsv_insideRangeLineStrokeWidth="2dp"
+        app:nrsv_outsideRangeLineColor="@color/light_color_style"
+        app:nrsv_outsideRangeLineStrokeWidth="2dp"
+        app:nrsv_pressedTargetRadius="12dp"
+        app:nrsv_targetColor="@color/color_styles"
+        app:nrsv_unpressedTargetRadius="12dp" />
+</LinearLayout>

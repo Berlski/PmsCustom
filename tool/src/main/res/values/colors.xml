@@ -12,7 +12,8 @@
     <color name="blue">#0000FF</color>
     <color name="purple">#9900ff</color>
 
-    <color name="color_styles">#49d65c</color>
+    <color name="color_styles">#31c27c</color>
+    <color name="light_color_style">#49d65c</color>
     <color name="toast_background_color">#77000000</color>
     <color name="text_hint_color">#999999</color>
 

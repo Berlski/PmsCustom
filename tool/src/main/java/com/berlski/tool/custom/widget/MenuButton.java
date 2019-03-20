@@ -57,15 +57,15 @@ public class MenuButton extends RelativeLayout {
 
 
         //字体文本
-        String text = ta.getString(R.styleable.MenuButton_mtvText);
+        String text = ta.getString(R.styleable.MenuButton_mb_text);
 
         //字体颜色
-        textColor = ta.getColor(R.styleable.MenuButton_mtvTextColor, Color.BLACK);
+        textColor = ta.getColor(R.styleable.MenuButton_mb_text_color, Color.BLACK);
 
         //字体大小
-        float textSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mtvTextSize, getCount(R.dimen.sp15));
+        float textSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mb_text_size, getCount(R.dimen.sp15));
 
-        int minTextSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mtvMinTextSize, getCount(R.dimen.sp8));
+        int minTextSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mb_min_text_size, getCount(R.dimen.sp8));
 
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
 
@@ -118,12 +118,5 @@ public class MenuButton extends RelativeLayout {
      */
     private int getCount(int id) {
         return UiUtil.getCount(getContext(), id);
-    }
-
-    /**
-     * dp-->px转换
-     */
-    private int dip2px(float dpValue) {
-        return UiUtil.dip2px(getContext(), dpValue);
     }
 }

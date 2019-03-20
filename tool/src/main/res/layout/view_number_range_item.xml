@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:minHeight="40dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_nri_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/item_name_size" />
+
+    <ImageView
+        android:id="@+id/iv_nri_required_marker"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_stars" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tv_nri_min_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textColorHint="@color/light_gray"
+        android:textSize="@dimen/content_text_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Horizontal_bar"
+        android:textColor="@color/black"
+        android:textSize="@dimen/content_text_size" />
+
+    <TextView
+        android:id="@+id/tv_nri_max_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textColorHint="@color/light_gray"
+        android:textSize="@dimen/content_text_size" />
+
+</LinearLayout>

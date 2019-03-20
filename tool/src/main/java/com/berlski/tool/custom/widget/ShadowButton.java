@@ -35,9 +35,9 @@ public class ShadowButton extends AppCompatTextView {
         //对属性进行解析
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShadowButton);// 由attrs 获得 TypeArray
 
-        String text = ta.getString(R.styleable.ShadowButton_gb_text);
-        float textSize = ta.getDimensionPixelSize(R.styleable.ShadowButton_gb_textSize, getCount(R.dimen.dp15));
-        int textColor = ta.getColor(R.styleable.ShadowButton_gb_textColor, Color.WHITE);
+        String text = ta.getString(R.styleable.ShadowButton_sb_text);
+        float textSize = ta.getDimensionPixelSize(R.styleable.ShadowButton_sb_textSize, getCount(R.dimen.dp15));
+        int textColor = ta.getColor(R.styleable.ShadowButton_sb_textColor, Color.WHITE);
 
         if (StringUtil.isEmpty(text)) {
             text = "确定";

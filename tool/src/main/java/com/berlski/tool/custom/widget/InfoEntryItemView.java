@@ -32,7 +32,7 @@ import com.berlski.tool.custom.util.UiUtil;
  * <p>
  * Created by Berlski on 2019/2/18.
  */
-public class InfoEntryView extends LinearLayout implements View.OnFocusChangeListener, TextWatcher, View.OnTouchListener {
+public class InfoEntryItemView extends LinearLayout implements View.OnFocusChangeListener, TextWatcher, View.OnTouchListener {
 
     private TypedArray ta;
     private EditText mContentView;
@@ -65,37 +65,37 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
     private TextView mNameView;
 
 
-    public InfoEntryView(Context context) {
+    public InfoEntryItemView(Context context) {
         super(context);
     }
 
-    public InfoEntryView(Context context, @Nullable AttributeSet attrs) {
+    public InfoEntryItemView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public InfoEntryView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public InfoEntryItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         // 加载布局
-        LayoutInflater.from(context).inflate(R.layout.view_info_entry, this);
+        LayoutInflater.from(context).inflate(R.layout.view_info_entry_item, this);
 
-        mNameView = findViewById(R.id.tv_vie_name);
-        ImageView requiredMarker = findViewById(R.id.iv_vie_required_marker);
-        mContentView = findViewById(R.id.et_vie_content);
+        mNameView = findViewById(R.id.tv_iei_name);
+        ImageView requiredMarker = findViewById(R.id.iv_iei_required_marker);
+        mContentView = findViewById(R.id.et_iei_content);
 
         //对属性进行解析
         // 由attrs 获得 TypeArray
-        ta = context.obtainStyledAttributes(attrs, R.styleable.InfoEntryView);
+        ta = context.obtainStyledAttributes(attrs, R.styleable.InfoEntryItemView);
 
         //设定提示
-        String hint = ta.getString(R.styleable.InfoEntryView_iev_hint);
+        String hint = ta.getString(R.styleable.InfoEntryItemView_ieiv_hint);
         if (StringUtil.isEmpty(hint)) {
             hint = getContext().getString(R.string.please_input);
         }
         mContentView.setHint(hint);
 
         //设定必选标识
-        boolean requiredBlean = ta.getBoolean(R.styleable.InfoEntryView_iev_is_required, false);
+        boolean requiredBlean = ta.getBoolean(R.styleable.InfoEntryItemView_ieiv_is_required, false);
         if (requiredBlean) {
             requiredMarker.setVisibility(VISIBLE);
 
@@ -106,20 +106,20 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
         }
 
         //设定选项名称
-        String name = ta.getString(R.styleable.InfoEntryView_iev_name);
+        String name = ta.getString(R.styleable.InfoEntryItemView_ieiv_name);
         mNameView.setText(name);
 
         //设定后缀文本
-        String postfix = ta.getString(R.styleable.InfoEntryView_iev_postfix);
+        String postfix = ta.getString(R.styleable.InfoEntryItemView_ieiv_postfix);
         if (StringUtil.isNotEmpty(postfix)) {
-            TextView mPostfixView = findViewById(R.id.tv_vie_postfix);
+            TextView mPostfixView = findViewById(R.id.tv_iei_postfix);
             mPostfixView.setVisibility(VISIBLE);
             mPostfixView.setText(postfix);
         }
 
 
         //获取输入类型
-        type = ta.getInteger(R.styleable.InfoEntryView_iev_type, 0x0001);
+        type = ta.getInteger(R.styleable.InfoEntryItemView_ieiv_type, 0x0001);
 
         switch (type) {
 
@@ -145,13 +145,13 @@ public class InfoEntryView extends LinearLayout implements View.OnFocusChangeLis
 
             case CREDENTIAL_NO:
                 //初始化证件类型
-                int credential_type = ta.getInteger(R.styleable.InfoEntryView_iev_credential_type, 0x0021);
+                int credential_type = ta.getInteger(R.styleable.InfoEntryItemView_ieiv_credential_type, 0x0021);
                 setDocumentType(credential_type);
                 break;
         }
 
         //如果有设定文字长度则使用外设长度，否则就使用默认长度
-        maxLength = ta.getInteger(R.styleable.InfoEntryView_iev_length, maxLength);
+        maxLength = ta.getInteger(R.styleable.InfoEntryItemView_ieiv_length, maxLength);
 
         setClearDrawable();
     }

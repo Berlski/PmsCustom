@@ -1,17 +1,19 @@
 <resources>
 
-    <declare-styleable name="InputInfoSwitchView">
-        <attr name="iisv_name" format="string" /><!--字典名称-->
-        <attr name="iisv_is_required" format="boolean" /><!--是否必选-->
-        <attr name="iisv_default_select" format="integer" /><!--默认选中项-->
+    <!--项目选择的条目view-->
+    <declare-styleable name="SwitchOptionItemView">
+        <attr name="soiv_name" format="string" /><!--字典名称-->
+        <attr name="soiv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="soiv_default_select" format="integer" /><!--默认选中项-->
 
-        <attr name="iisv_option_one" format="string" /><!--选项一-->
-        <attr name="iisv_option_two" format="string" /><!--选项二-->
-        <attr name="iisv_option_three" format="string" /><!--选项三-->
-        <attr name="iisv_option_four" format="string" /><!--选项四-->
-        <attr name="iisv_option_five" format="string" /><!--选项五-->
+        <attr name="soiv_option_one" format="string" /><!--选项一-->
+        <attr name="soiv_option_two" format="string" /><!--选项二-->
+        <attr name="soiv_option_three" format="string" /><!--选项三-->
+        <attr name="soiv_option_four" format="string" /><!--选项四-->
+        <attr name="soiv_option_five" format="string" /><!--选项五-->
     </declare-styleable>
 
+    <!--选择项目的view-->
     <declare-styleable name="SwitchView">
         <attr name="sv_default_select" format="integer" /><!--默认选中项-->
 
@@ -22,14 +24,15 @@
         <attr name="sv_option_five" format="string" /><!--选项五-->
     </declare-styleable>
 
-    <declare-styleable name="InfoEntryView">
-        <attr name="iev_name" format="string" /><!--条目名称-->
-        <attr name="iev_is_required" format="boolean" /><!--是否必选-->
-        <attr name="iev_hint" format="string" /><!--提示文字-->
-        <attr name="iev_length" format="integer" /><!--文字文字长度-->
-        <attr name="iev_postfix" format="string" /><!--后缀，如：单位-->
+    <!-- 信息输入的条目view-->
+    <declare-styleable name="InfoEntryItemView">
+        <attr name="ieiv_name" format="string" /><!--条目名称-->
+        <attr name="ieiv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="ieiv_hint" format="string" /><!--提示文字-->
+        <attr name="ieiv_length" format="integer" /><!--文字文字长度-->
+        <attr name="ieiv_postfix" format="string" /><!--后缀，如：单位-->
 
-        <attr name="iev_type">
+        <attr name="ieiv_type">
             <flag name="TEXT" value="0x0001" /><!--文本文字-->
             <flag name="NAME" value="0x0002" /><!--姓名-->
             <flag name="EMAIL" value="0x0003" /><!--电子邮箱-->
@@ -37,7 +40,7 @@
             <flag name="CREDENTIAL_NO" value="0x0005" /><!--证件号-->
         </attr>
 
-        <attr name="iev_credential_type">
+        <attr name="ieiv_credential_type">
             <flag name="ID_CARD" value="0x0021" /><!--身份证-->
             <flag name="PASSPORT" value="0x0022" /><!--护照-->
             <flag name="HONGKONG_AND_MACAO_PASS" value="0x0023" /><!--港澳通行证-->
@@ -47,33 +50,61 @@
 
     <!--阴影按钮-->
     <declare-styleable name="ShadowButton">
-        <attr name="gb_text" format="string" />
-        <attr name="gb_textColor" format="color" />
-        <attr name="gb_textSize" format="dimension" />
+        <attr name="sb_text" format="string" />
+        <attr name="sb_textColor" format="color" />
+        <attr name="sb_textSize" format="dimension" />
     </declare-styleable>
 
-    <!--选择list对象的组合自定义view-->
-    <declare-styleable name="SelectBeanView">
-        <attr name="sbv_name" format="string" /><!--字典名称-->
-        <attr name="sbv_is_required" format="boolean" /><!--是否必选-->
-        <attr name="sbv_hint" format="string" /><!--提示文字-->
-        <attr name="sbv_is_multiple_select" format="boolean" /><!--是否多选-->
+    <!--选择list下bean对象的条目view-->
+    <declare-styleable name="SelectBeanItemView">
+        <attr name="sbiv_name" format="string" /><!--字典名称-->
+        <attr name="sbiv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="sbiv_hint" format="string" /><!--提示文字-->
+        <attr name="sbiv_is_multiple_select" format="boolean" /><!--是否多选-->
     </declare-styleable>
 
     <!--筛选蓝，下拉菜单开关-->
     <declare-styleable name="MenuButton">
-        <attr name="mtvText" format="string" />
-        <attr name="mtvTextColor" format="color" />
-        <attr name="mtvTextSize" format="dimension" />
-        <attr name="mtvMinTextSize" format="dimension" />
+        <attr name="mb_text" format="string" />
+        <attr name="mb_text_color" format="color" />
+        <attr name="mb_text_size" format="dimension" />
+        <attr name="mb_min_text_size" format="dimension" />
+    </declare-styleable>
+
+    <!--语音输入的条目view-->
+    <declare-styleable name="SpeechInputItemView">
+        <attr name="siiv_name" format="string" /><!--名称-->
+        <attr name="siiv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="siiv_is_voice" format="boolean" /><!--是否语音-->
+        <attr name="siiv_hint" format="string" /><!--提示文字-->
     </declare-styleable>
 
 
-    <!--选择list对象的组合自定义view-->
-    <declare-styleable name="SpeechInputView">
-        <attr name="siv_name" format="string" /><!--名称-->
-        <attr name="siv_is_required" format="boolean" /><!--是否必选-->
-        <attr name="siv_is_voice" format="boolean" /><!--是否语音-->
-        <attr name="siv_hint" format="string" /><!--提示文字-->
+    <!--数字区间滑块的条目view-->
+    <declare-styleable name="NumberRangeItemView">
+        <attr name="nriv_name" format="string" /><!--条目名称-->
+        <attr name="nriv_is_required" format="boolean" /><!--是否必选-->
+
+        <attr name="nriv_min_hint" format="string" /><!--最小数提示文字-->
+        <attr name="nriv_min_text" format="string" /><!--最小数文字-->
+        <attr name="nriv_max_hint" format="string" /><!--最大数提示文字-->
+        <attr name="nriv_max_text" format="string" /><!--最大数文字-->
+
+        <attr name="nriv_min_limit" format="integer" /><!--最小数字限定-->
+        <attr name="nriv_max_limit" format="integer" /><!--最大数字限定-->
+    </declare-styleable>
+
+
+    <!--数字区间滑块view-->
+    <declare-styleable name="NumberRangeSliderView">
+        <attr name="nrsv_min" format="integer" />
+        <attr name="nrsv_max" format="integer" />
+        <attr name="nrsv_unpressedTargetRadius" format="dimension" />
+        <attr name="nrsv_pressedTargetRadius" format="dimension" />
+        <attr name="nrsv_targetColor" format="color" />
+        <attr name="nrsv_insideRangeLineColor" format="color" />
+        <attr name="nrsv_outsideRangeLineColor" format="color" />
+        <attr name="nrsv_insideRangeLineStrokeWidth" format="dimension" />
+        <attr name="nrsv_outsideRangeLineStrokeWidth" format="dimension" />
     </declare-styleable>
 </resources>

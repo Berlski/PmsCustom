@@ -38,7 +38,7 @@ import java.util.TreeMap;
 /**
  * 信息编辑页，下弹菜单自定义view
  */
-public class SelectBeanView<T> extends LinearLayout implements View.OnClickListener {
+public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickListener {
 
     private String mKey;
     private String mId;
@@ -56,17 +56,17 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
 
     private TreeMap<String, SelectBean> mSelectMap = new TreeMap<>();
 
-    public SelectBeanView(Context context) {
+    public SelectBeanItemView(Context context) {
         super(context);
     }
 
-    public SelectBeanView(Context context, @Nullable AttributeSet attrs) {
+    public SelectBeanItemView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
         initView(context, attrs);
     }
 
-    public SelectBeanView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SelectBeanItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         initView(context, attrs);
@@ -75,28 +75,28 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
     private void initView(Context context, @Nullable AttributeSet attrs) {
 
         // 加载布局
-        LayoutInflater.from(context).inflate(R.layout.view_bean_select, this);
+        LayoutInflater.from(context).inflate(R.layout.view_bean_select_item, this);
 
-        mNameView = findViewById(R.id.tv_vds_name);
-        ImageView requiredMarker = findViewById(R.id.iv_vds_required_marker);
-        mContentView = findViewById(R.id.tv_vds_content);
+        mNameView = findViewById(R.id.tv_bsi_name);
+        ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);
+        mContentView = findViewById(R.id.tv_bsi_content);
 
-        mLoadView = findViewById(R.id.avi_vds_load);
+        mLoadView = findViewById(R.id.avi_bsi_load);
         mLoadView.setVisibility(GONE);
 
         //对属性进行解析
         // 由attrs 获得 TypeArray
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SelectBeanView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SelectBeanItemView);
 
         //设定提示
-        String hint = ta.getString(R.styleable.SelectBeanView_sbv_hint);
+        String hint = ta.getString(R.styleable.SelectBeanItemView_sbiv_hint);
         if (StringUtil.isEmpty(hint)) {
             hint = getContext().getString(R.string.please_choose);
         }
         mContentView.setHint(hint);
 
         //设定必选标识
-        isRequired = ta.getBoolean(R.styleable.SelectBeanView_sbv_is_required, false);
+        isRequired = ta.getBoolean(R.styleable.SelectBeanItemView_sbiv_is_required, false);
         if (isRequired) {
             requiredMarker.setVisibility(VISIBLE);
 
@@ -107,10 +107,10 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
         }
 
         //是否多选
-        isMultipleSelect = ta.getBoolean(R.styleable.SelectBeanView_sbv_is_multiple_select, false);
+        isMultipleSelect = ta.getBoolean(R.styleable.SelectBeanItemView_sbiv_is_multiple_select, false);
 
         //设定选项名称
-        mNameText = ta.getString(R.styleable.SelectBeanView_sbv_name);
+        mNameText = ta.getString(R.styleable.SelectBeanItemView_sbiv_name);
         mNameView.setText(mNameText);
 
         //设定最大宽度，保证其他view不被挤出屏幕
@@ -230,7 +230,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
         this.mInter = inter;
 
         if (inter != null) {
-            inter.toRequestCompletedSetSelect(mList, SelectBeanView.this);
+            inter.toRequestCompletedSetSelect(mList, SelectBeanItemView.this);
         }
     }
 
@@ -250,7 +250,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
         this.mInter = inter;
 
         if (inter != null) {
-            inter.toRequestCompletedSetSelect(mList, SelectBeanView.this);
+            inter.toRequestCompletedSetSelect(mList, SelectBeanItemView.this);
         }
     }
 
@@ -332,7 +332,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
                 hideLoad();
 
                 if (inter != null) {
-                    inter.toRequestCompletedSetSelect(list, SelectBeanView.this);
+                    inter.toRequestCompletedSetSelect(list, SelectBeanItemView.this);
                 }
             }
 
@@ -549,7 +549,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
     public interface SelectInter<T> {
         void onSelect(T bean, String key, String id, int index);
 
-        void toRequestCompletedSetSelect(List<T> list, SelectBeanView view);
+        void toRequestCompletedSetSelect(List<T> list, SelectBeanItemView view);
 
         SelectBean setSelectBean(T bean);
     }
@@ -562,7 +562,7 @@ public class SelectBeanView<T> extends LinearLayout implements View.OnClickListe
     public interface RequestDataSelectInter<T> {
         void onSelect(T bean, String key, String id, int index);
 
-        void toRequestCompletedSetSelect(List<T> list, SelectBeanView view);
+        void toRequestCompletedSetSelect(List<T> list, SelectBeanItemView view);
 
         NetUrlEnum setNetUrlEnum();
 

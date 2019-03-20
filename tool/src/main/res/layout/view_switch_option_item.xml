@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:minHeight="40dp">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +11,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_vie_name"
+            android:id="@+id/tv_soi_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -21,36 +20,28 @@
             android:textSize="@dimen/item_name_size" />
 
         <ImageView
-            android:id="@+id/iv_vie_required_marker"
+            android:id="@+id/iv_soi_required_marker"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_stars" />
 
-        <EditText
-            android:id="@+id/et_vie_content"
+        <android.support.v4.widget.Space
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:gravity="center_vertical|right"
-            android:hint="@string/please_input"
-            android:paddingRight="15dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/light_gray"
-            android:textSize="@dimen/content_text_size" />
-
-        <TextView
-            android:id="@+id/tv_vie_postfix"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_soi_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="15dp"
-            android:text="平米"
-            android:textColor="@color/black"
-            android:textSize="@dimen/content_text_size"
-            android:visibility="gone" />
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_switch_button"
+            android:padding="1dp" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -20,4 +20,10 @@
     <string name="MSG_NET_ERROR">亲，当前网络环境欠佳，请稍后重试!</string>
 
     <string name="Logon_failure">您的登录状态已失效，请重新登录!</string>
+
+
+    <string name="Horizontal_bar">-</string>
+
+    <string name="min_price">最低价格</string>
+    <string name="max_price">最高价格</string>
 </resources>

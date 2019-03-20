@@ -27,7 +27,7 @@ import java.util.List;
  * 信息编辑页，多选一自定义view（view）
  * Created by Berlski on 2019/3/8.
  */
-public class InputInfoSwitchView extends LinearLayout {
+public class SwitchOptionItemView extends LinearLayout {
 
     private List<String> itemNames = new ArrayList<>();
 
@@ -36,30 +36,30 @@ public class InputInfoSwitchView extends LinearLayout {
     private String maxText = "";
     private SwitchViewAdapter mAdapter;
 
-    public InputInfoSwitchView(Context context) {
+    public SwitchOptionItemView(Context context) {
         super(context);
     }
 
-    public InputInfoSwitchView(Context context, @Nullable AttributeSet attrs) {
+    public SwitchOptionItemView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public InputInfoSwitchView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SwitchOptionItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         // 加载布局
-        LayoutInflater.from(context).inflate(R.layout.view_input_info_switch, this);
+        LayoutInflater.from(context).inflate(R.layout.view_switch_option_item, this);
 
-        TextView nameText = findViewById(R.id.tv_iis_name);
-        ImageView requiredMarker = findViewById(R.id.iv_iis_required_marker);
-        mRecyclerView = findViewById(R.id.rv_iis_recycler_view);
+        TextView nameText = findViewById(R.id.tv_soi_name);
+        ImageView requiredMarker = findViewById(R.id.iv_soi_required_marker);
+        mRecyclerView = findViewById(R.id.rv_soi_recycler_view);
 
         //对属性进行解析
         // 由attrs 获得 TypeArray
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.InputInfoSwitchView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SwitchOptionItemView);
 
         //设定必选标识
-        boolean requiredBlean = ta.getBoolean(R.styleable.InputInfoSwitchView_iisv_is_required, false);
+        boolean requiredBlean = ta.getBoolean(R.styleable.SwitchOptionItemView_soiv_is_required, false);
         if (requiredBlean) {
             requiredMarker.setVisibility(VISIBLE);
 
@@ -70,18 +70,18 @@ public class InputInfoSwitchView extends LinearLayout {
         }
 
         //默认选中项
-        int defaultSelect = ta.getInteger(R.styleable.InputInfoSwitchView_iisv_default_select, 0);
+        int defaultSelect = ta.getInteger(R.styleable.SwitchOptionItemView_soiv_default_select, 0);
 
         //设定选项名称
-        String name = ta.getString(R.styleable.InputInfoSwitchView_iisv_name);
+        String name = ta.getString(R.styleable.SwitchOptionItemView_soiv_name);
         nameText.setText(name);
 
 
-        String item_one = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_one);
-        String item_two = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_two);
-        String item_three = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_three);
-        String item_four = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_four);
-        String item_five = ta.getString(R.styleable.InputInfoSwitchView_iisv_option_five);
+        String item_one = ta.getString(R.styleable.SwitchOptionItemView_soiv_option_one);
+        String item_two = ta.getString(R.styleable.SwitchOptionItemView_soiv_option_two);
+        String item_three = ta.getString(R.styleable.SwitchOptionItemView_soiv_option_three);
+        String item_four = ta.getString(R.styleable.SwitchOptionItemView_soiv_option_four);
+        String item_five = ta.getString(R.styleable.SwitchOptionItemView_soiv_option_five);
 
         if (StringUtil.isNotEmpty(item_one)) {
             itemNames.add(item_one);

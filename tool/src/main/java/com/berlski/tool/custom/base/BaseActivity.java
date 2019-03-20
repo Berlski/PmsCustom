@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.berlski.tool.custom.manager.DialogManager;
+import com.berlski.tool.custom.util.DensityUtils;
 import com.berlski.tool.custom.util.NetUtil;
 import com.berlski.tool.custom.util.ToastUtil;
 import com.berlski.tool.custom.util.UiUtil;
@@ -172,8 +173,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public int dip2px(Context context, float dpValue) {
-        return UiUtil.dip2px(context,dpValue);
+    public float dip2px(Context context, float dpValue) {
+        return DensityUtils.dpToPx(dpValue);
     }
 
     public void showToast(String toast) {

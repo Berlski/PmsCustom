@@ -80,7 +80,6 @@ public class InfoEntryItemView extends LinearLayout implements View.OnFocusChang
         LayoutInflater.from(context).inflate(R.layout.view_info_entry_item, this);
 
         mNameView = findViewById(R.id.tv_iei_name);
-        ImageView requiredMarker = findViewById(R.id.iv_iei_required_marker);
         mContentView = findViewById(R.id.et_iei_content);
 
         //对属性进行解析
@@ -97,12 +96,7 @@ public class InfoEntryItemView extends LinearLayout implements View.OnFocusChang
         //设定必选标识
         boolean requiredBlean = ta.getBoolean(R.styleable.InfoEntryItemView_ieiv_is_required, false);
         if (requiredBlean) {
-            requiredMarker.setVisibility(VISIBLE);
-
-            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
-
-        } else {
-            requiredMarker.setVisibility(GONE);
+            UiUtil.setRequiredMarkerLabel(mNameView);
         }
 
         //设定选项名称

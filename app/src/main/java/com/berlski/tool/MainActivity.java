@@ -3,21 +3,19 @@ package com.berlski.tool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.berlski.tool.custom.enums.DictionaryEnum;
 import com.berlski.tool.custom.enums.NetUrlEnum;
-import com.berlski.tool.custom.inter.NumberRangeInter;
 import com.berlski.tool.custom.inter.SwitchButtonInter;
 import com.berlski.tool.custom.util.ToastUtil;
 import com.berlski.tool.custom.widget.InfoEntryItemView;
-import com.berlski.tool.custom.widget.SwitchOptionItemView;
 import com.berlski.tool.custom.widget.MenuButton;
 import com.berlski.tool.custom.widget.SelectBeanItemView;
 import com.berlski.tool.custom.widget.ShadowButton;
 import com.berlski.tool.custom.widget.SpeechInputItemView;
+import com.berlski.tool.custom.widget.SwitchOptionItemView;
 import com.berlski.tool.test.Dictionary;
-import com.berlski.tool.test.PriceSelectDialog;
 import com.berlski.tool.test.Role;
 
 import java.util.ArrayList;
@@ -52,21 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         mSpeechInputView.setVoiceToStringListener(new SpeechInputItemView.VoiceToStringInter() {
             @Override
-            public void voiceToString(final SpeechInputItemView v) {
-
-                //v.setText(v.getText() + "加加 -- ");
-
-                PriceSelectDialog.builder(MainActivity.this).onCreateDialog(500, 5000, 500, 5000, new NumberRangeInter() {
-                    @Override
-                    public void onSelect(String minPrice, String maxPrice) {
-                        v.setText(minPrice + " -- " + maxPrice);
-                    }
-
-                    @Override
-                    public void onCancel() {
-
-                    }
-                });
+            public void voiceToString(final EditText v) {
+                ToastUtil.showToast("没有集成语音，需要实现语音转文字，并给 EditText.setText");
             }
         });
     }
@@ -80,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean isOpen = (boolean) mMenuButton.getTag();
 
-                if (isOpen){
+                if (isOpen) {
                     mMenuButton.setText("开启");
                     mMenuButton.open();
-                }else {
+                } else {
                     mMenuButton.setText("关闭");
                     mMenuButton.close();
                 }
@@ -95,13 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setSelectDictionaryView() {
         SelectBeanItemView selectBeanView = findViewById(R.id.selectDictionaryView);
-        final TextView selectBeanViewText = findViewById(R.id.selectDictionaryViewText);
 
         selectBeanView.setRequestDataSelect(new SelectBeanItemView.RequestDataSelectInter<Dictionary>() {
 
             @Override
             public void onSelect(Dictionary bean, String key, String id, int index) {
-                selectBeanViewText.setText(key);
+
             }
 
             @Override
@@ -138,8 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setSelectBeanView() {
         SelectBeanItemView selectBeanView = findViewById(R.id.select_bean_view);
-        final TextView selectBeanViewText = findViewById(R.id.selectBeanViewText);
-
 
         List<Role> stringList = new ArrayList<>();
 
@@ -152,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
         selectBeanView.setListAndInter(stringList, new SelectBeanItemView.SelectInter<Role>() {
             @Override
             public void onSelect(Role bean, String key, String id, int index) {
-                selectBeanViewText.setText(key);
-
                 setSelectDictionaryView();
             }
 
@@ -187,26 +167,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void setInfoEntryView() {
         InfoEntryItemView infoEntryItemView = findViewById(R.id.infoEntryView);
-        final TextView infoEntryViewText = findViewById(R.id.infoEntryViewText);
 
         infoEntryItemView.setAfterChangedListener(new InfoEntryItemView.AfterChangedListener() {
             @Override
             public void onAfter(String s) {
-                infoEntryViewText.setText(s);
+                ToastUtil.showToast(s);
             }
         });
     }
 
     private void setInputInfoSwitchView() {
         SwitchOptionItemView switchOptionItemView = findViewById(R.id.inputInfoSwitchView);
-        final TextView inputInfoSwitchViewText = findViewById(R.id.switchViewText);
 
         switchOptionItemView.setSwitchListener(new SwitchButtonInter() {
             @Override
             public void switchIndex(int index) {
-
                 ToastUtil.showToast(index + "");
-                inputInfoSwitchViewText.setText(index + "");
             }
         });
     }

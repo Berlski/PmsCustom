@@ -26,4 +26,14 @@
 
     <string name="min_price">最低价格</string>
     <string name="max_price">最高价格</string>
+
+
+    <string name="SwitchOptionItem">选项卡条目</string>
+    <string name="NumberRangeItem">数字范围条目</string>
+    <string name="InfoEntryItem">信息输入条目</string>
+    <string name="ShadowButton">阴影按钮</string>
+    <string name="SelectBeanItem">选择对象条目</string>
+    <string name="RemarksInputItem">备注输入条目</string>
+
+    <string name="MenuButton">下拉菜单按钮</string>
 </resources>

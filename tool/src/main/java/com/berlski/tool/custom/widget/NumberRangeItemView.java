@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,7 +37,6 @@ public class NumberRangeItemView extends LinearLayout implements View.OnClickLis
         LayoutInflater.from(context).inflate(R.layout.view_number_range_item, this);
 
         TextView nameText = findViewById(R.id.tv_nri_name);
-        ImageView requiredMarker = findViewById(R.id.iv_nri_required_marker);
 
         mMinNoView = findViewById(R.id.tv_nri_min_no);
         mMaxNoView = findViewById(R.id.tv_nri_max_no);
@@ -50,14 +48,8 @@ public class NumberRangeItemView extends LinearLayout implements View.OnClickLis
         //设定必选标识
         boolean requiredBlean = ta.getBoolean(R.styleable.NumberRangeItemView_nriv_is_required, false);
         if (requiredBlean) {
-            requiredMarker.setVisibility(VISIBLE);
-
-            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
-
-        } else {
-            requiredMarker.setVisibility(GONE);
+            UiUtil.setRequiredMarkerLabel(nameText);
         }
-
 
         //设定选项名称
         String name = ta.getString(R.styleable.NumberRangeItemView_nriv_name);

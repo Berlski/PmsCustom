@@ -16,15 +16,6 @@
         android:textColor="@color/black"
         android:textSize="@dimen/item_name_size" />
 
-    <ImageView
-        android:id="@+id/iv_sii_required_marker"
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toRightOf="@id/tv_sii_name"
-        android:src="@drawable/ic_stars" />
-
     <EditText
         android:id="@+id/et_sii_content"
         android:layout_width="match_parent"

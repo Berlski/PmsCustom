@@ -12,20 +12,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/switchViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="10dp" />
-
         <com.berlski.tool.custom.widget.SwitchOptionItemView
             android:id="@+id/inputInfoSwitchView"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             app:soiv_default_select="1"
             app:soiv_is_required="true"
-            app:soiv_name="@string/item_name"
+            app:soiv_name="@string/SwitchOptionItem"
             app:soiv_option_one="@string/option_one"
             app:soiv_option_two="@string/option_two" />
 
@@ -38,20 +31,13 @@
             app:sv_option_one="@string/option_one"
             app:sv_option_two="@string/option_two" />
 
-        <TextView
-            android:id="@+id/infoEntryViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/dp10" />
-
         <com.berlski.tool.custom.widget.InfoEntryItemView
             android:id="@+id/infoEntryView"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_marginTop="@dimen/dp1"
             app:ieiv_is_required="true"
-            app:ieiv_name="@string/item_name" />
+            app:ieiv_name="@string/InfoEntryItem" />
 
         <com.berlski.tool.custom.widget.ShadowButton
             android:id="@+id/shadowButton"
@@ -61,17 +47,10 @@
             android:layout_marginTop="@dimen/dp10"
             app:sb_text="@string/min_price"/>
 
-        <TextView
-            android:id="@+id/selectBeanViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/dp10" />
-
         <com.berlski.tool.custom.widget.NumberRangeSliderView
             android:id="@+id/price_slider"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             app:nrsv_insideRangeLineColor="@color/color_styles"
             app:nrsv_insideRangeLineStrokeWidth="2dp"
             app:nrsv_max="10000"
@@ -87,14 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
             app:sbiv_is_required="true"
-            app:sbiv_name="@string/item_name" />
-
-        <TextView
-            android:id="@+id/selectDictionaryViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/dp10" />
+            app:sbiv_name="@string/SelectBeanItem" />
 
         <com.berlski.tool.custom.widget.SelectBeanItemView
             android:id="@+id/selectDictionaryView"
@@ -103,15 +75,26 @@
             android:layout_marginTop="@dimen/dp1"
             app:sbiv_is_multiple_select="true"
             app:sbiv_is_required="true"
-            app:sbiv_name="@string/item_name" />
+            app:sbiv_name="@string/SelectBeanItem" />
+
+        <com.berlski.tool.custom.widget.NumberRangeItemView
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="@dimen/dp1"
+            app:nriv_is_required="true"
+            app:nriv_max_limit="20000"
+            app:nriv_min_limit="2000"
+            app:nriv_max_hint="@string/max_price"
+            app:nriv_min_hint="@string/min_price"
+            app:nriv_name="@string/NumberRangeItem" />
 
         <com.berlski.tool.custom.widget.MenuButton
             android:id="@+id/menuButton"
-            android:layout_width="45dp"
+            android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
             app:mb_min_text_size="10sp"
-            app:mb_text="@string/multiple_select"
+            app:mb_text="@string/MenuButton"
             app:mb_text_color="@color/black"
             app:mb_text_size="13sp" />
 
@@ -122,17 +105,8 @@
             app:siiv_hint="@string/please_input"
             app:siiv_is_required="true"
             app:siiv_is_voice="true"
-            app:siiv_name="@string/item_name" />
+            app:siiv_name="@string/RemarksInputItem" />
 
-        <com.berlski.tool.custom.widget.NumberRangeItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp1"
-            app:nriv_is_required="true"
-            app:nriv_max_limit="20000"
-            app:nriv_min_limit="2000"
-            app:nriv_max_hint="@string/max_price"
-            app:nriv_min_hint="@string/min_price"
-            app:nriv_name="@string/item_name" />
+
     </LinearLayout>
 </ScrollView>

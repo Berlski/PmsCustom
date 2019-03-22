@@ -40,7 +40,6 @@ public class SpeechInputItemView extends LinearLayout implements View.OnClickLis
         LayoutInflater.from(context).inflate(R.layout.view_speech_input_item, this);
 
         TextView nameText = findViewById(R.id.tv_sii_name);
-        ImageView requiredMarker = findViewById(R.id.iv_sii_required_marker);
         ImageView mVoiceView = findViewById(R.id.iv_sii_voice);
         mContentView = findViewById(R.id.et_sii_content);
 
@@ -51,14 +50,8 @@ public class SpeechInputItemView extends LinearLayout implements View.OnClickLis
         //设定必选标识
         boolean requiredBlean = ta.getBoolean(R.styleable.SpeechInputItemView_siiv_is_required, false);
         if (requiredBlean) {
-            requiredMarker.setVisibility(VISIBLE);
-
-            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
-
-        } else {
-            requiredMarker.setVisibility(GONE);
+            UiUtil.setRequiredMarkerLabel(nameText);
         }
-
 
         //设定选项名称
         String name = ta.getString(R.styleable.SpeechInputItemView_siiv_name);
@@ -107,6 +100,21 @@ public class SpeechInputItemView extends LinearLayout implements View.OnClickLis
         return getText().length();
     }
 
+    /**
+     * 在句尾追加文字
+     * @param s
+     */
+    public void addText(String s) {
+        mContentView.append(s);
+
+        //光标移动到句尾
+        mContentView.setSelection(length());
+    }
+
+    /**
+     * 重置文字
+     * @param s
+     */
     public void setText(String s) {
         mContentView.setText(s);
 
@@ -130,11 +138,11 @@ public class SpeechInputItemView extends LinearLayout implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (inter != null) {
-            inter.voiceToString(this);
+            inter.voiceToString(mContentView);
         }
     }
 
     public interface VoiceToStringInter {
-        void voiceToString(SpeechInputItemView v);
+        void voiceToString(EditText v);
     }
 }

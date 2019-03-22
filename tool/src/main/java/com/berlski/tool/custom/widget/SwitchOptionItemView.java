@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
@@ -27,7 +27,7 @@ import java.util.List;
  * 信息编辑页，多选一自定义view（view）
  * Created by Berlski on 2019/3/8.
  */
-public class SwitchOptionItemView extends LinearLayout {
+public class SwitchOptionItemView extends RelativeLayout {
 
     private List<String> itemNames = new ArrayList<>();
 
@@ -51,7 +51,6 @@ public class SwitchOptionItemView extends LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.view_switch_option_item, this);
 
         TextView nameText = findViewById(R.id.tv_soi_name);
-        ImageView requiredMarker = findViewById(R.id.iv_soi_required_marker);
         mRecyclerView = findViewById(R.id.rv_soi_recycler_view);
 
         //对属性进行解析
@@ -61,12 +60,7 @@ public class SwitchOptionItemView extends LinearLayout {
         //设定必选标识
         boolean requiredBlean = ta.getBoolean(R.styleable.SwitchOptionItemView_soiv_is_required, false);
         if (requiredBlean) {
-            requiredMarker.setVisibility(VISIBLE);
-
-            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
-
-        } else {
-            requiredMarker.setVisibility(GONE);
+            UiUtil.setRequiredMarkerLabel(nameText);
         }
 
         //默认选中项

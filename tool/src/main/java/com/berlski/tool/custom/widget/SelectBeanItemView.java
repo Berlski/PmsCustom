@@ -9,7 +9,6 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -78,7 +77,6 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
         LayoutInflater.from(context).inflate(R.layout.view_bean_select_item, this);
 
         mNameView = findViewById(R.id.tv_bsi_name);
-        ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);
         mContentView = findViewById(R.id.tv_bsi_content);
 
         mLoadView = findViewById(R.id.avi_bsi_load);
@@ -98,12 +96,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
         //设定必选标识
         isRequired = ta.getBoolean(R.styleable.SelectBeanItemView_sbiv_is_required, false);
         if (isRequired) {
-            requiredMarker.setVisibility(VISIBLE);
-
-            UiUtil.drawableSetStyleColor(getContext(), requiredMarker.getDrawable());
-
-        } else {
-            requiredMarker.setVisibility(GONE);
+            UiUtil.setRequiredMarkerLabel(mNameView);
         }
 
         //是否多选
@@ -273,7 +266,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
     /**
      * 直接传入数据数组、默认选中项、操作监听接口
      *
-     * @param array 数据数组
+     * @param array         数据数组
      * @param defaultSelect 默认选中项
      * @param inter         回调接口
      */
@@ -366,6 +359,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
 
     /**
      * 展示列表弹窗，根据Boolean值判断是否展示多选弹窗
+     *
      * @param list
      */
     private void showSelectDialog(List<T> list) {

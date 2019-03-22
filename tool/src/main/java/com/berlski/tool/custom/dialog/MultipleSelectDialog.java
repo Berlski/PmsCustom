@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.enums.SheetItemColor;
 import com.berlski.tool.custom.util.ColorUtil;
-import com.berlski.tool.custom.util.UiUtil;
+import com.berlski.tool.custom.util.DensityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -167,7 +167,7 @@ public class MultipleSelectDialog {
             //textView.setGravity(Gravity.CENTER);
 
             final ImageView imageView = new ImageView(context);
-            imageView.setLayoutParams(new LayoutParams(UiUtil.getCount(context, R.dimen.dp30), UiUtil.getCount(context, R.dimen.dp30)));
+            imageView.setLayoutParams(new LayoutParams(DensityUtils.getCount(context, R.dimen.dp30), DensityUtils.getCount(context, R.dimen.dp30)));
             imageView.setImageResource(R.drawable.ic_check_black);
 
             //setCheckDrawable(textView);

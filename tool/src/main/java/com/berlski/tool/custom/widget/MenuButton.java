@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.util.ColorUtil;
+import com.berlski.tool.custom.util.DensityUtils;
 import com.berlski.tool.custom.util.UiUtil;
 
 import me.grantland.widget.AutofitTextView;
@@ -117,6 +118,6 @@ public class MenuButton extends RelativeLayout {
      * @return
      */
     private int getCount(int id) {
-        return UiUtil.getCount(getContext(), id);
+        return DensityUtils.getCount(getContext(), id);
     }
 }

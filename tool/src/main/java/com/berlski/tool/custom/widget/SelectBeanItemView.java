@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,6 +103,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
         int rightIconRes = ta.getResourceId(R.styleable.SelectBeanItemView_sbiv_right_icon, R.drawable.ic_keyboard_arrow_right);
         rightIcon.setImageResource(rightIconRes);
 
+        //设定右侧图片大小
         float rightIconSize = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_right_icon_size, 0);
         if (rightIconSize != 0) {
             ViewGroup.LayoutParams rightIconLp = rightIcon.getLayoutParams();
@@ -111,11 +111,45 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
             rightIconLp.width = (int) rightIconSize;
         }
 
+        //设定必选标记图片大小
+        float requiredIconSize = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_required_icon_size, 0);
+        if (requiredIconSize != 0) {
+            ViewGroup.LayoutParams rightIconLp = requiredMarker.getLayoutParams();
+            rightIconLp.height = (int) requiredIconSize;
+            rightIconLp.width = (int) requiredIconSize;
+        }
+
+        //设定必选标记居左
+        float requiredMarginStart = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_required_margin_start, getCount(R.dimen.dp10));
+        if (requiredMarginStart != 0) {
+
+            if (requiredIconSize == 0) {
+                requiredIconSize = getCount(R.dimen.dp10);
+            }
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int) requiredIconSize, (int) requiredIconSize);
+            params.setMargins((int) requiredMarginStart, 0, 0, 0);
+            requiredMarker.setLayoutParams(params);
+        }
+
+        //设定内容居右
         float contentMarginEnd = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_content_margin_end, 0);
         if (contentMarginEnd != 0) {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mContentView.getLayoutParams();
             layoutParams.setMargins(0, 0, (int) contentMarginEnd, 0);//4个参数按顺序分别是左上右下
             mContentView.setLayoutParams(layoutParams);
+        }
+
+        //内容文字颜色
+        int contentColor = ta.getColor(R.styleable.SelectBeanItemView_sbiv_content_color, 0);
+        if (contentColor != 0) {
+            mContentView.setTextColor(contentColor);
+        }
+
+        //条目名称颜色
+        int nameColor = ta.getColor(R.styleable.SelectBeanItemView_sbiv_name_color, 0);
+        if (nameColor != 0) {
+            mNameView.setTextColor(nameColor);
         }
 
         //设定必选标识
@@ -141,8 +175,8 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
 
         //setGravity(Gravity.CENTER_VERTICAL);
 
-        if (getBackground() == null){
-            setBackgroundColor(ColorUtil.getColor(getContext(),R.color.white));
+        if (getBackground() == null) {
+            setBackgroundColor(ColorUtil.getColor(getContext(), R.color.white));
         }
 
         //设定view点击事件

@@ -4,9 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:gravity="center_vertical"
-    android:orientation="vertical"
-    android:paddingStart="15dp"
-    android:paddingTop="10dp">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_sii_name"

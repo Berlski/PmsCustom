@@ -63,7 +63,11 @@
         <attr name="sbiv_is_multiple_select" format="boolean" /><!--是否多选-->
         <attr name="sbiv_right_icon" format="reference" /><!--资源id-->
         <attr name="sbiv_right_icon_size" format="dimension" /><!--资源id大小-->
+        <attr name="sbiv_required_icon_size" format="dimension" /><!--资源id大小-->
         <attr name="sbiv_content_margin_end" format="dimension" /><!--内容居右-->
+        <attr name="sbiv_required_margin_start" format="dimension" /><!--必选标记居左-->
+        <attr name="sbiv_content_color" format="color" /><!--内容字体颜色-->
+        <attr name="sbiv_name_color" format="color" /><!--条目名字体颜色-->
     </declare-styleable>
 
     <!--筛选蓝，下拉菜单开关-->

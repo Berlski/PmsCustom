@@ -7,8 +7,10 @@ import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import com.berlski.tool.custom.dialog.MultipleSelectDialog;
 import com.berlski.tool.custom.enums.NetUrlEnum;
 import com.berlski.tool.custom.enums.SheetItemColor;
 import com.berlski.tool.custom.manager.HttpManager;
+import com.berlski.tool.custom.util.ColorUtil;
 import com.berlski.tool.custom.util.StringUtil;
 import com.berlski.tool.custom.util.UiUtil;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -98,8 +101,22 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
 
         mContentView.setHint(hint);
 
-        int rightIconRes = ta.getResourceId(R.styleable.SelectBeanItemView_sbiv_right_icon,R.drawable.ic_keyboard_arrow_right);
+        int rightIconRes = ta.getResourceId(R.styleable.SelectBeanItemView_sbiv_right_icon, R.drawable.ic_keyboard_arrow_right);
         rightIcon.setImageResource(rightIconRes);
+
+        float rightIconSize = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_right_icon_size, 0);
+        if (rightIconSize != 0) {
+            ViewGroup.LayoutParams rightIconLp = rightIcon.getLayoutParams();
+            rightIconLp.height = (int) rightIconSize;
+            rightIconLp.width = (int) rightIconSize;
+        }
+
+        float contentMarginEnd = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_content_margin_end, 0);
+        if (contentMarginEnd != 0) {
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mContentView.getLayoutParams();
+            layoutParams.setMargins(0, 0, (int) contentMarginEnd, 0);//4个参数按顺序分别是左上右下
+            mContentView.setLayoutParams(layoutParams);
+        }
 
         //设定必选标识
         isRequired = ta.getBoolean(R.styleable.SelectBeanItemView_sbiv_is_required, false);
@@ -121,6 +138,12 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
 
         //设定最大宽度，保证其他view不被挤出屏幕
         setContentTextMaxWidth();
+
+        //setGravity(Gravity.CENTER_VERTICAL);
+
+        if (getBackground() == null){
+            setBackgroundColor(ColorUtil.getColor(getContext(),R.color.white));
+        }
 
         //设定view点击事件
         this.setOnClickListener(this);
@@ -279,7 +302,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
     /**
      * 直接传入数据数组、默认选中项、操作监听接口
      *
-     * @param array 数据数组
+     * @param array         数据数组
      * @param defaultSelect 默认选中项
      * @param inter         回调接口
      */
@@ -372,6 +395,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
 
     /**
      * 展示列表弹窗，根据Boolean值判断是否展示多选弹窗
+     *
      * @param list
      */
     private void showSelectDialog(List<T> list) {

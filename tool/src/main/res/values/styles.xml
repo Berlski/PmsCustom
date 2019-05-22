@@ -62,6 +62,8 @@
         <attr name="sbiv_hint" format="string" /><!--提示文字-->
         <attr name="sbiv_is_multiple_select" format="boolean" /><!--是否多选-->
         <attr name="sbiv_right_icon" format="reference" /><!--资源id-->
+        <attr name="sbiv_right_icon_size" format="dimension" /><!--资源id大小-->
+        <attr name="sbiv_content_margin_end" format="dimension" /><!--内容居右-->
     </declare-styleable>
 
     <!--筛选蓝，下拉菜单开关-->

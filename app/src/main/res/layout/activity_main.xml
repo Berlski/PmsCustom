@@ -83,10 +83,12 @@
             app:nrsv_unpressedTargetRadius="10dp" />
 
         <com.berlski.tool.custom.widget.SelectBeanItemView
+
             android:id="@+id/select_bean_view"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="100dp"
             app:sbiv_is_required="true"
+            app:sbiv_right_icon="@mipmap/ic_launcher_round"
             app:sbiv_name="@string/item_name" />
 
         <TextView

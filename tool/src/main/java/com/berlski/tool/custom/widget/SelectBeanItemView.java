@@ -81,6 +81,8 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
         ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);
         mContentView = findViewById(R.id.tv_bsi_content);
 
+        ImageView rightIcon = findViewById(R.id.iv_bsi_right_icon);
+
         mLoadView = findViewById(R.id.avi_bsi_load);
         mLoadView.setVisibility(GONE);
 
@@ -93,7 +95,11 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
         if (StringUtil.isEmpty(hint)) {
             hint = getContext().getString(R.string.please_choose);
         }
+
         mContentView.setHint(hint);
+
+        int rightIconRes = ta.getResourceId(R.styleable.SelectBeanItemView_sbiv_right_icon,R.drawable.ic_keyboard_arrow_right);
+        rightIcon.setImageResource(rightIconRes);
 
         //设定必选标识
         isRequired = ta.getBoolean(R.styleable.SelectBeanItemView_sbiv_is_required, false);

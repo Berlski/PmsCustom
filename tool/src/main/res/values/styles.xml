@@ -86,6 +86,7 @@
         <attr name="siiv_hint" format="string" /><!--提示文字-->
         <attr name="siiv_edit_background" format="reference" /><!--输入框背景-->
         <attr name="siiv_edit_padding" format="reference" /><!--输入框内边距-->
+        <attr name="siiv_min_height" format="dimension" /><!--最低高度-->
     </declare-styleable>
 
 

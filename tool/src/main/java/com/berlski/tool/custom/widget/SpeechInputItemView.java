@@ -64,6 +64,25 @@ public class SpeechInputItemView extends LinearLayout implements View.OnClickLis
         String name = ta.getString(R.styleable.SpeechInputItemView_siiv_name);
         nameText.setText(name);
 
+
+        //设定输入框内边距
+        float editPadding = ta.getDimension(R.styleable.SpeechInputItemView_siiv_edit_padding, 0);
+        if (editPadding != 0) {
+            mContentView.setPadding((int) editPadding, (int) editPadding, (int) editPadding, (int) editPadding);
+        }
+
+
+        //设定输入框背景
+        int editBackground = ta.getResourceId(R.styleable.SpeechInputItemView_siiv_edit_background, 0);
+        if (editBackground != 0) {
+            mContentView.setBackgroundResource(editBackground);
+
+            if (editPadding == 0) {
+                mContentView.setPadding(getCount(R.dimen.dp15), getCount(R.dimen.dp15), getCount(R.dimen.dp15), getCount(R.dimen.dp15));
+            }
+        }
+
+
         String hint = ta.getString(R.styleable.SpeechInputItemView_siiv_hint);
         mContentView.setHint(hint);
 
@@ -116,6 +135,16 @@ public class SpeechInputItemView extends LinearLayout implements View.OnClickLis
 
     public String getText() {
         return mContentView.getText().toString().trim();
+    }
+
+    /**
+     * 根据dimen值计算返回对应屏幕的px值，
+     *
+     * @param id R.dimen.id
+     * @return
+     */
+    private int getCount(int id) {
+        return getResources().getDimensionPixelSize(id);
     }
 
     /**

@@ -84,6 +84,8 @@
         <attr name="siiv_is_required" format="boolean" /><!--是否必选-->
         <attr name="siiv_is_voice" format="boolean" /><!--是否语音-->
         <attr name="siiv_hint" format="string" /><!--提示文字-->
+        <attr name="siiv_edit_background" format="reference" /><!--输入框背景-->
+        <attr name="siiv_edit_padding" format="reference" /><!--输入框内边距-->
     </declare-styleable>
 
 

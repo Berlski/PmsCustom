@@ -247,6 +247,10 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
         mContentView.setMaxWidth(maxWidth);
     }
 
+    public void setContentText(String content){
+        mContentView.setText(content);
+    }
+
     /**
      * 获得屏幕的宽
      *

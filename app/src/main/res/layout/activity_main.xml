@@ -121,10 +121,11 @@
         <com.berlski.tool.custom.widget.SpeechInputItemView
             android:id="@+id/speechInputView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             app:siiv_hint="@string/please_input"
             app:siiv_is_required="true"
             app:siiv_is_voice="true"
+            app:siiv_min_height="200dp"
             app:siiv_name="@string/item_name"
             app:siiv_edit_background="@drawable/grey_small_fillet_wire_frame_grey_background"/>
 

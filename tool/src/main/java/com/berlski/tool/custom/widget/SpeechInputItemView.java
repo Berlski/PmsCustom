@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
@@ -77,23 +78,21 @@ public class SpeechInputItemView extends LinearLayout implements View.OnClickLis
         if (editBackground != 0) {
             mContentView.setBackgroundResource(editBackground);
 
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mContentView.getLayoutParams();
-            layoutParams.setMargins(0, getCount(R.dimen.dp10), 0, 0);//4个参数按顺序分别是左上右下
-            mContentView.setLayoutParams(layoutParams);
-            //mContentView.setMinHeight();
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, getCount(R.dimen.dp30), 0, 0);//4个参数按顺序分别是左上右下
+            mContentView.setLayoutParams(lp);
 
             if (editPadding == 0) {
                 mContentView.setPadding(getCount(R.dimen.dp15), getCount(R.dimen.dp15), getCount(R.dimen.dp15), getCount(R.dimen.dp15));
             }
         }
 
+        //设定最低高度
         float minHeight = ta.getDimension(R.styleable.SpeechInputItemView_siiv_min_height, 0);
-        float removeHeight = 0;
-        //if (StringUtil.isNotEmpty(name)){
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) nameText.getLayoutParams();
-        removeHeight += layoutParams.height;
-        //}
-        mContentView.setMinHeight((int) (minHeight - removeHeight));
+        if (minHeight != 0) {
+            float removeHeight = getCount(R.dimen.dp30);
+            mContentView.setMinHeight((int) (minHeight - removeHeight));
+        }
 
 
         String hint = ta.getString(R.styleable.SpeechInputItemView_siiv_hint);

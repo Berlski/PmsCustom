@@ -26,6 +26,9 @@ public class PreferenceUtils {
     private static final String USER_NAME = "login_userName";
     private static final String USER_GCID = "login_gcid";
     private static final String USER_PASSWORD = "login_password";
+    private static final String ACCOUNT_ID = "account_id";
+    private static final String TOKEN = "token";
+    private static final String USER_ID = "user_id";
 
     /**
      * 获得sharePreference内存对象
@@ -104,6 +107,60 @@ public class PreferenceUtils {
      */
     public static void setPassword(String password) {
         setString(USER_PASSWORD, password);
+    }
+
+    /**
+     * 获取帐户ID
+     *
+     * @return
+     */
+    public static String getAccountId() {
+        return getString(ACCOUNT_ID);
+    }
+
+    /**
+     * 序列化帐户ID
+     *
+     * @param accountId
+     */
+    public static void setAccountId(String accountId) {
+        setString(ACCOUNT_ID, accountId);
+    }
+
+    /**
+     * 获取用户token
+     *
+     * @return
+     */
+    public static String getToken() {
+        return getString(TOKEN);
+    }
+
+    /**
+     * 序列化用户token
+     *
+     * @param token
+     */
+    public static void setToken(String token) {
+        setString(TOKEN, token);
+    }
+
+    /**
+     * 获取用户userId
+     *
+     * @return
+     */
+    public static String getUserId() {
+        return getString(USER_ID);
+    }
+
+    /**
+     * 序列化用户userId
+     *
+     * @param userId
+     */
+    public static void setUserId(String userId) {
+        setString(USER_ID, userId);
     }
 
     /**

@@ -85,3 +85,4 @@ widget/build/generated/not_namespaced_r_class_sources/debug/generateDebugRFile/o
 widget/build/generated/not_namespaced_r_class_sources/debug/generateDebugRFile/out/android/support/asynclayoutinflater/R.java
 util/build/generated/not_namespaced_r_class_sources/debug/generateDebugRFile/out/android/arch/lifecycle/R.java
 util/build/generated/not_namespaced_r_class_sources/debug/generateDebugRFile/out/android/arch/core/R.java
+.idea/caches/gradle_models.ser

@@ -110,11 +110,10 @@
 
         <com.berlski.tool.custom.widget.MenuButton
             android:id="@+id/menuButton"
-            android:layout_width="45dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
-            app:mb_min_text_size="10sp"
-            app:mb_text="@string/multiple_select"
+            app:mb_text="阿斯顿发阿斯顿发"
             app:mb_text_color="@color/black"
             app:mb_text_size="13sp" />
 

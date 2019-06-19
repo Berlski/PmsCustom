@@ -75,7 +75,6 @@
         <attr name="mb_text" format="string" />
         <attr name="mb_text_color" format="color" />
         <attr name="mb_text_size" format="dimension" />
-        <attr name="mb_min_text_size" format="dimension" />
     </declare-styleable>
 
     <!--语音输入的条目view-->

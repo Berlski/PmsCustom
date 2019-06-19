@@ -3,17 +3,21 @@ package com.berlski.tool.custom.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.util.ColorUtil;
 import com.berlski.tool.custom.util.UiUtil;
-
-import me.grantland.widget.AutofitTextView;
 
 /**
  * Created by ccp on 2018/11/26.
@@ -22,8 +26,8 @@ import me.grantland.widget.AutofitTextView;
 public class MenuButton extends RelativeLayout {
 
     private int textColor;
-    private AutofitTextView textView;
-    private ImageView imageView;
+    private Button textView;
+    //private ImageView imageView;
     private Context mContext;
 
     public MenuButton(Context context) {
@@ -52,9 +56,18 @@ public class MenuButton extends RelativeLayout {
         // 加载布局
         LayoutInflater.from(context).inflate(R.layout.view_menu_button, this);
 
-        textView = findViewById(R.id.atv_vmb_text);
-        imageView = findViewById(R.id.iv_vmb_image);
+        /*textView = new Button(mContext);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        textView.setLayoutParams(layoutParams);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
+        textView.setMaxLines(1);
+        textView.setBackground(null);
+        textView.setStateListAnimator();*/
 
+        textView = findViewById(R.id.atv_vmb_text);
+//        imageView = findViewById(R.id.iv_vmb_image);
+
+        setGravity(Gravity.CENTER);
 
         //字体文本
         String text = ta.getString(R.styleable.MenuButton_mb_text);
@@ -65,12 +78,7 @@ public class MenuButton extends RelativeLayout {
         //字体大小
         float textSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mb_text_size, getCount(R.dimen.sp15));
 
-        int minTextSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mb_min_text_size, getCount(R.dimen.sp8));
-
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-
-        //设置文字最小size
-        textView.setMinTextSize(TypedValue.COMPLEX_UNIT_PX, minTextSize);
 
         close();
         textView.setText(text);
@@ -87,9 +95,16 @@ public class MenuButton extends RelativeLayout {
     public void open() {
         textView.setTextColor(ColorUtil.getColor(mContext, R.color.color_styles));
 
-        imageView.setImageResource(R.drawable.ic_arrow_drop_up);
+//        imageView.setImageResource(R.drawable.ic_arrow_drop_up);
 
-        UiUtil.drawableSetStyleColor(getContext(), imageView.getDrawable());
+        Drawable right = getResources().getDrawable(R.drawable.menu_up);
+        //right.setBounds(0,0,20,20);
+
+
+        textView.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,right,null);
+
+//        UiUtil.drawableSetStyleColor(getContext(), imageView.getDrawable());
+        UiUtil.drawableSetStyleColor(getContext(), right);
 
         //设置Drawable
         /*Drawable right = getResources().getDrawable(R.drawable.menu_down);
@@ -100,9 +115,13 @@ public class MenuButton extends RelativeLayout {
     public void close() {
         textView.setTextColor(textColor);
 
-        imageView.setImageResource(R.drawable.menu_down);
+        Drawable right = getResources().getDrawable(R.drawable.menu_down);
+        //right.setBounds(0,0,50,50);
+        textView.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,right,null);
+        //imageView.setImageResource(R.drawable.menu_down);
 
-        UiUtil.drawableSetColor(imageView.getDrawable(), textColor);
+        //UiUtil.drawableSetColor(imageView.getDrawable(), textColor);
+        UiUtil.drawableSetColor(right, textColor);
 
         //设置Drawable
         /*Drawable right = getResources().getDrawable(R.drawable.menu_up);

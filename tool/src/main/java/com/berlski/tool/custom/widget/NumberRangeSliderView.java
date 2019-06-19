@@ -137,8 +137,8 @@ public class NumberRangeSliderView extends View {
         });
 
         TypedArray appcompatMaterialStyledAttrs = getContext().obtainStyledAttributes(typedValue.data, new int[]{
-                android.support.v7.appcompat.R.attr.colorControlNormal,
-                android.support.v7.appcompat.R.attr.colorControlHighlight
+                R.attr.colorControlNormal,
+                R.attr.colorControlHighlight
         });
 
         materialStyledAttrs.recycle();

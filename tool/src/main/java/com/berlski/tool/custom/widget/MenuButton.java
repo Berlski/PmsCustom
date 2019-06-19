@@ -26,7 +26,7 @@ import com.berlski.tool.custom.util.UiUtil;
 public class MenuButton extends RelativeLayout {
 
     private int textColor;
-    private Button textView;
+    private TextView textView;
     //private ImageView imageView;
     private Context mContext;
 

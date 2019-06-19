@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:autofit="http://schemas.android.com/apk/res-auto"
     android:id="@+id/atv_vmb_text"
     android:layout_width="wrap_content"
     android:layout_height="30dp"
     android:ellipsize="end"
-    android:drawableEnd="@drawable/menu_up"
+    android:drawableEnd="@drawable/menu_down"
     android:maxLines="1"
-    android:stateListAnimator="@null"
+    android:text="阿法撒旦发射点发生阿斯顿发射点发生"
     android:background="@null"
     android:gravity="left|center_vertical"
     android:textColor="@color/black"
     android:textSize="@dimen/item_name_size">
-</Button>
+</TextView>

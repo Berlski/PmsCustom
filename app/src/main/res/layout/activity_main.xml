@@ -106,7 +106,22 @@
             android:layout_marginTop="@dimen/dp1"
             app:sbiv_is_multiple_select="true"
             app:sbiv_is_required="true"
+            app:sbiv_name_color="@color/green"
+            app:sbiv_name_size="5sp"
+            app:sbiv_hint_color="@color/red"
+            app:sbiv_hint_size="22sp"
             app:sbiv_name="@string/item_name" />
+
+        <com.berlski.tool.custom.widget.ClickItemView
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="@dimen/dp1"
+            app:civ_is_required="true"
+            app:civ_name_color="@color/green"
+            app:civ_name_size="5sp"
+            app:civ_hint_color="@color/red"
+            app:civ_hint_size="22sp"
+            app:civ_name="@string/item_name" />
 
         <com.berlski.tool.custom.widget.MenuButton
             android:id="@+id/menuButton"

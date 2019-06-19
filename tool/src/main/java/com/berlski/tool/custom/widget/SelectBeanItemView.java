@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,16 +141,40 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
             mContentView.setLayoutParams(layoutParams);
         }
 
+        //内容文字底色颜色
+        int hintColor = ta.getColor(R.styleable.SelectBeanItemView_sbiv_hint_color, 0);
+        if (hintColor != 0) {
+            mContentView.setHintTextColor(hintColor);
+        }
+
+        //内容文字字体大小
+        float hintSize = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_hint_size, 0);
+        if (hintSize != 0) {
+            mContentView.setTextSize(TypedValue.COMPLEX_UNIT_PX, hintSize);
+        }
+
         //内容文字颜色
         int contentColor = ta.getColor(R.styleable.SelectBeanItemView_sbiv_content_color, 0);
         if (contentColor != 0) {
             mContentView.setTextColor(contentColor);
         }
 
+        //内容文字字体大小
+        float contentSize = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_content_size, 0);
+        if (contentSize != 0) {
+            mContentView.setTextSize(TypedValue.COMPLEX_UNIT_PX, contentSize);
+        }
+
         //条目名称颜色
         int nameColor = ta.getColor(R.styleable.SelectBeanItemView_sbiv_name_color, 0);
         if (nameColor != 0) {
             mNameView.setTextColor(nameColor);
+        }
+
+        //条目名称颜色
+        float nameSize = ta.getDimension(R.styleable.SelectBeanItemView_sbiv_name_size, 0);
+        if (nameSize != 0) {
+            mNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, nameSize);
         }
 
         //设定必选标识

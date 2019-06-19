@@ -58,16 +58,48 @@
     <!--选择list下bean对象的条目view-->
     <declare-styleable name="SelectBeanItemView">
         <attr name="sbiv_name" format="string" /><!--字典名称-->
-        <attr name="sbiv_is_required" format="boolean" /><!--是否必选-->
+        <attr name="sbiv_name_color" format="color" /><!--条目名字体颜色-->
+        <attr name="sbiv_name_size" format="dimension" /><!--条目名字体大小-->
+
         <attr name="sbiv_hint" format="string" /><!--提示文字-->
+        <attr name="sbiv_hint_color" format="color" /><!--提示文字颜色-->
+        <attr name="sbiv_hint_size" format="dimension" /><!--提示文字大小-->
+
         <attr name="sbiv_is_multiple_select" format="boolean" /><!--是否多选-->
+
         <attr name="sbiv_right_icon" format="reference" /><!--资源id-->
         <attr name="sbiv_right_icon_size" format="dimension" /><!--资源id大小-->
+
+        <attr name="sbiv_is_required" format="boolean" /><!--是否必选-->
         <attr name="sbiv_required_icon_size" format="dimension" /><!--资源id大小-->
-        <attr name="sbiv_content_margin_end" format="dimension" /><!--内容居右-->
         <attr name="sbiv_required_margin_start" format="dimension" /><!--必选标记居左-->
+
         <attr name="sbiv_content_color" format="color" /><!--内容字体颜色-->
-        <attr name="sbiv_name_color" format="color" /><!--条目名字体颜色-->
+        <attr name="sbiv_content_size" format="dimension" /><!--内容文字大小-->
+        <attr name="sbiv_content_margin_end" format="dimension" /><!--内容居右-->
+    </declare-styleable>
+
+
+    <!--选择list下bean对象的条目view-->
+    <declare-styleable name="ClickItemView">
+        <attr name="civ_name" format="string" /><!--字典名称-->
+        <attr name="civ_name_color" format="color" /><!--条目名字体颜色-->
+        <attr name="civ_name_size" format="dimension" /><!--条目名字体大小-->
+
+        <attr name="civ_hint" format="string" /><!--提示文字-->
+        <attr name="civ_hint_color" format="color" /><!--提示文字颜色-->
+        <attr name="civ_hint_size" format="dimension" /><!--提示文字大小-->
+
+        <attr name="civ_right_icon" format="reference" /><!--资源id-->
+        <attr name="civ_right_icon_size" format="dimension" /><!--资源id大小-->
+
+        <attr name="civ_is_required" format="boolean" /><!--是否必选-->
+        <attr name="civ_required_icon_size" format="dimension" /><!--资源id大小-->
+        <attr name="civ_required_margin_start" format="dimension" /><!--必选标记居左-->
+
+        <attr name="civ_content_color" format="color" /><!--内容字体颜色-->
+        <attr name="civ_content_size" format="dimension" /><!--内容文字大小-->
+        <attr name="civ_content_margin_end" format="dimension" /><!--内容居右-->
     </declare-styleable>
 
     <!--筛选蓝，下拉菜单开关-->

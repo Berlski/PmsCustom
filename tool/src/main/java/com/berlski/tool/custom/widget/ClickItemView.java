@@ -2,13 +2,14 @@ package com.berlski.tool.custom.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 /**
  * 信息编辑页，下弹菜单自定义view
  */
-public class ClickItemView extends LinearLayout {
+public class ClickItemView extends ConstraintLayout {
 
     private String mContentId;
     private String mContentText;
@@ -54,11 +55,12 @@ public class ClickItemView extends LinearLayout {
     }
 
     private void initView(Context context, @Nullable AttributeSet attrs) {
-
         // 加载布局
         LayoutInflater.from(context).inflate(R.layout.view_click_item, this);
 
-        setOrientation(VERTICAL);
+        //setGravity(Gravity.CENTER_VERTICAL);
+
+        //setOrientation(VERTICAL);
 
         mNameView = findViewById(R.id.tv_bsi_name);
         ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);

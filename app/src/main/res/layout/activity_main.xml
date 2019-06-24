@@ -116,12 +116,19 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_marginTop="@dimen/dp1"
+            app:civ_name="@string/item_name"
+            app:civ_content_size="@dimen/sp_16"
+            app:civ_hint_color="@color/green"
+            app:civ_content_color="@color/black"
+            app:civ_right_icon_size="50dp"
+            app:civ_right_icon="@mipmap/icon"
+            app:civ_name_color="@color/red"
+            app:civ_content_margin_end="10dp"
             app:civ_is_required="true"
-            app:civ_name_color="@color/green"
-            app:civ_name_size="5sp"
-            app:civ_hint_color="@color/red"
-            app:civ_hint_size="22sp"
-            app:civ_name="@string/item_name" />
+            app:civ_required_icon_size="7dp"
+            app:civ_required_margin_start="30dp"
+            app:civ_hint="@string/app_name"
+            app:civ_name_size="20sp"/>
 
         <com.berlski.tool.custom.widget.MenuButton
             android:id="@+id/menuButton"

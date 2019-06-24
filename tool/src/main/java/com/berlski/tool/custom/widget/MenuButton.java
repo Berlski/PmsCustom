@@ -4,14 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,10 +21,15 @@ import com.berlski.tool.custom.util.UiUtil;
 
 public class MenuButton extends RelativeLayout {
 
-    private int textColor;
+    private int textOpenColor;
+    private int textCloseColor;
+    private int drawableOpenColor;
+    private int drawableCloseColor;
     private TextView textView;
-    //private ImageView imageView;
     private Context mContext;
+    private int openDrawable;
+    private int closeDrawable;
+    private float drawableSize;
 
     public MenuButton(Context context) {
         super(context);
@@ -56,16 +57,7 @@ public class MenuButton extends RelativeLayout {
         // 加载布局
         LayoutInflater.from(context).inflate(R.layout.view_menu_button, this);
 
-        /*textView = new Button(mContext);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        textView.setLayoutParams(layoutParams);
-        textView.setEllipsize(TextUtils.TruncateAt.END);
-        textView.setMaxLines(1);
-        textView.setBackground(null);
-        textView.setStateListAnimator();*/
-
         textView = findViewById(R.id.atv_vmb_text);
-//        imageView = findViewById(R.id.iv_vmb_image);
 
         setGravity(Gravity.CENTER);
 
@@ -73,7 +65,21 @@ public class MenuButton extends RelativeLayout {
         String text = ta.getString(R.styleable.MenuButton_mb_text);
 
         //字体颜色
-        textColor = ta.getColor(R.styleable.MenuButton_mb_text_color, Color.BLACK);
+        textOpenColor = ta.getColor(R.styleable.MenuButton_mb_text_open_color, ColorUtil.getColor(mContext,R.color.color_styles));
+        //字体颜色
+        textCloseColor = ta.getColor(R.styleable.MenuButton_mb_text_close_color, Color.BLACK);
+
+        //字体颜色
+        drawableOpenColor = ta.getColor(R.styleable.MenuButton_mb_drawable_open_color, ColorUtil.getColor(mContext,R.color.color_styles));
+        drawableCloseColor = ta.getColor(R.styleable.MenuButton_mb_drawable_close_color, Color.BLACK);
+
+        //开启关闭时的 icon
+        openDrawable = ta.getResourceId(R.styleable.MenuButton_mb_open_drawable, R.drawable.menu_up);
+        closeDrawable = ta.getResourceId(R.styleable.MenuButton_mb_close_drawable, R.drawable.menu_down);
+
+        //icon大小
+        drawableSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mb_drawable_size, getCount(R.dimen.dp15));
+
 
         //字体大小
         float textSize = ta.getDimensionPixelSize(R.styleable.MenuButton_mb_text_size, getCount(R.dimen.sp15));
@@ -93,40 +99,35 @@ public class MenuButton extends RelativeLayout {
     }
 
     public void open() {
-        textView.setTextColor(ColorUtil.getColor(mContext, R.color.color_styles));
+        textView.setTextColor(textOpenColor);
 
-//        imageView.setImageResource(R.drawable.ic_arrow_drop_up);
+        //设定图片
+        Drawable right = getResources().getDrawable(openDrawable);
 
-        Drawable right = getResources().getDrawable(R.drawable.menu_up);
-        //right.setBounds(0,0,20,20);
+        //设置图片的颜色
+        UiUtil.drawableSetColor(right, drawableOpenColor);
 
+        //设置图片的大小
+        right.setBounds(0, 0, (int) drawableSize, (int) drawableSize);//设置图片的大小
 
-        textView.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,right,null);
-
-//        UiUtil.drawableSetStyleColor(getContext(), imageView.getDrawable());
-        UiUtil.drawableSetStyleColor(getContext(), right);
-
-        //设置Drawable
-        /*Drawable right = getResources().getDrawable(R.drawable.menu_down);
-        right.setBounds(2, 0, dip2px(20), dip2px(20));//必须设置图片的大小否则没有作用
-        textView.setCompoundDrawables(null, null, right, null);//设置图片left这里如果是右边就放到第二个参数里面依次对应*/
+        //设定图片居右
+        textView.setCompoundDrawables(null, null, right, null);
     }
 
     public void close() {
-        textView.setTextColor(textColor);
+        textView.setTextColor(textCloseColor);
 
-        Drawable right = getResources().getDrawable(R.drawable.menu_down);
-        //right.setBounds(0,0,50,50);
-        textView.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,right,null);
-        //imageView.setImageResource(R.drawable.menu_down);
+        //设定图片
+        Drawable right = getResources().getDrawable(closeDrawable);
 
-        //UiUtil.drawableSetColor(imageView.getDrawable(), textColor);
-        UiUtil.drawableSetColor(right, textColor);
+        //设置图片的颜色
+        UiUtil.drawableSetColor(right, drawableCloseColor);
 
-        //设置Drawable
-        /*Drawable right = getResources().getDrawable(R.drawable.menu_up);
-        right.setBounds(2, 0, dip2px(20), dip2px(20));//必须设置图片的大小否则没有作用
-        textView.setCompoundDrawables(null, null, right, null);//设置图片left这里如果是右边就放到第二个参数里面依次对应*/
+        //设置图片的大小
+        right.setBounds(0, 0, (int) drawableSize, (int) drawableSize);
+
+        //设定图片居右
+        textView.setCompoundDrawables(null, null, right, null);
     }
 
     /**

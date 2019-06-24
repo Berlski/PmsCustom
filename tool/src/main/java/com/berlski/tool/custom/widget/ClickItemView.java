@@ -2,6 +2,7 @@ package com.berlski.tool.custom.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.text.TextPaint;
@@ -55,7 +56,9 @@ public class ClickItemView extends LinearLayout {
     private void initView(Context context, @Nullable AttributeSet attrs) {
 
         // 加载布局
-        LayoutInflater.from(context).inflate(R.layout.view_bean_select_item, this);
+        LayoutInflater.from(context).inflate(R.layout.view_click_item, this);
+
+        setOrientation(VERTICAL);
 
         mNameView = findViewById(R.id.tv_bsi_name);
         ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);
@@ -175,6 +178,8 @@ public class ClickItemView extends LinearLayout {
         if (getBackground() == null) {
             setBackgroundColor(ColorUtil.getColor(getContext(), R.color.white));
         }
+
+        //getPaddingStart()
 
         //设定view点击事件
         //this.setOnClickListener(this);

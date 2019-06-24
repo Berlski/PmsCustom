@@ -129,7 +129,9 @@
             android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
             app:mb_text="阿斯顿发阿斯顿发"
-            app:mb_text_color="@color/black"
+            app:mb_drawable_size="@dimen/dp30"
+            app:mb_close_drawable="@mipmap/icon"
+            app:mb_text_close_color="@color/black"
             app:mb_text_size="13sp" />
 
         <com.berlski.tool.custom.widget.SpeechInputItemView

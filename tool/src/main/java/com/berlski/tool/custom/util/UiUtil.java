@@ -1,9 +1,13 @@
 package com.berlski.tool.custom.util;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.support.v4.graphics.drawable.DrawableCompat;
+import android.util.DisplayMetrics;
+import android.widget.Button;
 
 import com.berlski.tool.custom.R;
 
@@ -54,5 +58,21 @@ public class UiUtil {
         drawable = DrawableCompat.wrap(drawable);
         //3:再调用DrawableCompat的setTint方法，为Drawable实例进行着色
         DrawableCompat.setTint(drawable, color);
+    }
+
+
+
+    public static Drawable tintDrawable(Drawable drawable, ColorStateList colors) {
+        final Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTintList(wrappedDrawable, colors);
+        return wrappedDrawable;
+    }
+
+    public static void setDrawable(Context context, Drawable drawable, int color) {
+        drawableSetColor(drawable, color);
+        /*DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        int size;
+        size = 90 * dm.heightPixels / 2560;
+        drawable.setBounds(0, 0, size, size);*/
     }
 }

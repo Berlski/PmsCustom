@@ -2,13 +2,11 @@ package com.berlski.tool;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.berlski.tool.custom.manager.MyActivityManager;
 import com.berlski.tool.custom.util.AppUtil;
-import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.util.LogUtil;
 import com.berlski.tool.custom.util.ToastUtil;
 
@@ -36,7 +34,7 @@ public class BaseApplication extends Application {
                 return "http://test.pms.mianhuagongyu.com";
             }
 
-            @Override
+            /*@Override
             public HttpManager.HttpResponseInterface getHttpResponseInterface() {
                 return new HttpManager.HttpResponseInterface() {
 
@@ -71,7 +69,7 @@ public class BaseApplication extends Application {
                         return BaseApplication.getResultCode(null,s,isShow);
                     }
                 };
-            }
+            }*/
         });
     }
 

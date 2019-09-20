@@ -1,159 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
-    <LinearLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_rlv_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srlEnableHeaderTranslationContent="false"
+        app:srlEnableNestedScrolling="false"
+        app:srlEnablePreviewInEditMode="false">
 
-        <TextView
-            android:id="@+id/switchViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="10dp" />
+        <!--<com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading_lottie"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="lottie_data_edit.json"/>-->
 
-        <com.berlski.tool.custom.widget.SwitchOptionItemView
-            android:id="@+id/inputInfoSwitchView"
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            app:soiv_default_select="1"
-            app:soiv_is_required="true"
-            app:soiv_name="@string/item_name"
-            app:soiv_option_one="@string/option_one"
-            app:soiv_option_two="@string/option_two" />
+            android:layout_height="wrap_content"/>
 
-        <com.berlski.tool.custom.widget.SwitchView
-            android:id="@+id/switchView"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dp10"
-            app:sv_option_one="@string/option_one"
-            app:sv_option_two="@string/option_two" />
 
-        <TextView
-            android:id="@+id/infoEntryViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/dp10" />
+        <!--<com.scwang.smartrefresh.header.MaterialHeader-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
 
-        <com.berlski.tool.custom.widget.InfoEntryItemView
-            android:id="@+id/infoEntryView"
+        <!-- android:layoutAnimation="@anim/layout_animation_fall_down" 条目进出动画属性-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_rlv_recycler"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="@dimen/dp1"
-            app:ieiv_is_required="true"
-            app:ieiv_name="@string/item_name" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"/>
 
-        <com.berlski.tool.custom.widget.ShadowButton
-            android:id="@+id/shadowButton"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dp10"
-            app:sb_text="@string/min_price"/>
 
-        <TextView
-            android:id="@+id/selectBeanViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/dp10" />
-
-        <com.berlski.tool.custom.widget.NumberRangeSliderView
-            android:id="@+id/price_slider"
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:nrsv_insideRangeLineColor="@color/color_styles"
-            app:nrsv_insideRangeLineStrokeWidth="2dp"
-            app:nrsv_max="10000"
-            app:nrsv_min="500"
-            app:nrsv_outsideRangeLineColor="@color/light_color_style"
-            app:nrsv_outsideRangeLineStrokeWidth="2dp"
-            app:nrsv_pressedTargetRadius="10dp"
-            app:nrsv_targetColor="@color/color_styles"
-            app:nrsv_unpressedTargetRadius="10dp" />
-
-        <com.berlski.tool.custom.widget.SelectBeanItemView
-            android:id="@+id/select_bean_view"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:sbiv_is_required="true"
-            app:sbiv_right_icon_size="15dp"
-            app:sbiv_name_color="@color/color_styles"
-            app:sbiv_right_icon="@mipmap/ic_launcher_round"
-            app:sbiv_name="@string/item_name" />
-
-        <TextView
-            android:id="@+id/selectDictionaryViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/dp10" />
-
-        <com.berlski.tool.custom.widget.SelectBeanItemView
-            android:id="@+id/selectDictionaryView"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="@dimen/dp1"
-            app:sbiv_is_multiple_select="true"
-            app:sbiv_is_required="true"
-            app:sbiv_name_color="@color/green"
-            app:sbiv_name_size="5sp"
-            app:sbiv_hint_color="@color/red"
-            app:sbiv_hint_size="22sp"
-            app:sbiv_name="@string/item_name" />
-
-        <com.berlski.tool.custom.widget.ClickItemView
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="@dimen/dp1"
-            app:civ_is_required="true"
-            app:civ_name_color="@color/green"
-            app:civ_name_size="5sp"
-            app:civ_hint_color="@color/red"
-            app:civ_hint_size="22sp"
-            app:civ_name="@string/item_name" />
-
-        <com.berlski.tool.custom.widget.MenuButton
-            android:id="@+id/menuButton"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="center_horizontal"
-            app:mb_text="阿斯顿发阿斯顿发"
-            app:mb_drawable_size="@dimen/dp30"
-            app:mb_close_drawable="@mipmap/icon"
-            app:mb_text_close_color="@color/black"
-            app:mb_text_size="13sp" />
-
-        <com.berlski.tool.custom.widget.SpeechInputItemView
-            android:id="@+id/speechInputView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:siiv_hint="@string/please_input"
-            app:siiv_is_required="true"
-            app:siiv_is_voice="true"
-            app:siiv_min_height="200dp"
-            app:siiv_name="@string/item_name"
-            app:siiv_edit_background="@drawable/grey_small_fillet_wire_frame_grey_background"/>
-
-        <com.berlski.tool.custom.widget.NumberRangeItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp1"
-            app:nriv_is_required="true"
-            app:nriv_max_limit="20000"
-            app:nriv_min_limit="2000"
-            app:nriv_max_hint="@string/max_price"
-            app:nriv_min_hint="@string/min_price"
-            app:nriv_name="@string/item_name" />
-    </LinearLayout>
-</ScrollView>
+            android:layout_height="wrap_content"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/switchViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp" />
+
+    <com.berlski.tool.custom.widget.SwitchOptionItemView
+        android:id="@+id/inputInfoSwitchView"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        app:soiv_default_select="1"
+        app:soiv_is_required="true"
+        app:soiv_name="@string/item_name"
+        app:soiv_option_one="@string/option_one"
+        app:soiv_option_two="@string/option_two"/>
+
+    <com.berlski.tool.custom.widget.SwitchView
+        android:id="@+id/switchView"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10"
+        app:sv_option_one="@string/option_one"
+        app:sv_option_two="@string/option_two"/>
+</LinearLayout>

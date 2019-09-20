@@ -10,13 +10,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.berlski.tool.MainActivity">
+        <activity android:name="com.berlski.tool.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name="com.berlski.tool.activity.ClickActivity"/>
+        <activity android:name="com.berlski.tool.activity.InfoEntryActivity"/>
+        <activity android:name="com.berlski.tool.activity.MenuButtonActivity"/>
+        <activity android:name="com.berlski.tool.activity.NumberRangeActivity"/>
+        <activity android:name="com.berlski.tool.activity.NumberRangeSliderActivity"/>
+        <activity android:name="com.berlski.tool.activity.SelectBeanActivity"/>
+        <activity android:name="com.berlski.tool.activity.ShadowButtonActivity"/>
+        <activity android:name="com.berlski.tool.activity.SpeechInputActivity"/>
+        <activity android:name="com.berlski.tool.activity.SwitchOptionActivity"/>
+
     </application>
 
 </manifest>

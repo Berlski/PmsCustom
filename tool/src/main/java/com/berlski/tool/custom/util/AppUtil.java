@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 
-import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.manager.MyActivityManager;
 
 /**
@@ -121,9 +120,9 @@ public class AppUtil {
         return AppUtil.appInitInterface.isDeBug();
     }
 
-    public static HttpManager.HttpResponseInterface getHttpResponseInterface() {
+    /*public static HttpManager.HttpResponseInterface getHttpResponseInterface() {
         return AppUtil.appInitInterface.getHttpResponseInterface();
-    }
+    }*/
 
     /**
      * 接口限定初始化需要的数据，
@@ -137,6 +136,6 @@ public class AppUtil {
 
         String getIpPath();
 
-        HttpManager.HttpResponseInterface getHttpResponseInterface();
+        //HttpManager.HttpResponseInterface getHttpResponseInterface();
     }
 }

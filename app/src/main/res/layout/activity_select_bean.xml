@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/selectBeanViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/dp10" />
+
+    <com.berlski.tool.custom.widget.SelectBeanItemView
+        android:id="@+id/select_bean_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:sbiv_is_required="true"
+        app:sbiv_right_icon_size="15dp"
+        app:sbiv_name_color="@color/color_styles"
+        app:sbiv_right_icon="@mipmap/ic_launcher_round"
+        app:sbiv_name="@string/item_name" />
+
+    <TextView
+        android:id="@+id/selectDictionaryViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/dp10" />
+
+    <com.berlski.tool.custom.widget.SelectBeanItemView
+        android:id="@+id/selectDictionaryView"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="@dimen/dp1"
+        app:sbiv_is_multiple_select="true"
+        app:sbiv_is_required="true"
+        app:sbiv_name_color="@color/green"
+        app:sbiv_name_size="5sp"
+        app:sbiv_hint_color="@color/red"
+        app:sbiv_hint_size="22sp"
+        app:sbiv_name="@string/item_name" />
+</LinearLayout>

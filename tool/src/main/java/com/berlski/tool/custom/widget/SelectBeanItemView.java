@@ -23,7 +23,6 @@ import com.berlski.tool.custom.dialog.ActionSheetDialog;
 import com.berlski.tool.custom.dialog.MultipleSelectDialog;
 import com.berlski.tool.custom.enums.NetUrlEnum;
 import com.berlski.tool.custom.enums.SheetItemColor;
-import com.berlski.tool.custom.manager.HttpManager;
 import com.berlski.tool.custom.util.ColorUtil;
 import com.berlski.tool.custom.util.StringUtil;
 import com.berlski.tool.custom.util.UiUtil;
@@ -409,7 +408,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
             paramsJSON.put(key, map.get(key));
         }
 
-        HttpManager.getInstance().post(inter.setNetUrlEnum(), paramsJSON, new HttpManager.AbHttpResponseListenerInterface() {
+        /*HttpManager.getInstance().post(inter.setNetUrlEnum(), paramsJSON, new HttpManager.AbHttpResponseListenerInterface() {
 
             @Override
             public void onSuccess(String s) {
@@ -432,7 +431,7 @@ public class SelectBeanItemView<T> extends LinearLayout implements View.OnClickL
             public void onFailure() {
                 hideLoad();
             }
-        });
+        });*/
     }
 
     /**

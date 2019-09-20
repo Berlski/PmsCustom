@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical">
+
+
+
+
+    <com.berlski.tool.custom.widget.NumberRangeSliderView
+        android:id="@+id/price_slider"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:nrsv_insideRangeLineColor="@color/color_styles"
+        app:nrsv_insideRangeLineStrokeWidth="2dp"
+        app:nrsv_max="10000"
+        app:nrsv_min="500"
+        app:nrsv_outsideRangeLineColor="@color/light_color_style"
+        app:nrsv_outsideRangeLineStrokeWidth="2dp"
+        app:nrsv_pressedTargetRadius="10dp"
+        app:nrsv_targetColor="@color/color_styles"
+        app:nrsv_unpressedTargetRadius="10dp" />
+</LinearLayout>

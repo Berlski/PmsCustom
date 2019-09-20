@@ -52,10 +52,10 @@ dependencies {
     //fastjson
     implementation 'com.alibaba:fastjson:1.1.54.android'
     //网络请求
-    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    //implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     //okhttp网络日志拦截器
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    implementation 'com.lzy.net:okgo:3.0.4'
+    //implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //implementation 'com.lzy.net:okgo:3.0.4'
     //gson解析
     implementation 'com.google.code.gson:gson:2.6.2'
 

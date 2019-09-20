@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical">
+
+    <com.berlski.tool.custom.widget.MenuButton
+        android:id="@+id/menuButton"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        app:mb_text="阿斯顿发阿斯顿发"
+        app:mb_drawable_size="@dimen/dp30"
+        app:mb_close_drawable="@mipmap/icon"
+        app:mb_text_close_color="@color/black"
+        app:mb_text_size="13sp" />
+</LinearLayout>

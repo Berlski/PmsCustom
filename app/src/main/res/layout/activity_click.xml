@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical">
+
+    <com.berlski.tool.custom.widget.ClickItemView
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="@dimen/dp1"
+
+            app:civ_name="@string/item_name" /><!--app:civ_is_required="true"
+            app:civ_name_color="@color/green"
+            app:civ_name_size="5sp"
+            app:civ_hint_color="@color/red"
+            app:civ_hint_size="22sp"-->
+</LinearLayout>

@@ -94,8 +94,9 @@
         <attr name="civ_right_icon_size" format="dimension" /><!--资源id大小-->
 
         <attr name="civ_is_required" format="boolean" /><!--是否必选-->
+        <attr name="civ_is_required_preposition" format="boolean" /><!--是否必选前置-->
         <attr name="civ_required_icon_size" format="dimension" /><!--资源id大小-->
-        <attr name="civ_required_margin_start" format="dimension" /><!--必选标记居左-->
+        <attr name="civ_required_margin" format="dimension" /><!--必选标记居左-->
 
         <attr name="civ_content_color" format="color" /><!--内容字体颜色-->
         <attr name="civ_content_size" format="dimension" /><!--内容文字大小-->

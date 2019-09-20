@@ -2,9 +2,9 @@ package com.berlski.tool.custom.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -13,11 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.util.ColorUtil;
+import com.berlski.tool.custom.util.ConstraintUtil;
 import com.berlski.tool.custom.util.StringUtil;
 import com.berlski.tool.custom.util.UiUtil;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -25,7 +25,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 /**
  * 信息编辑页，下弹菜单自定义view
  */
-public class ClickItemView extends LinearLayout {
+public class ClickItemView extends ConstraintLayout {
 
     private String mContentId;
     private String mContentText;
@@ -58,7 +58,9 @@ public class ClickItemView extends LinearLayout {
         // 加载布局
         LayoutInflater.from(context).inflate(R.layout.view_click_item, this);
 
-        setOrientation(VERTICAL);
+        //setOrientation(VERTICAL);
+
+        ConstraintLayout parent = findViewById(R.id.vci_parent);
 
         mNameView = findViewById(R.id.tv_bsi_name);
         ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);
@@ -98,20 +100,48 @@ public class ClickItemView extends LinearLayout {
             rightIconLp.width = (int) requiredIconSize;
         }
 
-        //设定必选标记居左
-        float requiredMarginStart = ta.getDimension(R.styleable.ClickItemView_civ_required_margin_start, getCount(R.dimen.dp10));
-        if (requiredMarginStart != 0) {
 
-            if (requiredIconSize == 0) {
-                requiredIconSize = getCount(R.dimen.dp10);
+
+        //设定必选标记是否前置
+        boolean isRequiredPreposition = ta.getBoolean(R.styleable.ClickItemView_civ_is_required_preposition, false);
+        if (isRequiredPreposition) {
+
+            //设定必选标记前外间距
+            float requiredMarginStart = ta.getDimension(R.styleable.ClickItemView_civ_required_margin, getCount(R.dimen.dp10));
+            if (requiredMarginStart != 0) {
+
+                mNameView.setPadding((int) requiredMarginStart, 0, 0, 0);
             }
 
-            LayoutParams params = new LayoutParams((int) requiredIconSize, (int) requiredIconSize);
-            params.setMargins((int) requiredMarginStart, 0, 0, 0);
-            requiredMarker.setLayoutParams(params);
+            ConstraintUtil constraintUtil = new ConstraintUtil(parent);
+            ConstraintUtil.ConstraintBegin begin = constraintUtil.beginWithAnim();
+            begin.Start_toEndOf(R.id.tv_bsi_name, R.id.iv_bsi_required_marker);
+            begin.Top_toTopOf(R.id.iv_bsi_required_marker, R.id.tv_bsi_name);
+            begin.Bottom_toBottomOf(R.id.iv_bsi_required_marker, R.id.tv_bsi_name);
+            begin.commit();
+        }else {
+            //设定必选标记前外间距
+            float requiredMarginStart = ta.getDimension(R.styleable.ClickItemView_civ_required_margin, getCount(R.dimen.dp10));
+            if (requiredMarginStart != 0) {
+
+                if (requiredIconSize == 0) {
+                    requiredIconSize = getCount(R.dimen.dp10);
+                }
+
+                LayoutParams params = new LayoutParams((int) requiredIconSize, (int) requiredIconSize);
+                params.setMargins((int) requiredMarginStart, 0, 0, 0);
+                requiredMarker.setLayoutParams(params);
+            }
+
+            ConstraintUtil constraintUtil = new ConstraintUtil(parent);
+            ConstraintUtil.ConstraintBegin begin = constraintUtil.beginWithAnim();
+            begin.Start_toEndOf(R.id.iv_bsi_required_marker, R.id.tv_bsi_name);
+            begin.Top_toTopOf(R.id.iv_bsi_required_marker, R.id.tv_bsi_name);
+            begin.Bottom_toBottomOf(R.id.iv_bsi_required_marker, R.id.tv_bsi_name);
+            begin.commit();
         }
 
-        //设定内容居右
+        //设定内容后外间距
         float contentMarginEnd = ta.getDimension(R.styleable.ClickItemView_civ_content_margin_end, 0);
         if (contentMarginEnd != 0) {
             LayoutParams layoutParams = (LayoutParams) mContentView.getLayoutParams();

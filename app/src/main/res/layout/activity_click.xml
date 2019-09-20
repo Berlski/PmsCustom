@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
 
     <com.berlski.tool.custom.widget.ClickItemView
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="@dimen/dp1"
-
-            app:civ_name="@string/item_name" /><!--app:civ_is_required="true"
-            app:civ_name_color="@color/green"
-            app:civ_name_size="5sp"
-            app:civ_hint_color="@color/red"
-            app:civ_hint_size="22sp"-->
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="@dimen/dp1"
+        app:civ_hint_color="@color/red"
+        app:civ_hint_size="22sp"
+        app:civ_is_required="true"
+        app:civ_is_required_preposition="false"
+        app:civ_name="@string/item_name"
+        app:civ_name_color="@color/green"
+        app:civ_name_size="15sp" /><!---->
 </LinearLayout>

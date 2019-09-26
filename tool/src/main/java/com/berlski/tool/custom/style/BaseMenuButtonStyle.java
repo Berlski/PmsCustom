@@ -77,12 +77,12 @@ public abstract class BaseMenuButtonStyle implements MenuButtonStyle {
 
     @Override
     public Drawable getOpenIcon() {
-        return getDrawable(R.drawable.menu_up);
+        return getDrawable(R.drawable.ic_menu_button_icon_up);
     }
 
     @Override
     public Drawable getCloseIcon() {
-        return getDrawable(R.drawable.menu_down);
+        return getDrawable(R.drawable.ic_menu_button_icon_down);
     }
 
     @Override

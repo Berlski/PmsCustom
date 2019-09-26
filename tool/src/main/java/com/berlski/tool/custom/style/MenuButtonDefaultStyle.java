@@ -20,22 +20,22 @@ public class MenuButtonDefaultStyle extends BaseMenuButtonStyle{
 
     @Override
     public int getTextOpenColor() {
-        return super.getTextOpenColor();
+        return 0xFF16D5AD;
     }
 
     @Override
     public int getTextCloseColor() {
-        return 0xFFff0000;
+        return 0xFF000000;
     }
 
     @Override
     public int getIconOpenColor() {
-        return super.getIconOpenColor();
+        return 0;
     }
 
     @Override
     public int getIconCloseColor() {
-        return super.getIconCloseColor();
+        return 0;
     }
 
     @Override

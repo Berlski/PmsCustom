@@ -14,14 +14,8 @@
         android:layout_gravity="center_horizontal"
         app:mb_text="阿斯顿发阿斯顿发"
         app:mb_is_show_bottom_line="true"
-        app:mb_bottom_line_color="@color/blue"
-        app:mb_bottom_line_height="1dp"
-        app:mb_text_size="@dimen/dp5"
-        app:mb_icon_close_icon="@drawable/grey_small_fillet_wire_frame_grey_background"
-        app:mb_icon_size="@dimen/dp5"
-        app:mb_icon_open_icon="@mipmap/icon"
-        app:mb_icon_close_color="@color/green"
-        app:mb_icon_open_color="@color/cyan"
-        app:mb_text_open_color="@color/red"
-        app:mb_text_close_color="@color/blue" />
+        app:mb_bottom_line_color="@color/gray"
+        app:mb_bottom_line_height="0.5dp"
+        app:mb_text_size="15sp"
+        app:mb_icon_size="15dp" />
 </LinearLayout>

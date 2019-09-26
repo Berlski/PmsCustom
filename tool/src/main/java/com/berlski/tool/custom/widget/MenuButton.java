@@ -149,7 +149,9 @@ public class MenuButton extends ConstraintLayout {
         Drawable right = openIcon;
 
         //设置图片的颜色
-        UiUtil.drawableSetColor(right, drawableOpenColor);
+        if (drawableOpenColor != 0) {
+            UiUtil.drawableSetColor(right, drawableOpenColor);
+        }
 
         //设置图片的大小
         right.setBounds(0, 0, (int) iconSize, (int) iconSize);//设置图片的大小
@@ -166,7 +168,9 @@ public class MenuButton extends ConstraintLayout {
         Drawable right = closeIcon;
 
         //设置图片的颜色
-        UiUtil.drawableSetColor(right, drawableCloseColor);
+        if (drawableCloseColor != 0) {
+            UiUtil.drawableSetColor(right, drawableCloseColor);
+        }
 
         //设置图片的大小
         right.setBounds(0, 0, (int) iconSize, (int) iconSize);

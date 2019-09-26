@@ -6,9 +6,12 @@ import android.content.Context;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.berlski.tool.custom.manager.MyActivityManager;
+import com.berlski.tool.custom.style.MenuButtonDefaultStyle;
+import com.berlski.tool.custom.style.MenuButtonStyle;
 import com.berlski.tool.custom.util.AppUtil;
 import com.berlski.tool.custom.util.LogUtil;
 import com.berlski.tool.custom.util.ToastUtil;
+import com.berlski.tool.custom.widget.MenuButton;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +24,8 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        MenuButton.initStyle(new MenuButtonDefaultStyle(this));
 
         AppUtil.init(this,new AppUtil.AppInitInterface() {
 

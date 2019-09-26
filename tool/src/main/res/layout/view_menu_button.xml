@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:autofit="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/atv_vmb_text"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/vmb_text"
     android:layout_width="wrap_content"
     android:layout_height="30dp"
     android:ellipsize="end"
@@ -10,6 +10,8 @@
     android:text="阿法撒旦发射点发生阿斯顿发射点发生"
     android:background="@null"
     android:gravity="left|center_vertical"
-    android:textColor="@color/black"
-    android:textSize="@dimen/item_name_size">
-</TextView>
+    android:textSize="@dimen/item_name_size"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>

@@ -3,6 +3,7 @@
 
     <dimen name="dp0_5">0.5dp</dimen>
     <dimen name="dp1">1dp</dimen>
+    <dimen name="dp5">5dp</dimen>
     <dimen name="dp10">10dp</dimen>
     <dimen name="dp15">15dp</dimen>
     <dimen name="dp20">20dp</dimen>
@@ -14,6 +15,8 @@
 
 
     <dimen name="sp8">8sp</dimen>
+    <dimen name="sp10">10sp</dimen>
+    <dimen name="sp12">12sp</dimen>
     <dimen name="sp14">14sp</dimen>
     <dimen name="sp15">15sp</dimen>
 

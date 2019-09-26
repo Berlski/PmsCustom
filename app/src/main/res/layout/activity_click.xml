@@ -14,7 +14,7 @@
         app:civ_hint_color="@color/red"
         app:civ_hint_size="22sp"
         app:civ_is_required="true"
-        app:civ_is_required_preposition="false"
+        app:civ_is_required_preposition="true"
         app:civ_name="@string/item_name"
         app:civ_name_color="@color/green"
         app:civ_name_size="15sp" /><!---->

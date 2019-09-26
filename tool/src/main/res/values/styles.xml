@@ -109,11 +109,14 @@
         <attr name="mb_text_size" format="dimension" />
         <attr name="mb_text_open_color" format="color" />
         <attr name="mb_text_close_color" format="color" />
-        <attr name="mb_drawable_size" format="dimension" />
-        <attr name="mb_drawable_open_color" format="color" />
-        <attr name="mb_drawable_close_color" format="color" />
-        <attr name="mb_open_drawable" format="reference" />
-        <attr name="mb_close_drawable" format="reference" />
+        <attr name="mb_icon_size" format="dimension" />
+        <attr name="mb_icon_open_color" format="color" />
+        <attr name="mb_icon_close_color" format="color" />
+        <attr name="mb_icon_open_icon" format="reference" />
+        <attr name="mb_icon_close_icon" format="reference" />
+        <attr name="mb_is_show_bottom_line" format="boolean" />
+        <attr name="mb_bottom_line_color" format="color" />
+        <attr name="mb_bottom_line_height" format="dimension" />
     </declare-styleable>
 
     <!--语音输入的条目view-->

@@ -85,6 +85,6 @@ public class MenuButtonDefaultStyle extends BaseMenuButtonStyle{
 
     @Override
     public int getBottomLineHeight() {
-        return getCount(R.dimen.dp5);
+        return getCount(R.dimen.dp1);
     }
 }

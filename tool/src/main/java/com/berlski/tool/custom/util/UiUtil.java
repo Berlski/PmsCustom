@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.DisplayMetrics;
@@ -30,6 +31,22 @@ public class UiUtil {
      */
     public static int getCount(Context context, int id) {
         return context.getResources().getDimensionPixelSize(id);
+    }
+
+    public static int getColor(Context context, int id) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getResources().getColor(id, null);
+        } else {
+            return context.getResources().getColor(id);
+        }
+    }
+
+    public static Drawable getDrawable(Context context, int id) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return context.getResources().getDrawable(id, null);
+        } else {
+            return context.getResources().getDrawable(id);
+        }
     }
 
     public static void drawableSetStyleColor(Context context, Drawable drawable) {

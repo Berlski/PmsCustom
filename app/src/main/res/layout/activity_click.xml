@@ -18,4 +18,24 @@
         app:civ_name="@string/item_name"
         app:civ_name_color="@color/green"
         app:civ_name_size="15sp" /><!---->
+
+    <com.berlski.tool.custom.widget.InfoItemClickView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:iicv_bottom_line_is_show="true"
+        app:iicv_content_color="@color/black"
+        app:iicv_content_hint="@string/please_choose"
+        app:iicv_content_margin_end="10dp"
+        app:iicv_content_size="18sp"
+        app:iicv_item_name="@string/item_name"
+        app:iicv_item_name_color="@color/black"
+        app:iicv_item_name_size="16sp"
+        app:iicv_right_icon="@drawable/ic_menu_button_icon_down"
+        app:iicv_right_icon_color="@color/gray"
+        app:iicv_right_icon_size="25dp"
+        app:iicv_tips_icon="@drawable/ic_stars"
+        app:iicv_tips_icon_color="@color/red"
+        app:iicv_tips_icon_size="8dp"
+        app:iicv_tips_is_left="false"
+        app:iicv_tips_is_show="true" />
 </LinearLayout>

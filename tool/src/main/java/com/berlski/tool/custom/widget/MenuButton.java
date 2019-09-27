@@ -170,7 +170,6 @@ public class MenuButton extends ConstraintLayout {
         right.setBounds(0, 0, (int) iconSize, (int) iconSize);//设置图片的大小
 
         //设定图片居右
-        //textView.setCompoundDrawables(null, null, right, isShowBottomLine ? bottom: null);
         textView.setCompoundDrawables(null, null, right, null);
 
         isOpen = true;

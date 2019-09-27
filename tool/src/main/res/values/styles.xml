@@ -158,4 +158,35 @@
         <attr name="nrsv_insideRangeLineStrokeWidth" format="dimension" />
         <attr name="nrsv_outsideRangeLineStrokeWidth" format="dimension" />
     </declare-styleable>
+
+
+    <!--选择list下bean对象的条目view-->
+    <declare-styleable name="InfoItemClickView">
+        <attr name="iicv_item_name" format="string" />          <!--条目名称-->
+        <attr name="iicv_item_name_color" format="color" />     <!--条目名字体颜色-->
+        <attr name="iicv_item_name_size" format="dimension" />  <!--条目名字体大小-->
+
+        <attr name="iicv_content_color" format="color" />       <!--内容字体颜色-->
+        <attr name="iicv_content_hint" format="string" />       <!--内容提示文字-->
+        <attr name="iicv_content_hint_color" format="color" />  <!--内容提示文字字体颜色-->
+        <attr name="iicv_content_size" format="dimension" />    <!--内容文字大小-->
+
+        <attr name="iicv_tips_is_show" format="boolean" />      <!--提示图标是否显示-->
+        <attr name="iicv_tips_is_left" format="boolean" />      <!--提示图标是否居左-->
+        <attr name="iicv_tips_icon" format="reference" />       <!--提示图标-->
+        <attr name="iicv_tips_icon_size" format="dimension" />  <!--提示图标大小-->
+        <attr name="iicv_tips_icon_color" format="color" />     <!--提示图标颜色-->
+
+
+        <attr name="iicv_right_icon" format="reference" />       <!--右侧图标-->
+        <attr name="iicv_right_icon_size" format="dimension" />  <!--右侧图标大小-->
+        <attr name="iicv_right_icon_color" format="color" />     <!--右侧图标颜色-->
+
+        <attr name="iicv_bottom_line_is_show" format="boolean" /><!--是否显现底线-->
+        <attr name="iicv_bottom_line_color" format="color" />   <!--底线颜色-->
+        <attr name="iicv_bottom_line_height" format="dimension" />  <!--底线高度-->
+
+
+        <attr name="iicv_content_margin_end" format="dimension" /><!--内容居右-->
+    </declare-styleable>
 </resources>

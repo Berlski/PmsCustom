@@ -33,9 +33,8 @@ public class MenuButtonActivity extends AppCompatActivity {
         mMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isOpen = (boolean) mMenuButton.getTag();
 
-                if (isOpen){
+                if (!mMenuButton.isOpen()){
                     mMenuButton.setText("开启");
                     mMenuButton.open();
                 }else {
@@ -43,7 +42,7 @@ public class MenuButtonActivity extends AppCompatActivity {
                     mMenuButton.close();
                 }
 
-                mMenuButton.setTag(!isOpen);
+                mMenuButton.setTextLight(true);
             }
         });
     }

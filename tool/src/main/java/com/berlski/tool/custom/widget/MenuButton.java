@@ -6,17 +6,13 @@ import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.style.MenuButtonDefaultStyle;
 import com.berlski.tool.custom.style.MenuButtonStyle;
-import com.berlski.tool.custom.util.ConstraintUtil;
 import com.berlski.tool.custom.util.UiUtil;
 
 /**
@@ -36,6 +32,8 @@ public class MenuButton extends ConstraintLayout {
     private Drawable openIcon;
     private Drawable closeIcon;
     private float iconSize;
+    private boolean isTextLight = false;
+    private boolean isOpen = false;
 
     public MenuButton(Context context) {
         super(context);
@@ -142,6 +140,21 @@ public class MenuButton extends ConstraintLayout {
         textView.setText(text);
     }
 
+    public void setTextLight(boolean isTextLight) {
+        this.isTextLight = isTextLight;
+
+        if (isTextLight) {
+            textView.setTextColor(textOpenColor);
+
+        } else {
+            textView.setTextColor(textCloseColor);
+        }
+    }
+
+    public boolean isOpen(){
+        return isOpen;
+    }
+
     public void open() {
         textView.setTextColor(textOpenColor);
 
@@ -159,10 +172,14 @@ public class MenuButton extends ConstraintLayout {
         //设定图片居右
         //textView.setCompoundDrawables(null, null, right, isShowBottomLine ? bottom: null);
         textView.setCompoundDrawables(null, null, right, null);
+
+        isOpen = true;
     }
 
     public void close() {
-        textView.setTextColor(textCloseColor);
+        if (!isTextLight) {
+            textView.setTextColor(textCloseColor);
+        }
 
         //设定图片
         Drawable right = closeIcon;
@@ -177,6 +194,8 @@ public class MenuButton extends ConstraintLayout {
 
         //设定图片居右
         textView.setCompoundDrawables(null, null, right, null);
+
+        isOpen = false;
     }
 
     /**

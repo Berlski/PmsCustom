@@ -177,7 +177,7 @@
         <attr name="iicv_tips_icon_size" format="dimension" />  <!--提示图标大小-->
         <attr name="iicv_tips_icon_color" format="color" />     <!--提示图标颜色-->
 
-
+        <attr name="iicv_right_icon_is_show" format="boolean" />  <!--右侧图标是否显示-->
         <attr name="iicv_right_icon" format="reference" />       <!--右侧图标-->
         <attr name="iicv_right_icon_size" format="dimension" />  <!--右侧图标大小-->
         <attr name="iicv_right_icon_color" format="color" />     <!--右侧图标颜色-->

@@ -40,6 +40,8 @@ public class InfoItemClickView extends ConstraintLayout {
     private String mNameText;
 
     private static InfoItemStyle mInfoItemStyle;
+    private ImageView mRightIcon;
+    private float contentMarginEnd;
 
     public InfoItemClickView(Context context) {
         super(context);
@@ -72,7 +74,7 @@ public class InfoItemClickView extends ConstraintLayout {
         mNameView = findViewById(R.id.tv_bsi_name);
         ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);
         mContentView = findViewById(R.id.tv_bsi_content);
-        ImageView rightIcon = findViewById(R.id.iv_bsi_right_icon);
+        mRightIcon = findViewById(R.id.iv_bsi_right_icon);
         mLoadView = findViewById(R.id.avi_bsi_load);
         View bottomLine = findViewById(R.id.viicv_bottom_line);
         mLoadView.setVisibility(GONE);
@@ -91,20 +93,20 @@ public class InfoItemClickView extends ConstraintLayout {
 
         //右侧图标
         if (ta.hasValue(R.styleable.InfoItemClickView_iicv_right_icon)) {
-            rightIcon.setImageResource(ta.getResourceId(R.styleable.InfoItemClickView_iicv_right_icon, 0));
+            mRightIcon.setImageResource(ta.getResourceId(R.styleable.InfoItemClickView_iicv_right_icon, 0));
         } else {
-            rightIcon.setImageDrawable(style.getRightIcon());
+            mRightIcon.setImageDrawable(style.getRightIcon());
         }
 
         //右侧图标颜色
         int rightIconColor = ta.getColor(R.styleable.InfoItemClickView_iicv_right_icon_color, style.getRightIconColor());
-        UiUtil.drawableSetColor(rightIcon.getDrawable(), rightIconColor);
+        UiUtil.drawableSetColor(mRightIcon.getDrawable(), rightIconColor);
 
 
         //设定右侧图片大小
         float rightIconSize = ta.getDimension(R.styleable.InfoItemClickView_iicv_right_icon_size, style.getRightIconSize());
         if (rightIconSize != 0) {
-            ViewGroup.LayoutParams rightIconLp = rightIcon.getLayoutParams();
+            ViewGroup.LayoutParams rightIconLp = mRightIcon.getLayoutParams();
             rightIconLp.height = (int) rightIconSize;
             rightIconLp.width = (int) rightIconSize;
         }
@@ -118,12 +120,11 @@ public class InfoItemClickView extends ConstraintLayout {
         }
 
         //设定内容后外间距
-        float contentMarginEnd = ta.getDimension(R.styleable.InfoItemClickView_iicv_content_margin_end, 0);
-        if (contentMarginEnd != 0) {
-            LayoutParams layoutParams = (LayoutParams) mContentView.getLayoutParams();
-            layoutParams.setMargins(0, 0, (int) contentMarginEnd, 0);//4个参数按顺序分别是左上右下
-            mContentView.setLayoutParams(layoutParams);
-        }
+        contentMarginEnd = ta.getDimension(R.styleable.InfoItemClickView_iicv_content_margin_end, 0);
+
+        //设定是否显示右侧icon
+        boolean rightIconIsShow = ta.getBoolean(R.styleable.InfoItemClickView_iicv_right_icon_is_show, style.getRightIconIsShow());
+        setRightIconIsShow(rightIconIsShow);
 
         //内容提示字体颜色
         int hintColor = ta.getColor(R.styleable.InfoItemClickView_iicv_content_hint_color, style.getContentHintColor());
@@ -210,6 +211,14 @@ public class InfoItemClickView extends ConstraintLayout {
         }
     }
 
+    private void setContentMarginEnd(float contentMarginEnd) {
+        if (contentMarginEnd != 0) {
+            LayoutParams layoutParams = (LayoutParams) mContentView.getLayoutParams();
+            layoutParams.setMargins(0, 0, (int) contentMarginEnd, 0);//4个参数按顺序分别是左上右下
+            mContentView.setLayoutParams(layoutParams);
+        }
+    }
+
     /**
      * 设定最大宽度，保证其他view不被挤出屏幕
      */
@@ -274,6 +283,26 @@ public class InfoItemClickView extends ConstraintLayout {
         mLoadView.setVisibility(GONE);
     }
 
+    public void setItemName(String itemName) {
+        mNameView.setText(itemName);
+    }
+
+    public void setItemNameColor(int color) {
+        mNameView.setTextColor(color);
+    }
+
+    public void setRightIconIsShow(boolean isShow) {
+        if (isShow) {
+            mRightIcon.setVisibility(VISIBLE);
+
+            setContentMarginEnd(contentMarginEnd);
+
+        } else {
+            mRightIcon.setVisibility(GONE);
+            setContentMarginEnd(getCount(R.dimen.dp0));
+        }
+    }
+
     /**
      * 获取选中内容是否为空的boolean值
      *
@@ -299,6 +328,10 @@ public class InfoItemClickView extends ConstraintLayout {
     public void setContentText(String content) {
         this.mContentText = content;
         mContentView.setText(content);
+    }
+
+    public void setContentTextColor(int color) {
+        mContentView.setTextColor(color);
     }
 
     public String getContentId() {

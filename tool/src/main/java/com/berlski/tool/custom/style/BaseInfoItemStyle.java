@@ -96,6 +96,11 @@ public abstract class BaseInfoItemStyle implements InfoItemStyle {
     }
 
     @Override
+    public boolean getRightIconIsShow() {
+        return true;
+    }
+
+    @Override
     public int getRightIconSize() {
         return getCount(R.dimen.dp15);
     }

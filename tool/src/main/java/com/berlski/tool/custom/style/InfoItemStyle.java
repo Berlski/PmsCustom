@@ -24,6 +24,7 @@ public interface InfoItemStyle {
     int getTipsIconSize();          //返回提示图标大小
     int getTipsIconColor();         //返回提示图标颜色
 
+    boolean getRightIconIsShow();   //返回右侧图标是否显示
     Drawable getRightIcon();        //返回右侧图标
     int getRightIconSize();         //返回右侧图标大小
     int getRightIconColor();        //返回右侧图标颜色

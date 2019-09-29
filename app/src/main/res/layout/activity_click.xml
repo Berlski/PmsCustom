@@ -20,6 +20,7 @@
         app:civ_name_size="15sp" /><!---->
 
     <com.berlski.tool.custom.widget.InfoItemClickView
+        android:id="@+id/ac_InfoItemClickView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iicv_bottom_line_is_show="true"
@@ -30,6 +31,7 @@
         app:iicv_item_name="@string/item_name"
         app:iicv_item_name_color="@color/black"
         app:iicv_item_name_size="16sp"
+        app:iicv_right_icon_is_show="false"
         app:iicv_right_icon="@drawable/ic_menu_button_icon_down"
         app:iicv_right_icon_color="@color/gray"
         app:iicv_right_icon_size="25dp"

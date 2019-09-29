@@ -79,6 +79,11 @@ public class InfoItemDefaultStyle extends BaseInfoItemStyle{
     }
 
     @Override
+    public boolean getRightIconIsShow() {
+        return true;
+    }
+
+    @Override
     public int getRightIconSize() {
         return getCount(R.dimen.dp15);
     }

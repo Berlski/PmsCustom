@@ -266,6 +266,18 @@ public class ConstraintUtil {
         }
 
         /**
+         * 为某个控件设置关联关系 end_to_start_of
+         *
+         * @param startId
+         * @param endId
+         * @return
+         */
+        public ConstraintBegin End_toStartOf(@IdRes int startId, @IdRes int endId) {
+            applyConstraintSet.connect(startId, ConstraintSet.END, endId, ConstraintSet.START);
+            return this;
+        }
+
+        /**
          * 为某个控件设置关联关系 bottom_to_bottom_of
          *
          * @param startId

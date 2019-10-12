@@ -26,4 +26,6 @@
 
     <string name="min_price">最低价格</string>
     <string name="max_price">最高价格</string>
+
+    <string name="null_string">null</string>
 </resources>

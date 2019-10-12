@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.berlski.tool.custom.R;
 import com.berlski.tool.custom.style.InfoItemDefaultStyle;
 import com.berlski.tool.custom.style.InfoItemStyle;
-import com.berlski.tool.custom.util.ColorUtil;
 import com.berlski.tool.custom.util.ConstraintUtil;
 import com.berlski.tool.custom.util.StringUtil;
 import com.berlski.tool.custom.util.UiUtil;
@@ -29,19 +28,19 @@ import com.wang.avi.AVLoadingIndicatorView;
  */
 public class InfoItemClickView extends ConstraintLayout {
 
+    private boolean tipsIsShow;
+    private float contentMarginEnd;
     private String mContentId;
     private String mContentText;
+    private String mItemName;
 
     private AVLoadingIndicatorView mLoadView;
     private TextView mContentView;
-    private TextView mNameView;
-    private boolean tipsIsShow;
+    private TextView mItemNameView;
+    private ImageView mRightIcon;
 
-    private String mNameText;
 
     private static InfoItemStyle mInfoItemStyle;
-    private ImageView mRightIcon;
-    private float contentMarginEnd;
 
     public InfoItemClickView(Context context) {
         super(context);
@@ -71,8 +70,8 @@ public class InfoItemClickView extends ConstraintLayout {
         LayoutInflater.from(context).inflate(R.layout.view_info_item_click_view, this);
 
         ConstraintLayout mParent = findViewById(R.id.viicv_parent);
-        mNameView = findViewById(R.id.tv_bsi_name);
-        ImageView requiredMarker = findViewById(R.id.iv_bsi_required_marker);
+        mItemNameView = findViewById(R.id.tv_bsi_name);
+        ImageView tipsIconView = findViewById(R.id.iv_bsi_required_marker);
         mContentView = findViewById(R.id.tv_bsi_content);
         mRightIcon = findViewById(R.id.iv_bsi_right_icon);
         mLoadView = findViewById(R.id.avi_bsi_load);
@@ -89,7 +88,23 @@ public class InfoItemClickView extends ConstraintLayout {
             hint = getContext().getString(R.string.please_choose);
         }
 
+        if (context.getString(R.string.null_string).equals(hint)) {
+            hint = "";
+        }
+
         mContentView.setHint(hint);
+
+        //设定选项名称
+        mItemName = ta.getString(R.styleable.InfoItemClickView_iicv_item_name);
+        mItemNameView.setText(mItemName);
+
+        //条目名称颜色
+        int itemNameColor = ta.getColor(R.styleable.InfoItemClickView_iicv_item_name_color, style.getItemNameColor());
+        mItemNameView.setTextColor(itemNameColor);
+
+        //条目名称字体大小
+        float itemNameSize = ta.getDimension(R.styleable.InfoItemClickView_iicv_item_name_size, style.getItemNameSize());
+        mItemNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, itemNameSize);
 
         //右侧图标
         if (ta.hasValue(R.styleable.InfoItemClickView_iicv_right_icon)) {
@@ -100,7 +115,9 @@ public class InfoItemClickView extends ConstraintLayout {
 
         //右侧图标颜色
         int rightIconColor = ta.getColor(R.styleable.InfoItemClickView_iicv_right_icon_color, style.getRightIconColor());
-        UiUtil.drawableSetColor(mRightIcon.getDrawable(), rightIconColor);
+        if (rightIconColor != 0) {
+            UiUtil.drawableSetColor(mRightIcon.getDrawable(), rightIconColor);
+        }
 
 
         //设定右侧图片大小
@@ -114,7 +131,7 @@ public class InfoItemClickView extends ConstraintLayout {
         //设定提示标记图片大小
         float tipsIconSize = ta.getDimension(R.styleable.InfoItemClickView_iicv_tips_icon_size, style.getTipsIconSize());
         if (tipsIconSize != 0) {
-            ViewGroup.LayoutParams rightIconLp = requiredMarker.getLayoutParams();
+            ViewGroup.LayoutParams rightIconLp = tipsIconView.getLayoutParams();
             rightIconLp.height = (int) tipsIconSize;
             rightIconLp.width = (int) tipsIconSize;
         }
@@ -138,28 +155,21 @@ public class InfoItemClickView extends ConstraintLayout {
         float contentSize = ta.getDimension(R.styleable.InfoItemClickView_iicv_content_size, style.getContentSize());
         mContentView.setTextSize(TypedValue.COMPLEX_UNIT_PX, contentSize);
 
-        //条目名称颜色
-        int itemNameColor = ta.getColor(R.styleable.InfoItemClickView_iicv_item_name_color, style.getItemNameColor());
-        mNameView.setTextColor(itemNameColor);
-
-        //条目名称字体大小
-        float itemNameSize = ta.getDimension(R.styleable.InfoItemClickView_iicv_item_name_size, style.getItemNameSize());
-        mNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, itemNameSize);
 
         //设定必选标识
         tipsIsShow = ta.getBoolean(R.styleable.InfoItemClickView_iicv_tips_is_show, style.getTipsIsShow());
         if (tipsIsShow) {
-            requiredMarker.setVisibility(VISIBLE);
+            tipsIconView.setVisibility(VISIBLE);
 
             //提示标识 icon
             if (ta.hasValue(R.styleable.InfoItemClickView_iicv_tips_icon)) {
-                requiredMarker.setImageResource(ta.getResourceId(R.styleable.InfoItemClickView_iicv_tips_icon, 0));
+                tipsIconView.setImageResource(ta.getResourceId(R.styleable.InfoItemClickView_iicv_tips_icon, 0));
             } else {
-                requiredMarker.setImageDrawable(style.getTipsIcon());
+                tipsIconView.setImageDrawable(style.getTipsIcon());
             }
 
             int tipsIconColor = ta.getColor(R.styleable.InfoItemClickView_iicv_tips_icon_color, style.getTipsIconColor());
-            UiUtil.drawableSetColor(requiredMarker.getDrawable(), tipsIconColor);
+            UiUtil.drawableSetColor(tipsIconView.getDrawable(), tipsIconColor);
 
             boolean tipsIsLeft = ta.getBoolean(R.styleable.InfoItemClickView_iicv_tips_is_left, style.getTipsIsLeft());
             if (tipsIsLeft) {
@@ -179,12 +189,9 @@ public class InfoItemClickView extends ConstraintLayout {
             }
 
         } else {
-            requiredMarker.setVisibility(GONE);
+            tipsIconView.setVisibility(GONE);
         }
 
-        //设定选项名称
-        mNameText = ta.getString(R.styleable.InfoItemClickView_iicv_item_name);
-        mNameView.setText(mNameText);
 
         //设定底部线的显示隐藏
         boolean bottomLineIsShow = ta.getBoolean(R.styleable.InfoItemClickView_iicv_bottom_line_is_show, style.getBottomLineIsShow());
@@ -206,9 +213,9 @@ public class InfoItemClickView extends ConstraintLayout {
         //设定最大宽度，保证其他view不被挤出屏幕
         setContentTextMaxWidth();
 
-        if (getBackground() == null) {
+        /*if (getBackground() == null) {
             setBackgroundColor(ColorUtil.getColor(getContext(), R.color.white));
-        }
+        }*/
     }
 
     private void setContentMarginEnd(float contentMarginEnd) {
@@ -268,8 +275,8 @@ public class InfoItemClickView extends ConstraintLayout {
     private int getTextWidth() {
         Rect bounds = new Rect();
         TextPaint paint;
-        paint = mNameView.getPaint();
-        paint.getTextBounds(mNameText, 0, mNameText.length(), bounds);
+        paint = mItemNameView.getPaint();
+        paint.getTextBounds(mItemName, 0, mItemName.length(), bounds);
         return bounds.width();
     }
 
@@ -284,11 +291,19 @@ public class InfoItemClickView extends ConstraintLayout {
     }
 
     public void setItemName(String itemName) {
-        mNameView.setText(itemName);
+        mItemNameView.setText(itemName);
     }
 
     public void setItemNameColor(int color) {
-        mNameView.setTextColor(color);
+        mItemNameView.setTextColor(color);
+    }
+
+    public TextView getContentTextView() {
+        return mContentView;
+    }
+
+    public TextView getItemNameTextView() {
+        return mItemNameView;
     }
 
     public void setRightIconIsShow(boolean isShow) {

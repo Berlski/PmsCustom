@@ -189,4 +189,104 @@
 
         <attr name="iicv_content_margin_end" format="dimension" /><!--内容居右-->
     </declare-styleable>
+
+
+    <!-- 信息输入的条目view-->
+    <declare-styleable name="InfoItemEditView">
+        <attr name="iiev_item_name" format="string" /><!--条目名称-->
+        <attr name="iiev_item_name_color" format="color" /><!--条目名字体颜色-->
+        <attr name="iiev_item_name_size" format="dimension" /><!--条目名字体大小-->
+
+        <attr name="iiev_content" format="string" />    <!--内容文字-->
+        <attr name="iiev_content_color" format="color" /><!--内容字体颜色-->
+        <attr name="iiev_content_hint" format="string" /><!--提示文字-->
+        <attr name="iiev_content_hint_color" format="color" /><!--提示文字颜色-->
+        <attr name="iiev_content_size" format="dimension" /><!--内容文字大小-->
+        <attr name="iiev_content_length" format="integer" /><!--内容文字长度-->
+
+        <attr name="iiev_tips_is_show" format="boolean" />      <!--是否必选-->
+        <attr name="iiev_tips_is_left" format="boolean" />      <!--提示图标是否居左-->
+        <attr name="iiev_tips_icon" format="reference" />       <!--提示图标-->
+        <attr name="iiev_tips_icon_size" format="dimension" />  <!--提示图标大小-->
+        <attr name="iiev_tips_icon_color" format="color" />     <!--提示图标颜色-->
+
+
+        <attr name="iiev_postfix" format="string" /><!--后缀，如：单位-->
+        <attr name="iiev_postfix_size" format="dimension" /><!--后缀文字大小-->
+        <attr name="iiev_postfix_color" format="color" /><!--后缀文字颜色-->
+
+        <attr name="iiev_bottom_line_is_show" format="boolean" /><!--是否显现底线-->
+        <attr name="iiev_bottom_line_color" format="color" />   <!--底线颜色-->
+        <attr name="iiev_bottom_line_height" format="dimension" />  <!--底线高度-->
+
+        <attr name="iiev_content_margin_end" format="dimension" /><!--内容居右-->
+
+
+        <!--<attr name="" format="flags" />-->
+        <attr name="iiev_content_align">            <!--内容对齐方式-->
+            <flag name="START" value="0x0201" />    <!--前对齐-->
+            <flag name="END" value="0x0202" />      <!--后对齐-->
+        </attr>
+
+
+        <attr name="iiev_type">
+            <flag name="TEXT" value="0x0001" /><!--文本文字-->
+            <flag name="NAME" value="0x0002" /><!--姓名-->
+            <flag name="EMAIL" value="0x0003" /><!--电子邮箱-->
+            <flag name="PHONE_NO" value="0x0004" /><!--手机号-->
+            <flag name="CREDENTIAL_NO" value="0x0005" /><!--证件号-->
+            <flag name="MONEY" value="0x0006" /><!--金额-->
+        </attr>
+
+        <attr name="iiev_credential_type">
+            <flag name="ID_CARD" value="0x0021" /><!--身份证-->
+            <flag name="PASSPORT" value="0x0022" /><!--护照-->
+            <flag name="HONGKONG_AND_MACAO_PASS" value="0x0023" /><!--港澳通行证-->
+            <flag name="TAIWAN_COMPATRIOT_CARD" value="0x0024" /><!--台湾同胞证-->
+        </attr>
+
+    </declare-styleable>
+
+
+
+
+    <!-- 信息输入的条目view-->
+    <declare-styleable name="InfoItemRemarksView">
+        <attr name="iirv_item_name" format="string" /><!--条目名称-->
+        <attr name="iirv_item_name_color" format="color" /><!--条目名字体颜色-->
+        <attr name="iirv_item_name_size" format="dimension" /><!--条目名字体大小-->
+
+        <attr name="iirv_content_color" format="color" /><!--内容字体颜色-->
+        <attr name="iirv_content_hint" format="string" /><!--提示文字-->
+        <attr name="iirv_content_hint_color" format="color" /><!--提示文字颜色-->
+        <attr name="iirv_content_size" format="dimension" /><!--内容文字大小-->
+        <attr name="iirv_content_length" format="integer" /><!--内容文字长度-->
+
+        <attr name="iirv_tips_is_show" format="boolean" />      <!--是否必选-->
+        <attr name="iirv_tips_is_left" format="boolean" />      <!--提示图标是否居左-->
+        <attr name="iirv_tips_icon" format="reference" />       <!--提示图标-->
+        <attr name="iirv_tips_icon_size" format="dimension" />  <!--提示图标大小-->
+        <attr name="iirv_tips_icon_color" format="color" />     <!--提示图标颜色-->
+
+        <attr name="iirv_bottom_line_is_show" format="boolean" /><!--是否显现底线-->
+        <attr name="iirv_bottom_line_color" format="color" />   <!--底线颜色-->
+        <attr name="iirv_bottom_line_height" format="dimension" />  <!--底线高度-->
+
+        <attr name="iirv_content_margin_end" format="dimension" /><!--内容居右-->
+
+
+        <!--<attr name="" format="flags" />-->
+        <attr name="iirv_content_align">            <!--内容对齐方式-->
+            <flag name="START" value="0x0201" />    <!--前对齐-->
+            <flag name="END" value="0x0202" />      <!--后对齐-->
+        </attr>
+
+        <attr name="iirv_layout_align">            <!--布局对齐方式-->
+            <flag name="CENTRE_TO_CENTRE_OF_TITLE" value="0x0301" /><!--与条目名称上下对齐-->
+            <flag name="TOP_TO_TOP_OF_TITLE" value="0x0302" />      <!--与条目名称顶部对齐-->
+            <flag name="START_TO_START_OF_TITLE" value="0x0303" />  <!--与条目名称左侧对齐-->
+            <flag name="START_TOP_TO_END_BOTTOM_OF_TITLE" value="0x0304" /><!--左上与条目名称右下角对齐-->
+        </attr>
+
+    </declare-styleable>
 </resources>

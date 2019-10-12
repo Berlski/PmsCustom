@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
             new ItemBean("SelectBeanActivity", SelectBeanActivity.class),
             new ItemBean("ShadowButtonActivity", ShadowButtonActivity.class),
             new ItemBean("SpeechInputActivity", SpeechInputActivity.class),
-            new ItemBean("条目选项卡", SwitchOptionActivity.class)
+            new ItemBean("条目选项卡", SwitchOptionActivity.class),
+            new ItemBean("自定义输入框", InfoItemEditActivity.class)
     );
 
 

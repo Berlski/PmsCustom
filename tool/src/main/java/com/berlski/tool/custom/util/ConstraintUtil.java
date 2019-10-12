@@ -122,6 +122,18 @@ public class ConstraintUtil {
         }
 
         /**
+         * 为某个控件设置 marginStart
+         *
+         * @param viewId 某个控件ID
+         * @param start   marginStart
+         * @return
+         */
+        public ConstraintBegin setMarginStart(@IdRes int viewId, int start) {
+            applyConstraintSet.setMargin(viewId, ConstraintSet.START, start);
+            return this;
+        }
+
+        /**
          * 为某个控件设置 marginRight
          *
          * @param viewId 某个控件ID
@@ -130,6 +142,18 @@ public class ConstraintUtil {
          */
         public ConstraintBegin setMarginRight(@IdRes int viewId, int right) {
             applyConstraintSet.setMargin(viewId, ConstraintSet.RIGHT, right);
+            return this;
+        }
+
+        /**
+         * 为某个控件设置 marginEnd
+         *
+         * @param viewId 某个控件ID
+         * @param end  marginEnd
+         * @return
+         */
+        public ConstraintBegin setMarginEnd(@IdRes int viewId, int end) {
+            applyConstraintSet.setMargin(viewId, ConstraintSet.END, end);
             return this;
         }
 

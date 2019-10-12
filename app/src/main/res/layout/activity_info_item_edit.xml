@@ -26,34 +26,27 @@
     <com.berlski.tool.custom.widget.InfoItemEditView
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        app:iiev_bottom_line_color="@color/color_styles"
+        app:iiev_bottom_line_height="10dp"
+        app:iiev_bottom_line_is_show="true"
+        app:iiev_content="@string/single_select"
+        app:iiev_content_align="END"
+        app:iiev_content_color="@color/color_styles"
+        app:iiev_content_hint="qing"
+        app:iiev_content_hint_color="@color/orange"
+        app:iiev_content_margin_end="10dp"
+        app:iiev_content_size="25sp"
         app:iiev_item_name="@string/please_choose"
         app:iiev_item_name_color="@color/orange"
         app:iiev_item_name_size="25sp"
-        app:iiev_tips_is_show="true"
-        app:iiev_tips_is_left="true"
+        app:iiev_postfix="@string/please_choose"
+        app:iiev_postfix_color="@color/color_styles"
+        app:iiev_postfix_size="20sp"
         app:iiev_tips_icon="@drawable/ic_menu_button_icon_up"
         app:iiev_tips_icon_color="@color/orange"
-        app:iiev_content="@string/single_select"
-        app:iiev_content_size="25sp"
-        app:iiev_content_align="END"
-        app:iiev_content_hint="qing"
-        app:iiev_content_hint_color="@color/orange"
-        app:iiev_postfix="@string/please_choose"
-        app:iiev_postfix_size="20sp"
-        app:iiev_postfix_color="@color/color_styles"
-        app:iiev_bottom_line_is_show="true"
-        app:iiev_content_color="@color/color_styles"
-        app:iiev_bottom_line_color="@color/color_styles"
-        app:iiev_bottom_line_height="10dp"
-
-
-
-
-
         app:iiev_tips_icon_size="50dp"
-        app:iiev_content_margin_end="50dp"
-        />
-
+        app:iiev_tips_is_left="true"
+        app:iiev_tips_is_show="true" />
 
 
     <com.berlski.tool.custom.widget.InfoItemRemarksView
@@ -61,17 +54,15 @@
         android:layout_height="wrap_content"
         android:minHeight="100dp"
         app:iirv_bottom_line_is_show="true"
-        app:iirv_content_size="15sp"
+        app:iirv_content_align="END"
         app:iirv_content_hint="@string/please_choose"
+        app:iirv_content_size="15sp"
         app:iirv_item_name="@string/please_choose"
         app:iirv_item_name_color="@color/gray"
         app:iirv_item_name_size="15sp"
+        app:iirv_layout_align="START_TOP_TO_END_BOTTOM_OF_TITLE"
         app:iirv_tips_is_left="true"
-        app:iirv_tips_is_show="true"
-        app:iirv_content_align="END"
-        app:iirv_layout_align="START_TOP_TO_END_BOTTOM_OF_TITLE" />
-
-
+        app:iirv_tips_is_show="true" />
 
 
 </LinearLayout>

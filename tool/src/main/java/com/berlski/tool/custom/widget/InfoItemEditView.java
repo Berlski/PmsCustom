@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -16,6 +15,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -157,7 +157,6 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
         float contentSize = ta.getDimension(R.styleable.InfoItemEditView_iiev_content_size, style.getContentSize());//" format="dimension" /><!--内容文字大小-->
         mContentView.setTextSize(TypedValue.COMPLEX_UNIT_PX, contentSize);
 
-
         //设定后缀文本
         String postfix = ta.getString(R.styleable.InfoItemEditView_iiev_postfix);//" format="string" /><!--后缀，如：单位-->
         if (StringUtil.isNotEmpty(postfix)) {
@@ -167,11 +166,16 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
             ConstraintUtil constraintUtil = new ConstraintUtil(mParent);
             ConstraintUtil.ConstraintBegin begin = constraintUtil.beginWithAnim();
             begin.End_toEndOf(bottomLine.getId(), R.id.viiev_postfix);
-            begin.commit();
+
 
             //后缀文字大小
             float postfixSize = ta.getDimension(R.styleable.InfoItemEditView_iiev_postfix_size, getCount(R.dimen.sp14));//" format="string" /><!--后缀文字大小-->
             mPostfixView.setTextSize(TypedValue.COMPLEX_UNIT_PX, postfixSize);
+
+            //后缀前间距
+            float contentMarginEnd = ta.getDimension(R.styleable.InfoItemEditView_iiev_content_margin_end, getCount(R.dimen.dp10));
+            begin.setMarginStart(R.id.viiev_postfix, (int) contentMarginEnd);
+            begin.commit();
 
             //后缀字体颜色
             int postfixColor = ta.getColor(R.styleable.InfoItemEditView_iiev_postfix_color, getContext().getResources().getColor(R.color.black));//" format="string" /><!--后缀文字颜色-->
@@ -204,6 +208,13 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
 
             UiUtil.drawableSetStyleColor(getContext(), tipsIconView.getDrawable());
 
+            //设定提示标记图片大小
+            float tipsIconSize = ta.getDimension(R.styleable.InfoItemEditView_iiev_tips_icon_size, style.getTipsIconSize());
+            if (tipsIconSize != 0) {
+                ViewGroup.LayoutParams rightIconLp = tipsIconView.getLayoutParams();
+                rightIconLp.height = (int) tipsIconSize;
+                rightIconLp.width = (int) tipsIconSize;
+            }
 
             //提示标识 icon
             if (ta.hasValue(R.styleable.InfoItemEditView_iiev_tips_icon)) {
@@ -219,7 +230,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
             if (tipsIsLeft) {
                 ConstraintUtil constraintUtil = new ConstraintUtil(mParent);
                 ConstraintUtil.ConstraintBegin begin = constraintUtil.beginWithAnim();
-                
+
                 begin.Start_toStartOf(R.id.viiev_name, R.id.viiev_parent);
                 begin.Top_toTopOf(R.id.viiev_required_marker, R.id.viiev_name);
                 begin.Bottom_toBottomOf(R.id.viiev_required_marker, R.id.viiev_name);
@@ -236,7 +247,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
 
                 begin.commit();
             }
-            
+
         } else {
             tipsIconView.setVisibility(GONE);
         }

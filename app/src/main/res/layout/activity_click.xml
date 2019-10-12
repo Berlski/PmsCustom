@@ -37,7 +37,7 @@
         app:iicv_right_icon_size="25dp"
         app:iicv_tips_icon="@drawable/ic_stars"
         app:iicv_tips_icon_color="@color/red"
-        app:iicv_tips_icon_size="8dp"
+        app:iicv_tips_icon_size="18dp"
         app:iicv_tips_is_left="false"
         app:iicv_tips_is_show="true" />
 </LinearLayout>

@@ -21,13 +21,13 @@ public class ClickActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_click);
 
-        InfoItemClickView infoItemClickView = findViewById(R.id.ac_InfoItemClickView);
+        //InfoItemClickView infoItemClickView = findViewById(R.id.ac_InfoItemClickView);
 
-        infoItemClickView.setContentTextColor(ColorUtil.getColor(this,R.color.red));
+        /*infoItemClickView.setContentTextColor(ColorUtil.getColor(this,R.color.red));
         infoItemClickView.setContentText("不可点击");
         infoItemClickView.setItemName("我的条目");
         infoItemClickView.setItemNameColor(ColorUtil.getColor(this,R.color.orange));
         infoItemClickView.showLoad();
-        infoItemClickView.setRightIconIsShow(true);
+        infoItemClickView.setRightIconIsShow(true);*/
     }
 }

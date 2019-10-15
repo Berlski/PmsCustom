@@ -321,7 +321,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
      * @return
      */
     public boolean isNotEmpty() {
-        return StringUtil.isNotEmpty(getText());
+        return StringUtil.isNotEmpty(getContentText());
     }
 
     /**
@@ -330,7 +330,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
      * @return
      */
     public boolean isEmpty() {
-        return StringUtil.isEmpty(getText());
+        return StringUtil.isEmpty(getContentText());
     }
 
     /**
@@ -339,7 +339,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
      * @return
      */
     public int length() {
-        return getText().length();
+        return getContentText().length();
     }
 
     /**
@@ -347,7 +347,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
      *
      * @return
      */
-    public String getText() {
+    public String getContentText() {
         return mContentView.getText().toString().trim();
     }
 
@@ -357,6 +357,23 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
 
     public void setItemNameColor(int color) {
         mItemNameView.setTextColor(color);
+    }
+
+    public TextView getItemNameView() {
+        return mItemNameView;
+    }
+
+    public TextView getContentView() {
+        return mContentView;
+    }
+
+    /**
+     * 设定输入框提示文字
+     *
+     * @return
+     */
+    public void setContentHint(String hint) {
+        mContentView.setHint(hint);
     }
 
     /**

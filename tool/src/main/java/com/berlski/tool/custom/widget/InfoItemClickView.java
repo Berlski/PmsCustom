@@ -298,6 +298,10 @@ public class InfoItemClickView extends ConstraintLayout {
         mItemNameView.setTextColor(color);
     }
 
+    public void setContentHint(String hint) {
+        mContentView.setHint(hint);
+    }
+
     public TextView getContentTextView() {
         return mContentView;
     }

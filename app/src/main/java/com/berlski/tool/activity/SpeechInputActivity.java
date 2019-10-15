@@ -33,8 +33,6 @@ public class SpeechInputActivity extends AppCompatActivity {
             @Override
             public void voiceToString(final SpeechInputItemView v) {
 
-                //v.setText(v.getText() + "加加 -- ");
-
                 PriceSelectDialog.builder(SpeechInputActivity.this).onCreateDialog(500, 5000, 500, 5000, new NumberRangeInter() {
                     @Override
                     public void onSelect(String minPrice, String maxPrice) {

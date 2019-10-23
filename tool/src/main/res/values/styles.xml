@@ -235,8 +235,9 @@
             <flag name="EMAIL" value="0x0003" /><!--电子邮箱-->
             <flag name="PHONE_NO" value="0x0004" /><!--手机号-->
             <flag name="CREDENTIAL_NO" value="0x0005" /><!--证件号-->
-            <flag name="MONEY" value="0x0006" /><!--金额-->
-            <flag name="BANK_CARD_NO" value="0x0007" /><!--银行卡号-->
+            <flag name="NUMBER" value="0x0006" /><!--银行卡号-->
+            <flag name="NUMBER_DECIMAL" value="0x0007" /><!--金额-->
+            <flag name="BANK_CARD_NO" value="0x0008" /><!--银行卡号-->
         </attr>
 
         <attr name="iiev_credential_type">

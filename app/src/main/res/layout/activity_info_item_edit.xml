@@ -48,6 +48,74 @@
         app:iiev_tips_is_left="true"
         app:iiev_tips_is_show="true" />
 
+    <com.berlski.tool.custom.widget.InfoItemEditView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:iiev_bottom_line_color="@color/color_styles"
+        app:iiev_bottom_line_height="10dp"
+        app:iiev_bottom_line_is_show="true"
+        app:iiev_content_align="END"
+        app:iiev_content_color="@color/color_styles"
+        app:iiev_content_hint="qing"
+        app:iiev_content_hint_color="@color/orange"
+        app:iiev_content_margin_end="10dp"
+        app:iiev_content_size="25sp"
+        app:iiev_item_name="带小数数字"
+        app:iiev_item_name_color="@color/orange"
+        app:iiev_item_name_size="25sp"
+        app:iiev_postfix="@string/please_choose"
+        app:iiev_postfix_color="@color/color_styles"
+        app:iiev_postfix_size="20sp"
+        app:iiev_tips_icon_color="@color/orange"
+        app:iiev_tips_is_left="true"
+        app:iiev_tips_is_show="true"
+        app:iiev_type="NUMBER_DECIMAL"/>
+
+
+    <com.berlski.tool.custom.widget.InfoItemEditView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:iiev_bottom_line_color="@color/color_styles"
+        app:iiev_bottom_line_height="10dp"
+        app:iiev_bottom_line_is_show="true"
+        app:iiev_content_align="END"
+        app:iiev_content_color="@color/color_styles"
+        app:iiev_content_hint_color="@color/orange"
+        app:iiev_content_margin_end="10dp"
+        app:iiev_content_size="25sp"
+        app:iiev_item_name="银行卡号"
+        app:iiev_item_name_color="@color/orange"
+        app:iiev_item_name_size="25sp"
+        app:iiev_postfix="@string/please_choose"
+        app:iiev_postfix_color="@color/color_styles"
+        app:iiev_postfix_size="20sp"
+        app:iiev_tips_icon_color="@color/orange"
+        app:iiev_tips_is_left="true"
+        app:iiev_tips_is_show="true"
+        app:iiev_type="BANK_CARD_NO"/>
+
+    <com.berlski.tool.custom.widget.InfoItemEditView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:iiev_bottom_line_color="@color/color_styles"
+        app:iiev_bottom_line_height="10dp"
+        app:iiev_bottom_line_is_show="true"
+        app:iiev_content_align="END"
+        app:iiev_content_color="@color/color_styles"
+        app:iiev_content_hint_color="@color/orange"
+        app:iiev_content_margin_end="10dp"
+        app:iiev_content_size="25sp"
+        app:iiev_item_name="纯数字-不带小数"
+        app:iiev_item_name_color="@color/orange"
+        app:iiev_item_name_size="25sp"
+        app:iiev_postfix="@string/please_choose"
+        app:iiev_postfix_color="@color/color_styles"
+        app:iiev_postfix_size="20sp"
+        app:iiev_tips_icon_color="@color/orange"
+        app:iiev_tips_is_left="true"
+        app:iiev_tips_is_show="true"
+        app:iiev_type="NUMBER"/>
+
 
     <com.berlski.tool.custom.widget.InfoItemRemarksView
         android:layout_width="match_parent"

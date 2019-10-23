@@ -26,6 +26,7 @@ import com.berlski.tool.custom.style.InfoItemDefaultStyle;
 import com.berlski.tool.custom.style.InfoItemStyle;
 import com.berlski.tool.custom.util.AnimUtil;
 import com.berlski.tool.custom.util.ConstraintUtil;
+import com.berlski.tool.custom.util.InputUtils;
 import com.berlski.tool.custom.util.StringUtil;
 import com.berlski.tool.custom.util.ToastUtil;
 import com.berlski.tool.custom.util.UiUtil;
@@ -51,8 +52,9 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
     private static final int EMAIL = 0x0003;//电子邮箱
     private static final int PHONE_NO = 0x0004;//手机号
     private static final int CREDENTIAL_NO = 0x0005;//证件号
-    private static final int MONEY = 0x0006;//金额
-    private static final int BANK_CARD_NO = 0x0007;//银行卡号
+    private static final int NUMBER = 0x0006;//数字（不带小数）
+    private static final int NUMBER_DECIMAL = 0x0007;//数字（带小数）
+    private static final int BANK_CARD_NO = 0x0008;//银行卡号
 
 
     private static final int START = 0x0201;    //前对齐
@@ -302,16 +304,32 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
                 setDocumentType(credential_type);
                 break;
 
-            case MONEY:
-                //限定输入类型为金额，带小数位
-                mContentView.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+            case NUMBER:
+                //限定输入类型为金额，不带小数位
+                mContentView.setInputType(InputType.TYPE_CLASS_NUMBER);
                 //限定输入字数为11
                 maxLength = 10;
                 break;
 
-            case BANK_CARD_NO:
-                //限定输入类型为银行卡好，不带小数位
+
+            case NUMBER_DECIMAL:
+                //限定输入类型为数字，带小数位
                 mContentView.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                //限定输入字数为11
+                maxLength = 10;
+
+                InputUtils.limitMoneyInput(mContentView, new InputUtils.IProxyInputListener() {
+                    @Override
+                    public void onMoneyCallback(String moneyNumber, int selection) {
+                        mContentView.setText(moneyNumber);
+                        mContentView.setSelection(selection);
+                    }
+                });
+                break;
+
+            case BANK_CARD_NO:
+                //限定输入类型为银行卡号，只能输入纯数字
+                mContentView.setInputType(InputType.TYPE_CLASS_NUMBER);
                 //限定输入字数为11
                 maxLength = 15;
                 break;
@@ -371,7 +389,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
         return mItemNameView;
     }
 
-    public TextView getContentView() {
+    public EditText getContentView() {
         return mContentView;
     }
 

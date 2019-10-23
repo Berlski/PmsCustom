@@ -52,6 +52,7 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
     private static final int PHONE_NO = 0x0004;//手机号
     private static final int CREDENTIAL_NO = 0x0005;//证件号
     private static final int MONEY = 0x0006;//金额
+    private static final int BANK_CARD_NO = 0x0007;//银行卡号
 
 
     private static final int START = 0x0201;    //前对齐
@@ -302,10 +303,17 @@ public class InfoItemEditView extends ConstraintLayout implements View.OnFocusCh
                 break;
 
             case MONEY:
-                //限定输入类型为电话格式
+                //限定输入类型为金额，带小数位
                 mContentView.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                 //限定输入字数为11
                 maxLength = 10;
+                break;
+
+            case BANK_CARD_NO:
+                //限定输入类型为银行卡好，不带小数位
+                mContentView.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                //限定输入字数为11
+                maxLength = 15;
                 break;
         }
 
